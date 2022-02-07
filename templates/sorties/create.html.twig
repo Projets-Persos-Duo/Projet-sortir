@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Proposer une nouvelle sortie | {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <h2>Créer une sortie </h2>
+    {{ form_start(sortieForm) }}
+
+
+    {{ form_widget(sortieForm) }}
+
+
+
+    <button>Let's go!</button>
+
+    {{ form_end(sortieForm) }}
+
+{% endblock %}
