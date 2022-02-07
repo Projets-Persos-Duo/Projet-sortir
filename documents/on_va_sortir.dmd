@@ -1,9 +1,0 @@
-<?xml version = '1.0' encoding = 'UTF-8'?>
-<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="on_va_sortir" id="96C3E391-4AF8-3572-7EF9-38C2A9FEE683" version="3.5">
-<createdBy>hurin</createdBy>
-<createdTime>2022-02-06 10:17:44 UTC</createdTime>
-<ownerDesignName>on_va_sortir</ownerDesignName>
-<modelPersistence>2</modelPersistence>
-<capitalNames>false</capitalNames>
-<designId>96C3E391-4AF8-3572-7EF9-38C2A9FEE683</designId>
-</OSDM_Design>
