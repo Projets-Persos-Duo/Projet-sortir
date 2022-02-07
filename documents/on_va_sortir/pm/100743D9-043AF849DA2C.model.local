@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<ProcessModel class="oracle.dbtools.crest.model.design.process.ProcessModel" name="Process Model" id="100743D9-9DC8-8116-92E0-043AF849DA2C">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 10:17:44 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</ProcessModel>

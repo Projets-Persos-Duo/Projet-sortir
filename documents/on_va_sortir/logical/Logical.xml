@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<LogicalDesign class="oracle.dbtools.crest.model.design.logical.LogicalDesign" name="Logical" id="A36C6BC4-D5BE-C97B-B84C-D51F9353EA50" mainViewID="873BD36B-9F7C-DCF5-118E-E24CEDB0FAE9">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 10:17:44 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</LogicalDesign>

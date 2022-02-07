@@ -1,0 +1,1372 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<LogicalDesign class="oracle.dbtools.crest.model.design.logical.LogicalDesign" name="Logical" id="A36C6BC4-D5BE-C97B-B84C-D51F9353EA50" mainViewID="873BD36B-9F7C-DCF5-118E-E24CEDB0FAE9">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 10:17:44 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+<Entities>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="1902D8E3-981E-6C21-41D1-4BF23BA1E24A" name="Campus">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 19:55:25 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id" id="60B0331A-CD29-0DCA-0073-526A2AF1640B">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 19:55:35 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+</Attribute>
+<Attribute name="nom" id="A7312036-BEB0-D600-5484-63E2FFDC8F37">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 19:55:45 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="14008C38-FD9A-FF3E-44AF-8A3515E274F4" name="Campus PK">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:21:12 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+<usedAttributes>
+<attributeRef>60B0331A-CD29-0DCA-0073-526A2AF1640B</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="748876F3-A023-A97E-73B3-AEA3E3CECF9E" name="Groupe">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-07 09:23:41 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id" id="9EBE343E-9D12-4474-C5E8-344D51FA821D">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-07 09:23:55 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="E8A90BC4-0FC7-96B7-B029-A88E85935E0A" name="Groupe PK">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-07 09:24:05 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+<usedAttributes>
+<attributeRef>9EBE343E-9D12-4474-C5E8-344D51FA821D</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="D9373789-EF1E-6412-1CAE-A7F4AF6EDA21" name="Lieu">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 19:42:25 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id" id="533F0263-DF27-EE00-EFBE-939F1D4A27B3">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 19:42:33 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+</Attribute>
+<Attribute name="nom" id="1B834C83-DA81-05AE-34C8-25498FA9893F">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 19:42:44 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+</Attribute>
+<Attribute name="rue" id="767B13BC-1A81-A01D-DB41-91CC7B095504">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 19:43:11 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>5</dataTypeSize>
+<ownDataTypeParameters>5,,</ownDataTypeParameters>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+</Attribute>
+<Attribute name="latitude" id="910FC37D-C7C2-BD94-06B7-5E4EECFBF700">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 19:43:38 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+</Attribute>
+<Attribute name="longitude" id="E76D582C-E11A-A602-40C8-00E35238AE86">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 19:43:51 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+</Attribute>
+<Attribute name="id1" id="C16209A6-7BDF-5354-3F55-872789A17880">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 19:51:19 UTC</createdTime>
+<generatorID>5904E466-D490-BFA0-9C57-5C258E9928B8</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<referedAttribute>2BDEC3C0-3A71-E07F-8655-908A30D7389C</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="8F972174-5F56-D01B-5B35-FED3D4010F3B" name="Lieu PK">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 19:42:42 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+<usedAttributes>
+<attributeRef>533F0263-DF27-EE00-EFBE-939F1D4A27B3</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="39E4F07E-C6EC-0B73-3039-9A286E7D7A43" name="Photos">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-07 09:29:21 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id" id="4C463389-A5BC-7241-67D6-82F7DE4951A5">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-07 09:29:31 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+</Attribute>
+<Attribute name="chemin_disque_dur" id="7C1CB4B5-1C98-CD23-74DB-53D0B930CF1B">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-07 09:29:40 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT037</logicalDatatype>
+<dataTypeSize>255 CHAR</dataTypeSize>
+<ownDataTypeParameters>255 CHAR,,</ownDataTypeParameters>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+</Attribute>
+<Attribute name="est_photo_profil" id="6E5D1BDF-BE24-7D31-8B84-31B9A320DC68">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-07 09:29:49 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+</Attribute>
+<Attribute name="id1" id="87816167-7C19-2704-D2B1-697D08FFB93E">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-07 09:31:02 UTC</createdTime>
+<generatorID>0BB20C26-D4E5-8B90-CF18-6C39552416A4</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<referedAttribute>74BA502B-80B5-2427-EA27-24F3F696A775</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="0F72DE0E-F245-7104-EAA5-C4E9067C617B" name="Photos PK">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-07 09:29:39 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+<usedAttributes>
+<attributeRef>4C463389-A5BC-7241-67D6-82F7DE4951A5</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="E623BD1C-3C14-B9CA-67A0-A89BB1F02F01" name="Sortie">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 11:45:07 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id" id="F64F46BD-AE3B-3984-48CC-0DF7415C203E">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 11:46:12 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+</Attribute>
+<Attribute name="name" id="913DD9C9-69A7-DEA5-A924-0E2C195D4132">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 11:46:30 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 CHAR</dataTypeSize>
+<ownDataTypeParameters>255 CHAR,,</ownDataTypeParameters>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+</Attribute>
+<Attribute name="date_annonce" id="F2B8E78C-8C76-A074-57C6-121395BF5958">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 19:26:32 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+</Attribute>
+<Attribute name="heure_annonce" id="C8C18776-3D20-C843-04A6-B4DD292D2EA4">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 19:26:50 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT014</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+</Attribute>
+<Attribute name="date_cloture" id="CE11872B-B540-B925-76D6-A2E478A5397C">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 19:30:38 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+</Attribute>
+<Attribute name="heure_cloture" id="3E2C4A99-1CE4-300E-E690-53C4F94B6030">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 19:30:52 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT014</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+</Attribute>
+<Attribute name="date_debut" id="CCBD8F47-B882-8D48-D626-B8F14FE020D8">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 19:31:18 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+</Attribute>
+<Attribute name="heure_debut" id="72FEEB94-A875-55C8-B0D4-F6BE17F54D99">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 19:31:56 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT014</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+</Attribute>
+<Attribute name="date_fin" id="3AF16AA3-25C2-1DEA-2198-135C19F71FE1">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 19:32:23 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+</Attribute>
+<Attribute name="heure_fin" id="9BB16E6B-BAFC-F4BC-40C5-E5B33B0ED980">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 19:31:40 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT014</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+</Attribute>
+<Attribute name="est_annule" id="BCFFF71A-0640-E1E7-5A25-B6180E479EF4">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 19:33:55 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+</Attribute>
+<Attribute name="limite_participants" id="DE6A982F-A255-4E02-5361-D92C83EBE779">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 19:35:53 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+</Attribute>
+<Attribute name="infos_sortie" id="33883762-23E7-E9F5-AF2E-A51787561830">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 19:36:23 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1500 CHAR</dataTypeSize>
+<ownDataTypeParameters>1500 CHAR,,</ownDataTypeParameters>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+</Attribute>
+<Attribute name="id1" id="2CBC8183-99A0-A8D4-2E27-494F1E4D1358">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 19:50:21 UTC</createdTime>
+<generatorID>EBF58A99-4A6E-12A6-835D-267FFB842A7D</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<referedAttribute>533F0263-DF27-EE00-EFBE-939F1D4A27B3</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+</Attribute>
+<Attribute name="id2" id="C337C014-80B2-CFD4-09D4-EFD48A92D7C8">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:21:14 UTC</createdTime>
+<generatorID>1A2D65B8-5D40-9DDB-1ABC-A652BF730D87</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<referedAttribute>60B0331A-CD29-0DCA-0073-526A2AF1640B</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+</Attribute>
+<Attribute name="id3" id="EB8119D1-6CE0-24C0-E891-177C680E7DBF">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:21:19 UTC</createdTime>
+<generatorID>CA5D7420-65B3-0986-4462-961418A82DD7</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<referedAttribute>74BA502B-80B5-2427-EA27-24F3F696A775</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="34F9C26A-CB7A-B868-BA0F-B7217C9CF4DF" name="Sortie PK">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 11:46:25 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+<usedAttributes>
+<attributeRef>F64F46BD-AE3B-3984-48CC-0DF7415C203E</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="019A005B-2090-1FA8-9E6F-60026D0741B6" name="User">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 11:45:31 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id" id="74BA502B-80B5-2427-EA27-24F3F696A775">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:02:16 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+</Attribute>
+<Attribute name="nom" id="C21C4CDD-4FA0-5D94-428E-1D477A8DD258">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:02:32 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+</Attribute>
+<Attribute name="prenom" id="1DEBCEF3-FF8D-190F-4D43-CE6390A888AC">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:05:26 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+</Attribute>
+<Attribute name="telephone" id="FCAF348E-1DEC-5A57-B737-09DD00F7AE2F">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:05:26 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+</Attribute>
+<Attribute name="mdp" id="927C5221-FB6F-4D1A-015B-EA3CEB038ECF">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:05:26 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>500 BYTE</dataTypeSize>
+<ownDataTypeParameters>500 BYTE,,</ownDataTypeParameters>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+</Attribute>
+<Attribute name="est_admin" id="8AEE2E3F-0C35-1A59-A002-247AF7BE5232">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:05:26 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+</Attribute>
+<Attribute name="est_actif" id="D1B42115-03A6-D0AA-23C9-9D30CADF65F8">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:05:26 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+</Attribute>
+<Attribute name="id1" id="09726E85-00BB-B32D-30B6-8D36ADE535A8">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:21:14 UTC</createdTime>
+<generatorID>3CD8E349-C9D2-FE7E-CF5C-8494D61F0AE3</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<referedAttribute>60B0331A-CD29-0DCA-0073-526A2AF1640B</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+</Attribute>
+<Attribute name="id2" id="AC792D67-A56A-6C60-CA09-1DA183DEB828">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-07 09:26:48 UTC</createdTime>
+<generatorID>2B176738-7741-46D0-1438-BFAFFA881255</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<referedAttribute>9EBE343E-9D12-4474-C5E8-344D51FA821D</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="358976C1-E6C9-C2D2-CEED-4DF430B68506" name="User PK">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:21:18 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+<usedAttributes>
+<attributeRef>74BA502B-80B5-2427-EA27-24F3F696A775</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="00F658CC-83F9-AC3D-1060-1FEEA4F5277D" name="Ville">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 19:39:00 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id" id="2BDEC3C0-3A71-E07F-8655-908A30D7389C">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 19:39:09 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+</Attribute>
+<Attribute name="nom" id="34A3E73C-40D5-D8CC-808A-E13573E81577">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 19:39:26 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+</Attribute>
+<Attribute name="code_postal" id="622B11C8-7F4A-AF0A-D8E0-2839CBFA3E85">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 19:40:19 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>5 BYTE</dataTypeSize>
+<ownDataTypeParameters>5 BYTE,,</ownDataTypeParameters>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="E1F5B0F3-CCDF-B371-AB16-2C5F2ED561CC" name="Ville PK">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 19:40:02 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+<usedAttributes>
+<attributeRef>2BDEC3C0-3A71-E07F-8655-908A30D7389C</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
+</Entities>
+<Relationships>
+<Relationship class="oracle.dbtools.crest.model.design.logical.Relation" name="campus_organisateur" directorySegmentName="seg_0" id="1A2D65B8-5D40-9DDB-1ABC-A652BF730D87">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:00:55 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<sourcePk>14008C38-FD9A-FF3E-44AF-8A3515E274F4</sourcePk>
+<identifying>false</identifying>
+<nameOnSource>est le site organisateur</nameOnSource>
+<nameOnTarget>rattaché à</nameOnTarget>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>1902D8E3-981E-6C21-41D1-4BF23BA1E24A</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>E623BD1C-3C14-B9CA-67A0-A89BB1F02F01</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+</Relationship>
+<Relationship class="oracle.dbtools.crest.model.design.logical.Relation" name="etudiants" directorySegmentName="seg_0" id="3CD8E349-C9D2-FE7E-CF5C-8494D61F0AE3">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:10:03 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<sourcePk>14008C38-FD9A-FF3E-44AF-8A3515E274F4</sourcePk>
+<identifying>false</identifying>
+<nameOnSource>possede</nameOnSource>
+<nameOnTarget>est rattaché à</nameOnTarget>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>1902D8E3-981E-6C21-41D1-4BF23BA1E24A</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>019A005B-2090-1FA8-9E6F-60026D0741B6</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+</Relationship>
+<Relationship class="oracle.dbtools.crest.model.design.logical.Relation" name="lieu_sortie" directorySegmentName="seg_0" id="EBF58A99-4A6E-12A6-835D-267FFB842A7D">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 19:46:59 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<targetPk>8F972174-5F56-D01B-5B35-FED3D4010F3B</targetPk>
+<identifying>false</identifying>
+<nameOnSource>se passe dans</nameOnSource>
+<nameOnTarget>possède</nameOnTarget>
+<optionalSource>false</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceCardinality>*</sourceCardinality>
+<sourceEntity>E623BD1C-3C14-B9CA-67A0-A89BB1F02F01</sourceEntity>
+<targetCardinalityString>1</targetCardinalityString>
+<targetEntity>D9373789-EF1E-6412-1CAE-A7F4AF6EDA21</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+</Relationship>
+<Relationship class="oracle.dbtools.crest.model.design.logical.Relation" name="membres" directorySegmentName="seg_0" id="BB567A43-6912-89E1-9BE7-883112909FC7">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-07 09:26:56 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<identifying>false</identifying>
+<nameOnSource>faire partie</nameOnSource>
+<nameOnTarget>posseder</nameOnTarget>
+<optionalSource>true</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceCardinality>*</sourceCardinality>
+<sourceEntity>019A005B-2090-1FA8-9E6F-60026D0741B6</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>748876F3-A023-A97E-73B3-AEA3E3CECF9E</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+</Relationship>
+<Relationship class="oracle.dbtools.crest.model.design.logical.Relation" name="organise" directorySegmentName="seg_0" id="CA5D7420-65B3-0986-4462-961418A82DD7">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:12:23 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<sourcePk>358976C1-E6C9-C2D2-CEED-4DF430B68506</sourcePk>
+<identifying>false</identifying>
+<nameOnSource>organise</nameOnSource>
+<nameOnTarget>organisé par</nameOnTarget>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>019A005B-2090-1FA8-9E6F-60026D0741B6</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>E623BD1C-3C14-B9CA-67A0-A89BB1F02F01</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+</Relationship>
+<Relationship class="oracle.dbtools.crest.model.design.logical.Relation" name="participation" directorySegmentName="seg_0" id="1975AB3F-E4CC-72FD-CA8D-B72CC9DE7194">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:15:59 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<identifying>false</identifying>
+<nameOnSource>possede</nameOnSource>
+<nameOnTarget>participe a</nameOnTarget>
+<optionalSource>true</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceCardinality>*</sourceCardinality>
+<sourceEntity>E623BD1C-3C14-B9CA-67A0-A89BB1F02F01</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>019A005B-2090-1FA8-9E6F-60026D0741B6</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+</Relationship>
+<Relationship class="oracle.dbtools.crest.model.design.logical.Relation" name="photos" directorySegmentName="seg_0" id="0BB20C26-D4E5-8B90-CF18-6C39552416A4">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-07 09:31:02 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<sourcePk>358976C1-E6C9-C2D2-CEED-4DF430B68506</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>019A005B-2090-1FA8-9E6F-60026D0741B6</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>39E4F07E-C6EC-0B73-3039-9A286E7D7A43</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+</Relationship>
+<Relationship class="oracle.dbtools.crest.model.design.logical.Relation" name="proprietaire" directorySegmentName="seg_0" id="2B176738-7741-46D0-1438-BFAFFA881255">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-07 09:26:08 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<targetPk>E8A90BC4-0FC7-96B7-B029-A88E85935E0A</targetPk>
+<dominantRole>748876F3-A023-A97E-73B3-AEA3E3CECF9E</dominantRole>
+<identifying>false</identifying>
+<nameOnSource>organise</nameOnSource>
+<nameOnTarget>organise par</nameOnTarget>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>019A005B-2090-1FA8-9E6F-60026D0741B6</sourceEntity>
+<targetCardinalityString>1</targetCardinalityString>
+<targetEntity>748876F3-A023-A97E-73B3-AEA3E3CECF9E</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+</Relationship>
+<Relationship class="oracle.dbtools.crest.model.design.logical.Relation" name="ville_du_lieu" directorySegmentName="seg_0" id="5904E466-D490-BFA0-9C57-5C258E9928B8">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 19:44:18 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<engineerTo>
+<item key="6195A428-1F14-C210-79C9-982D18F4924A" value="true"/>
+</engineerTo>
+<targetPk>E1F5B0F3-CCDF-B371-AB16-2C5F2ED561CC</targetPk>
+<identifying>false</identifying>
+<nameOnSource>est dans</nameOnSource>
+<nameOnTarget>a</nameOnTarget>
+<optionalSource>false</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceCardinality>*</sourceCardinality>
+<sourceEntity>D9373789-EF1E-6412-1CAE-A7F4AF6EDA21</sourceEntity>
+<targetCardinalityString>1</targetCardinalityString>
+<targetEntity>00F658CC-83F9-AC3D-1060-1FEEA4F5277D</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+<propertyMap>
+<property name="engineerTo" value=""/>
+</propertyMap>
+</Relationship>
+</Relationships>
+<mainView class="oracle.dbtools.crest.swingui.logical.DPVLogical" name="Logical" id="873BD36B-9F7C-DCF5-118E-E24CEDB0FAE9">
+<createdBy>hurin</createdBy>
+<modifiedBy>hurin</modifiedBy>
+<createdTime>2022-02-06 11:41:52 UTC</createdTime>
+<autoRoute>false</autoRoute>
+<boxInbox>true</boxInbox>
+<showLegend>false</showLegend>
+<showLabels>true</showLabels>
+<showRelAttributes>true</showRelAttributes>
+<gridEnabled>false</gridEnabled>
+<showGrid>false</showGrid>
+<diagramColor>-1</diagramColor>
+<display>false</display>
+<notation>1</notation>
+<objectViews>
+<OView class="oracle.dbtools.crest.swingui.logical.TVEntity" oid="00F658CC-83F9-AC3D-1060-1FEEA4F5277D" otype="Entity" vid="895F4F05-1345-3588-D381-1A230E4CFB53">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<bounds x="368" y="421" width="122" height="86"/>
+</OView>
+<OView class="oracle.dbtools.crest.swingui.logical.TVEntity" oid="019A005B-2090-1FA8-9E6F-60026D0741B6" otype="Entity" vid="9C1AC427-1DB4-EBCC-FC13-F05FE951FDEF">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<bounds x="327" y="17" width="170" height="140"/>
+</OView>
+<OView class="oracle.dbtools.crest.swingui.logical.TVEntity" oid="1902D8E3-981E-6C21-41D1-4BF23BA1E24A" otype="Entity" vid="3DC7EDD1-FE3A-F8FE-9AFE-E7670761E618">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<bounds x="24" y="16" width="135" height="136"/>
+</OView>
+<OView class="oracle.dbtools.crest.swingui.logical.TVEntity" oid="39E4F07E-C6EC-0B73-3039-9A286E7D7A43" otype="Entity" vid="CB1DD0BF-F909-6816-EA8E-FB2A0BE01A94">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<bounds x="525" y="240" width="124" height="108"/>
+</OView>
+<OView class="oracle.dbtools.crest.swingui.logical.TVEntity" oid="748876F3-A023-A97E-73B3-AEA3E3CECF9E" otype="Entity" vid="13DBDFEC-DF43-776E-C105-2B7CF1E26D2C">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<bounds x="655" y="41" width="127" height="61"/>
+</OView>
+<OView class="oracle.dbtools.crest.swingui.logical.TVEntity" oid="D9373789-EF1E-6412-1CAE-A7F4AF6EDA21" otype="Entity" vid="713EEB0D-E672-D793-328A-2284A7A968C2">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<bounds x="394" y="240" width="82" height="100"/>
+</OView>
+<OView class="oracle.dbtools.crest.swingui.logical.TVEntity" oid="E623BD1C-3C14-B9CA-67A0-A89BB1F02F01" otype="Entity" vid="9E8E7101-D322-9FD1-38C5-FD4CA6956D58">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<bounds x="56" y="289" width="224" height="234"/>
+</OView>
+</objectViews>
+<connectors>
+<Connector class="oracle.dbtools.crest.swingui.logical.TVRelation" oid="0BB20C26-D4E5-8B90-CF18-6C39552416A4" otype="Relation" vid_source="9C1AC427-1DB4-EBCC-FC13-F05FE951FDEF" vid_target="CB1DD0BF-F909-6816-EA8E-FB2A0BE01A94">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<backgroundColor>-16777216</backgroundColor>
+<lineWidth>1</lineWidth>
+<points>
+<point x="497" y="132"/>
+<point x="565" y="132"/>
+<point x="565" y="240"/>
+</points>
+</Connector>
+<Connector class="oracle.dbtools.crest.swingui.logical.TVRelation" oid="1975AB3F-E4CC-72FD-CA8D-B72CC9DE7194" otype="Relation" vid_source="9E8E7101-D322-9FD1-38C5-FD4CA6956D58" vid_target="9C1AC427-1DB4-EBCC-FC13-F05FE951FDEF">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<backgroundColor>-16777216</backgroundColor>
+<lineWidth>1</lineWidth>
+<sourceLabel class="oracle.dbtools.crest.model.design.Label">
+<site>0</site>
+<labelBounds x="253" y="229" width="53" height="30"/>
+<noBackgroundColor>true</noBackgroundColor>
+<noForegroundColor>true</noForegroundColor>
+</sourceLabel>
+<targetLabel class="oracle.dbtools.crest.model.design.Label">
+<site>2</site>
+<labelBounds x="255" y="135" width="66" height="30"/>
+<noBackgroundColor>true</noBackgroundColor>
+<noForegroundColor>true</noForegroundColor>
+</targetLabel>
+<points>
+<point x="253" y="289"/>
+<point x="253" y="132"/>
+<point x="327" y="132"/>
+</points>
+</Connector>
+<Connector class="oracle.dbtools.crest.swingui.logical.TVRelation" oid="1A2D65B8-5D40-9DDB-1ABC-A652BF730D87" otype="Relation" vid_source="3DC7EDD1-FE3A-F8FE-9AFE-E7670761E618" vid_target="9E8E7101-D322-9FD1-38C5-FD4CA6956D58">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<backgroundColor>-16777216</backgroundColor>
+<lineWidth>1</lineWidth>
+<sourceLabel class="oracle.dbtools.crest.model.design.Label">
+<site>0</site>
+<labelBounds x="76" y="188" width="63" height="30"/>
+<noBackgroundColor>true</noBackgroundColor>
+<noForegroundColor>true</noForegroundColor>
+</sourceLabel>
+<targetLabel class="oracle.dbtools.crest.model.design.Label">
+<site>2</site>
+<labelBounds x="76" y="252" width="95" height="31"/>
+<noBackgroundColor>true</noBackgroundColor>
+<noForegroundColor>true</noForegroundColor>
+</targetLabel>
+<points>
+<point x="76" y="152"/>
+<point x="76" y="289"/>
+</points>
+</Connector>
+<Connector class="oracle.dbtools.crest.swingui.logical.TVRelation" oid="2B176738-7741-46D0-1438-BFAFFA881255" otype="Relation" vid_source="9C1AC427-1DB4-EBCC-FC13-F05FE951FDEF" vid_target="13DBDFEC-DF43-776E-C105-2B7CF1E26D2C">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<backgroundColor>-16777216</backgroundColor>
+<lineWidth>1</lineWidth>
+<sourceLabel class="oracle.dbtools.crest.model.design.Label">
+<site>0</site>
+<labelBounds x="507" y="86" width="55" height="30"/>
+<noBackgroundColor>true</noBackgroundColor>
+<noForegroundColor>true</noForegroundColor>
+</sourceLabel>
+<targetLabel class="oracle.dbtools.crest.model.design.Label">
+<site>2</site>
+<labelBounds x="576" y="81" width="73" height="30"/>
+<noBackgroundColor>true</noBackgroundColor>
+<noForegroundColor>true</noForegroundColor>
+</targetLabel>
+<points>
+<point x="497" y="86"/>
+<point x="655" y="81"/>
+</points>
+</Connector>
+<Connector class="oracle.dbtools.crest.swingui.logical.TVRelation" oid="3CD8E349-C9D2-FE7E-CF5C-8494D61F0AE3" otype="Relation" vid_source="3DC7EDD1-FE3A-F8FE-9AFE-E7670761E618" vid_target="9C1AC427-1DB4-EBCC-FC13-F05FE951FDEF">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<backgroundColor>-16777216</backgroundColor>
+<lineWidth>1</lineWidth>
+<sourceLabel class="oracle.dbtools.crest.model.design.Label">
+<site>0</site>
+<labelBounds x="169" y="12" width="53" height="30"/>
+<noBackgroundColor>true</noBackgroundColor>
+<noForegroundColor>true</noForegroundColor>
+</sourceLabel>
+<targetLabel class="oracle.dbtools.crest.model.design.Label">
+<site>2</site>
+<labelBounds x="248" y="45" width="73" height="36"/>
+<noBackgroundColor>true</noBackgroundColor>
+<noForegroundColor>true</noForegroundColor>
+</targetLabel>
+<points>
+<point x="159" y="42"/>
+<point x="327" y="42"/>
+</points>
+</Connector>
+<Connector class="oracle.dbtools.crest.swingui.logical.TVRelation" oid="5904E466-D490-BFA0-9C57-5C258E9928B8" otype="Relation" vid_source="713EEB0D-E672-D793-328A-2284A7A968C2" vid_target="895F4F05-1345-3588-D381-1A230E4CFB53">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<backgroundColor>-16777216</backgroundColor>
+<lineWidth>1</lineWidth>
+<sourceLabel class="oracle.dbtools.crest.model.design.Label">
+<site>0</site>
+<labelBounds x="435" y="384" width="53" height="30"/>
+<noBackgroundColor>true</noBackgroundColor>
+<noForegroundColor>true</noForegroundColor>
+</sourceLabel>
+<targetLabel class="oracle.dbtools.crest.model.design.Label">
+<site>2</site>
+<labelBounds x="435" y="385" width="21" height="30"/>
+<noBackgroundColor>true</noBackgroundColor>
+<noForegroundColor>true</noForegroundColor>
+</targetLabel>
+<points>
+<point x="435" y="340"/>
+<point x="435" y="421"/>
+</points>
+</Connector>
+<Connector class="oracle.dbtools.crest.swingui.logical.TVRelation" oid="BB567A43-6912-89E1-9BE7-883112909FC7" otype="Relation" vid_source="9C1AC427-1DB4-EBCC-FC13-F05FE951FDEF" vid_target="13DBDFEC-DF43-776E-C105-2B7CF1E26D2C">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<backgroundColor>-16777216</backgroundColor>
+<lineWidth>1</lineWidth>
+<sourceLabel class="oracle.dbtools.crest.model.design.Label">
+<site>0</site>
+<labelBounds x="507" y="71" width="66" height="32"/>
+<noBackgroundColor>true</noBackgroundColor>
+<noForegroundColor>true</noForegroundColor>
+</sourceLabel>
+<targetLabel class="oracle.dbtools.crest.model.design.Label">
+<site>2</site>
+<labelBounds x="593" y="66" width="56" height="30"/>
+<noBackgroundColor>true</noBackgroundColor>
+<noForegroundColor>true</noForegroundColor>
+</targetLabel>
+<points>
+<point x="497" y="71"/>
+<point x="655" y="66"/>
+</points>
+</Connector>
+<Connector class="oracle.dbtools.crest.swingui.logical.TVRelation" oid="CA5D7420-65B3-0986-4462-961418A82DD7" otype="Relation" vid_source="9C1AC427-1DB4-EBCC-FC13-F05FE951FDEF" vid_target="9E8E7101-D322-9FD1-38C5-FD4CA6956D58">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<backgroundColor>-16777216</backgroundColor>
+<lineWidth>1</lineWidth>
+<sourceLabel class="oracle.dbtools.crest.model.design.Label">
+<site>0</site>
+<labelBounds x="266" y="77" width="55" height="30"/>
+<noBackgroundColor>true</noBackgroundColor>
+<noForegroundColor>true</noForegroundColor>
+</sourceLabel>
+<targetLabel class="oracle.dbtools.crest.model.design.Label">
+<site>2</site>
+<labelBounds x="176" y="237" width="73" height="30"/>
+<noBackgroundColor>true</noBackgroundColor>
+<noForegroundColor>true</noForegroundColor>
+</targetLabel>
+<points>
+<point x="327" y="107"/>
+<point x="176" y="107"/>
+<point x="176" y="289"/>
+</points>
+</Connector>
+<Connector class="oracle.dbtools.crest.swingui.logical.TVRelation" oid="EBF58A99-4A6E-12A6-835D-267FFB842A7D" otype="Relation" vid_source="9E8E7101-D322-9FD1-38C5-FD4CA6956D58" vid_target="713EEB0D-E672-D793-328A-2284A7A968C2">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<backgroundColor>-16777216</backgroundColor>
+<lineWidth>1</lineWidth>
+<sourceLabel class="oracle.dbtools.crest.model.design.Label">
+<site>0</site>
+<labelBounds x="290" y="284" width="79" height="30"/>
+<noBackgroundColor>true</noBackgroundColor>
+<noForegroundColor>true</noForegroundColor>
+</sourceLabel>
+<targetLabel class="oracle.dbtools.crest.model.design.Label">
+<site>2</site>
+<labelBounds x="335" y="317" width="53" height="30"/>
+<noBackgroundColor>true</noBackgroundColor>
+<noForegroundColor>true</noForegroundColor>
+</targetLabel>
+<points>
+<point x="280" y="314"/>
+<point x="394" y="314"/>
+</points>
+</Connector>
+</connectors>
+</mainView>
+</LogicalDesign>

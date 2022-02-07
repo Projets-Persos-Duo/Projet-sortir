@@ -1,0 +1,999 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<relationalModel class="oracle.dbtools.crest.model.design.relational.RelationalDesign" name="Relational_1" id="6195A428-1F14-C210-79C9-982D18F4924A" mainViewID="5D0828F1-9EB5-3EE4-FDD4-8AB970E7258D">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 11:40:39 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+<selectedRDBMSSite>32076570-2523-435C-2E92-BF29817DFF70</selectedRDBMSSite>
+<Tables>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="7FBF09A6-46BC-E224-2ADD-0EA3936EB816" name="Campus">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:11 UTC</createdTime>
+<generatorID>1902D8E3-981E-6C21-41D1-4BF23BA1E24A</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="C8B7A7FE-206E-29E5-75E2-BCF231265F67">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:11 UTC</createdTime>
+<generatorID>60B0331A-CD29-0DCA-0073-526A2AF1640B</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nom" id="1E33B254-274D-720B-73A2-1427A236B0DB">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:11 UTC</createdTime>
+<generatorID>A7312036-BEB0-D600-5484-63E2FFDC8F37</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Campus_ID" id="E89567FC-D3C1-9CFD-1801-CE35C5DE0A12">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:11 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<isSurrogateColumn>true</isSurrogateColumn>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="1DCDFC81-1413-597B-27B7-066CE9AEEE7E" name="Campus_PK">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:11 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<indexColumnUsage>
+<colUsage columnID="E89567FC-D3C1-9CFD-1801-CE35C5DE0A12"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D696EE5C-EFFC-2CD9-0019-AB3EDEB170FC" name="Campus_id_UN">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:21:32 UTC</createdTime>
+<generatorID>14008C38-FD9A-FF3E-44AF-8A3515E274F4</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C8B7A7FE-206E-29E5-75E2-BCF231265F67"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="11C96695-4CBE-BE76-F7B1-41F9FA272228" name="Lieu">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:11 UTC</createdTime>
+<generatorID>D9373789-EF1E-6412-1CAE-A7F4AF6EDA21</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="8DC5FDE1-A348-F786-3DC9-74309F2E9692">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:11 UTC</createdTime>
+<generatorID>533F0263-DF27-EE00-EFBE-939F1D4A27B3</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nom" id="A614EFD5-49A2-0740-196F-771089EA161D">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:11 UTC</createdTime>
+<generatorID>1B834C83-DA81-05AE-34C8-25498FA9893F</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="rue" id="C88C7370-8738-5687-9F77-C4763674D4CB">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:11 UTC</createdTime>
+<generatorID>767B13BC-1A81-A01D-DB41-91CC7B095504</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>5</dataTypeSize>
+<ownDataTypeParameters>5,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="latitude" id="48B1CE3B-5CA2-4D41-28C6-71607EAFC34B">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:11 UTC</createdTime>
+<generatorID>910FC37D-C7C2-BD94-06B7-5E4EECFBF700</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="longitude" id="9B624239-C413-2C60-0662-514E5E430F68">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:11 UTC</createdTime>
+<generatorID>E76D582C-E11A-A602-40C8-00E35238AE86</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT021</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Ville_id" id="FDC8C07F-D90E-17B2-FD04-05C15B1C5E54">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:11 UTC</createdTime>
+<generatorID>C16209A6-7BDF-5354-3F55-872789A17880</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="DA70CE0E-BEF6-D52B-1C6D-372A205497F0" referredColumn="2B1751FD-DB69-A09E-3233-D9426134B387"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="C4D5DC97-756D-BBE6-A3FF-6111B38E81BF" name="Lieu_PK">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:11 UTC</createdTime>
+<generatorID>8F972174-5F56-D01B-5B35-FED3D4010F3B</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8DC5FDE1-A348-F786-3DC9-74309F2E9692"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="91C520BE-D4C2-D863-A576-F83145997C96" name="Lieu_Ville_FK">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:12 UTC</createdTime>
+<generatorID>5904E466-D490-BFA0-9C57-5C258E9928B8</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="FDC8C07F-D90E-17B2-FD04-05C15B1C5E54"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="FF75D138-A9F7-C3F3-20E8-54D1B295B497" name="participation">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:12 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Sortie_id" id="0CC955BC-7032-93E1-B4CE-60A88929833A">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:12 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="91E835B6-BA19-16DF-65EB-341101400902" referredColumn="A28B79F9-1FF9-4490-9A12-509CC8FE1990"/>
+</associations>
+</Column>
+<Column name="User_User_ID" id="8224ABD0-DEA3-CC3F-A4D5-8AF9677122B6">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:12 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="5016D297-8617-A9BE-93EC-DC7ADA484B93" referredColumn="8BB0E6B3-BE8F-BB18-3C46-5838C691123A"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="067D6868-E474-9C53-8BD6-DF7763FF67A8" name="participation_PK">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:12 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0CC955BC-7032-93E1-B4CE-60A88929833A"/>
+<colUsage columnID="8224ABD0-DEA3-CC3F-A4D5-8AF9677122B6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="04A9260B-AE2A-CCC9-B942-5A55D90E846D" name="participation_Sortie_FK">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:12 UTC</createdTime>
+<generatorID>1975AB3F-E4CC-72FD-CA8D-B72CC9DE7194</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0CC955BC-7032-93E1-B4CE-60A88929833A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="ABCE3CC1-042B-7D3B-E5F0-3498896C9715" name="participation_User_FK">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:12 UTC</createdTime>
+<generatorID>1975AB3F-E4CC-72FD-CA8D-B72CC9DE7194</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8224ABD0-DEA3-CC3F-A4D5-8AF9677122B6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="C14C0831-5A8E-8A2F-2126-0884F9E6A0E9" name="Sortie">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:11 UTC</createdTime>
+<generatorID>E623BD1C-3C14-B9CA-67A0-A89BB1F02F01</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="A28B79F9-1FF9-4490-9A12-509CC8FE1990">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:11 UTC</createdTime>
+<generatorID>F64F46BD-AE3B-3984-48CC-0DF7415C203E</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="name" id="CFD9D85B-3D2B-8CDE-C1AF-76BDF0788EB0">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:11 UTC</createdTime>
+<generatorID>913DD9C9-69A7-DEA5-A924-0E2C195D4132</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 CHAR</dataTypeSize>
+<ownDataTypeParameters>255 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="date_annonce" id="1392A9CF-FF82-88D2-E12F-118CDB702C86">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:11 UTC</createdTime>
+<generatorID>F2B8E78C-8C76-A074-57C6-121395BF5958</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="heure_annonce" id="0B400A32-C66D-CB67-9C95-93A7EDFD3AD8">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:11 UTC</createdTime>
+<generatorID>C8C18776-3D20-C843-04A6-B4DD292D2EA4</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT014</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="date_cloture" id="65497E6B-C252-BBD8-E8A3-85FA7D1BC195">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:11 UTC</createdTime>
+<generatorID>CE11872B-B540-B925-76D6-A2E478A5397C</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="heure_cloture" id="1D9A79D2-EF07-6CEF-45B0-698782880BA7">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:11 UTC</createdTime>
+<generatorID>3E2C4A99-1CE4-300E-E690-53C4F94B6030</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT014</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="date_debut" id="5C940421-4ED9-3E4C-58A0-246EEEF2CE78">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:11 UTC</createdTime>
+<generatorID>CCBD8F47-B882-8D48-D626-B8F14FE020D8</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="heure_debut" id="472BA8F6-FDF7-9257-6447-893079C14F0F">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:11 UTC</createdTime>
+<generatorID>72FEEB94-A875-55C8-B0D4-F6BE17F54D99</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT014</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="date_fin" id="F543C385-3B2A-6D96-4D12-167390E4EA8A">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:11 UTC</createdTime>
+<generatorID>3AF16AA3-25C2-1DEA-2198-135C19F71FE1</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="heure_fin" id="79611016-1C4B-1082-EC30-FEE7ED47069A">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:11 UTC</createdTime>
+<generatorID>9BB16E6B-BAFC-F4BC-40C5-E5B33B0ED980</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT014</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="est_annule" id="E2B8B0E9-7A83-73C3-2F88-0598FA9A3AE3">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:11 UTC</createdTime>
+<generatorID>BCFFF71A-0640-E1E7-5A25-B6180E479EF4</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="limite_participants" id="18D3FBB1-8A9F-1EFA-FEE8-3729DFCECB3C">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:11 UTC</createdTime>
+<generatorID>DE6A982F-A255-4E02-5361-D92C83EBE779</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="infos_sortie" id="33B96DCE-1C21-545F-8D28-BDF6D0181AE3">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:11 UTC</createdTime>
+<generatorID>33883762-23E7-E9F5-AF2E-A51787561830</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1500 CHAR</dataTypeSize>
+<ownDataTypeParameters>1500 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Lieu_id" id="E0A7838D-3646-C010-511D-7D74F41CD6FF">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:11 UTC</createdTime>
+<generatorID>2CBC8183-99A0-A8D4-2E27-494F1E4D1358</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="2FE7D889-7FBF-09AA-A95E-0BC2D400DDCD" referredColumn="8DC5FDE1-A348-F786-3DC9-74309F2E9692"/>
+</associations>
+</Column>
+<Column name="Campus_Campus_ID" id="1C613167-9381-B1FE-EAD0-0993A1389CFE">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:11 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="User_User_ID" id="D7958A8C-C598-AD35-2A0B-63CD9329AED1">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:12 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id2" id="C70D66F6-E14D-7783-12FB-4094349BB6DC">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:21:32 UTC</createdTime>
+<generatorID>C337C014-80B2-CFD4-09D4-EFD48A92D7C8</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="6520C2E9-FF05-8567-7756-62E8D741AC0B" referredColumn="C8B7A7FE-206E-29E5-75E2-BCF231265F67"/>
+</associations>
+</Column>
+<Column name="id3" id="6262C80F-9F81-DA46-D416-85C5EF4C99DB">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:21:32 UTC</createdTime>
+<generatorID>EB8119D1-6CE0-24C0-E891-177C680E7DBF</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="0AA27F9B-DBD5-0957-147F-1D28EB4243BC" referredColumn="6A987721-89A2-3AB8-1878-9FB29585D284"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="57B1754A-D557-C676-9E82-22C3AF217DD1" name="Sortie_PK">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:11 UTC</createdTime>
+<generatorID>34F9C26A-CB7A-B868-BA0F-B7217C9CF4DF</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A28B79F9-1FF9-4490-9A12-509CC8FE1990"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="0F6F272E-238C-DA0C-E2EA-3F3D2A224831" name="Sortie_Campus_FK">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:11 UTC</createdTime>
+<generatorID>1A2D65B8-5D40-9DDB-1ABC-A652BF730D87</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C70D66F6-E14D-7783-12FB-4094349BB6DC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="1EE26CF4-5383-4E01-16B8-57404F982399" name="Sortie_Lieu_FK">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:11 UTC</createdTime>
+<generatorID>EBF58A99-4A6E-12A6-835D-267FFB842A7D</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E0A7838D-3646-C010-511D-7D74F41CD6FF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="4014DFAF-3C6B-A870-7438-51DE6BAB7B76" name="Sortie_User_FK">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:12 UTC</createdTime>
+<generatorID>CA5D7420-65B3-0986-4462-961418A82DD7</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6262C80F-9F81-DA46-D416-85C5EF4C99DB"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="71F7F07C-8477-E5C6-C021-DEE37A33B6E4" name="User">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:11 UTC</createdTime>
+<generatorID>019A005B-2090-1FA8-9E6F-60026D0741B6</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="6A987721-89A2-3AB8-1878-9FB29585D284">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:11 UTC</createdTime>
+<generatorID>74BA502B-80B5-2427-EA27-24F3F696A775</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nom" id="E7B21522-2C8F-0680-805B-6BC160BC857D">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:11 UTC</createdTime>
+<generatorID>C21C4CDD-4FA0-5D94-428E-1D477A8DD258</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="prenom" id="E8C210B6-3B6C-195F-D717-814B476158F3">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:11 UTC</createdTime>
+<generatorID>1DEBCEF3-FF8D-190F-4D43-CE6390A888AC</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="telephone" id="36B68612-4820-531A-FF3E-C452943077A5">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:11 UTC</createdTime>
+<generatorID>FCAF348E-1DEC-5A57-B737-09DD00F7AE2F</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="mdp" id="303F60EF-D38D-2C01-E8DC-14CD22FDC733">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:11 UTC</createdTime>
+<generatorID>927C5221-FB6F-4D1A-015B-EA3CEB038ECF</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>500 BYTE</dataTypeSize>
+<ownDataTypeParameters>500 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="est_admin" id="14EFE7C3-2F1D-6D26-CF82-A1E3B6C5B817">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:11 UTC</createdTime>
+<generatorID>8AEE2E3F-0C35-1A59-A002-247AF7BE5232</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="est_actif" id="8EE2AF26-1CEC-5949-CD7E-1C4B6A54D850">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:11 UTC</createdTime>
+<generatorID>D1B42115-03A6-D0AA-23C9-9D30CADF65F8</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="User_ID" id="8BB0E6B3-BE8F-BB18-3C46-5838C691123A">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:12 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<isSurrogateColumn>true</isSurrogateColumn>
+</Column>
+<Column name="Campus_Campus_ID" id="DD98BA98-AAB3-A5AE-F12B-314D20BEE9C4">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:11 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id1" id="67252E1E-1BBA-6FB5-DC3C-9A4B2E07B0EE">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:21:32 UTC</createdTime>
+<generatorID>09726E85-00BB-B32D-30B6-8D36ADE535A8</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="D91601A3-45A7-6D74-9FD3-BC0D5F8A5EED" referredColumn="C8B7A7FE-206E-29E5-75E2-BCF231265F67"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="2DC39C0D-642B-69BA-51EE-64F8F507E71A" name="User_PK">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:11 UTC</createdTime>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<indexColumnUsage>
+<colUsage columnID="8BB0E6B3-BE8F-BB18-3C46-5838C691123A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C48E94D8-B5B2-A4B5-DAF5-0C9EE43B122B" name="User_id_UN">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:21:32 UTC</createdTime>
+<generatorID>358976C1-E6C9-C2D2-CEED-4DF430B68506</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6A987721-89A2-3AB8-1878-9FB29585D284"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="69DD4E97-7C13-402F-1964-BF97D53C7C9A" name="User_Campus_FK">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:11 UTC</createdTime>
+<generatorID>3CD8E349-C9D2-FE7E-CF5C-8494D61F0AE3</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="67252E1E-1BBA-6FB5-DC3C-9A4B2E07B0EE"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="CE62C511-F7E2-9AEF-1421-93B99703EF55" name="Ville">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:11 UTC</createdTime>
+<generatorID>00F658CC-83F9-AC3D-1060-1FEEA4F5277D</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="2B1751FD-DB69-A09E-3233-D9426134B387">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:11 UTC</createdTime>
+<generatorID>2BDEC3C0-3A71-E07F-8655-908A30D7389C</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nom" id="BE2FF828-1D89-0544-28B3-46E82042084A">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:11 UTC</createdTime>
+<generatorID>34A3E73C-40D5-D8CC-808A-E13573E81577</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="code_postal" id="491C9AB1-FBF3-6CA8-D699-0E02B10355B5">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:11 UTC</createdTime>
+<generatorID>622B11C8-7F4A-AF0A-D8E0-2839CBFA3E85</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>5 BYTE</dataTypeSize>
+<ownDataTypeParameters>5 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="5F916703-98E4-9455-77F7-E84772D61792" name="Ville_PK">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:11 UTC</createdTime>
+<generatorID>E1F5B0F3-CCDF-B371-AB16-2C5F2ED561CC</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2B1751FD-DB69-A09E-3233-D9426134B387"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
+</Tables>
+<ForeignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="DA70CE0E-BEF6-D52B-1C6D-372A205497F0" containerWithKeyObject="11C96695-4CBE-BE76-F7B1-41F9FA272228" localFKIndex="91C520BE-D4C2-D863-A576-F83145997C96" name="Lieu_Ville_FK">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:12 UTC</createdTime>
+<generatorID>5904E466-D490-BFA0-9C57-5C258E9928B8</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<referredTableLongName>Ville</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>CE62C511-F7E2-9AEF-1421-93B99703EF55</referredTableID>
+<keyObject>5F916703-98E4-9455-77F7-E84772D61792</keyObject>
+<referredKeyID>5F916703-98E4-9455-77F7-E84772D61792</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="91E835B6-BA19-16DF-65EB-341101400902" containerWithKeyObject="FF75D138-A9F7-C3F3-20E8-54D1B295B497" localFKIndex="04A9260B-AE2A-CCC9-B942-5A55D90E846D" name="participation_Sortie_FK">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:12 UTC</createdTime>
+<generatorID>1975AB3F-E4CC-72FD-CA8D-B72CC9DE7194</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<referredTableLongName>Sortie</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>C14C0831-5A8E-8A2F-2126-0884F9E6A0E9</referredTableID>
+<keyObject>57B1754A-D557-C676-9E82-22C3AF217DD1</keyObject>
+<referredKeyID>57B1754A-D557-C676-9E82-22C3AF217DD1</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="5016D297-8617-A9BE-93EC-DC7ADA484B93" containerWithKeyObject="FF75D138-A9F7-C3F3-20E8-54D1B295B497" localFKIndex="ABCE3CC1-042B-7D3B-E5F0-3498896C9715" name="participation_User_FK">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:12 UTC</createdTime>
+<generatorID>1975AB3F-E4CC-72FD-CA8D-B72CC9DE7194</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<referredTableLongName>User</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>71F7F07C-8477-E5C6-C021-DEE37A33B6E4</referredTableID>
+<keyObject>2DC39C0D-642B-69BA-51EE-64F8F507E71A</keyObject>
+<referredKeyID>2DC39C0D-642B-69BA-51EE-64F8F507E71A</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>User_ID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="6520C2E9-FF05-8567-7756-62E8D741AC0B" containerWithKeyObject="C14C0831-5A8E-8A2F-2126-0884F9E6A0E9" localFKIndex="0F6F272E-238C-DA0C-E2EA-3F3D2A224831" name="Sortie_Campus_FK">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:11 UTC</createdTime>
+<generatorID>1A2D65B8-5D40-9DDB-1ABC-A652BF730D87</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<referredTableLongName>Campus</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>7FBF09A6-46BC-E224-2ADD-0EA3936EB816</referredTableID>
+<keyObject>1DCDFC81-1413-597B-27B7-066CE9AEEE7E</keyObject>
+<referredKeyID>1DCDFC81-1413-597B-27B7-066CE9AEEE7E</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>Campus_ID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="2FE7D889-7FBF-09AA-A95E-0BC2D400DDCD" containerWithKeyObject="C14C0831-5A8E-8A2F-2126-0884F9E6A0E9" localFKIndex="1EE26CF4-5383-4E01-16B8-57404F982399" name="Sortie_Lieu_FK">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:11 UTC</createdTime>
+<generatorID>EBF58A99-4A6E-12A6-835D-267FFB842A7D</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<referredTableLongName>Lieu</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>11C96695-4CBE-BE76-F7B1-41F9FA272228</referredTableID>
+<keyObject>C4D5DC97-756D-BBE6-A3FF-6111B38E81BF</keyObject>
+<referredKeyID>C4D5DC97-756D-BBE6-A3FF-6111B38E81BF</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="0AA27F9B-DBD5-0957-147F-1D28EB4243BC" containerWithKeyObject="C14C0831-5A8E-8A2F-2126-0884F9E6A0E9" localFKIndex="4014DFAF-3C6B-A870-7438-51DE6BAB7B76" name="Sortie_User_FK">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:12 UTC</createdTime>
+<generatorID>CA5D7420-65B3-0986-4462-961418A82DD7</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<referredTableLongName>User</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>71F7F07C-8477-E5C6-C021-DEE37A33B6E4</referredTableID>
+<keyObject>2DC39C0D-642B-69BA-51EE-64F8F507E71A</keyObject>
+<referredKeyID>2DC39C0D-642B-69BA-51EE-64F8F507E71A</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>User_ID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="D91601A3-45A7-6D74-9FD3-BC0D5F8A5EED" containerWithKeyObject="71F7F07C-8477-E5C6-C021-DEE37A33B6E4" localFKIndex="69DD4E97-7C13-402F-1964-BF97D53C7C9A" name="User_Campus_FK">
+<createdBy>hurin</createdBy>
+<createdTime>2022-02-06 20:18:11 UTC</createdTime>
+<generatorID>3CD8E349-C9D2-FE7E-CF5C-8494D61F0AE3</generatorID>
+<ownerDesignName>on_va_sortir</ownerDesignName>
+<referredTableLongName>Campus</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>7FBF09A6-46BC-E224-2ADD-0EA3936EB816</referredTableID>
+<keyObject>1DCDFC81-1413-597B-27B7-066CE9AEEE7E</keyObject>
+<referredKeyID>1DCDFC81-1413-597B-27B7-066CE9AEEE7E</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>Campus_ID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</ForeignKey>
+</ForeignKeys>
+<mainView class="oracle.dbtools.crest.swingui.relational.DPVRelational" name="Relational_1" id="5D0828F1-9EB5-3EE4-FDD4-8AB970E7258D">
+<createdBy>hurin</createdBy>
+<modifiedBy>hurin</modifiedBy>
+<createdTime>2022-02-06 11:41:52 UTC</createdTime>
+<autoRoute>false</autoRoute>
+<boxInbox>true</boxInbox>
+<showLegend>false</showLegend>
+<showLabels>false</showLabels>
+<showRelAttributes>false</showRelAttributes>
+<gridEnabled>false</gridEnabled>
+<showGrid>false</showGrid>
+<diagramColor>-1</diagramColor>
+<display>false</display>
+<notation>1</notation>
+<objectViews>
+<OView class="oracle.dbtools.crest.swingui.relational.TVTable" oid="11C96695-4CBE-BE76-F7B1-41F9FA272228" otype="Table" vid="B52CA8A9-7E4E-4AA4-6B79-F4147DC257A0">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<bounds x="294" y="324" width="211" height="176"/>
+</OView>
+<OView class="oracle.dbtools.crest.swingui.relational.TVTable" oid="71F7F07C-8477-E5C6-C021-DEE37A33B6E4" otype="Table" vid="32658B97-4670-5BA0-905E-CCFD362DC3EF">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<bounds x="307" y="6" width="266" height="235"/>
+</OView>
+<OView class="oracle.dbtools.crest.swingui.relational.TVTable" oid="7FBF09A6-46BC-E224-2ADD-0EA3936EB816" otype="Table" vid="AF1E0C72-695E-B0E3-66A2-64553D693927">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<bounds x="25" y="10" width="215" height="136"/>
+</OView>
+<OView class="oracle.dbtools.crest.swingui.relational.TVTable" oid="C14C0831-5A8E-8A2F-2126-0884F9E6A0E9" otype="Table" vid="2D6A90AC-0F12-8652-A2AA-9B143BF78440">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<bounds x="6" y="194" width="261" height="344"/>
+</OView>
+<OView class="oracle.dbtools.crest.swingui.relational.TVTable" oid="CE62C511-F7E2-9AEF-1421-93B99703EF55" otype="Table" vid="E9CDF560-75EB-EA78-9FA1-A5D26929EC67">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<bounds x="555" y="392" width="233" height="102"/>
+</OView>
+<OView class="oracle.dbtools.crest.swingui.relational.TVTable" oid="FF75D138-A9F7-C3F3-20E8-54D1B295B497" otype="Table" vid="C68208D3-50D0-56C6-09D0-9F2038541928">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<bounds x="614" y="189" width="228" height="142"/>
+</OView>
+</objectViews>
+<connectors>
+<Connector class="oracle.dbtools.crest.swingui.relational.TVFKRelation" oid="0AA27F9B-DBD5-0957-147F-1D28EB4243BC" otype="FKIndexAssociation" vid_source="32658B97-4670-5BA0-905E-CCFD362DC3EF" vid_target="2D6A90AC-0F12-8652-A2AA-9B143BF78440">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<backgroundColor>-16777216</backgroundColor>
+<lineWidth>1</lineWidth>
+<points>
+<point x="307" y="168"/>
+<point x="226" y="168"/>
+<point x="226" y="194"/>
+</points>
+</Connector>
+<Connector class="oracle.dbtools.crest.swingui.relational.TVFKRelation" oid="2FE7D889-7FBF-09AA-A95E-0BC2D400DDCD" otype="FKIndexAssociation" vid_source="B52CA8A9-7E4E-4AA4-6B79-F4147DC257A0" vid_target="2D6A90AC-0F12-8652-A2AA-9B143BF78440">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<backgroundColor>-16777216</backgroundColor>
+<lineWidth>1</lineWidth>
+<points>
+<point x="294" y="412"/>
+<point x="267" y="412"/>
+</points>
+</Connector>
+<Connector class="oracle.dbtools.crest.swingui.relational.TVFKRelation" oid="5016D297-8617-A9BE-93EC-DC7ADA484B93" otype="FKIndexAssociation" vid_source="32658B97-4670-5BA0-905E-CCFD362DC3EF" vid_target="C68208D3-50D0-56C6-09D0-9F2038541928">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<backgroundColor>-16777216</backgroundColor>
+<lineWidth>1</lineWidth>
+<points>
+<point x="573" y="215"/>
+<point x="614" y="215"/>
+</points>
+</Connector>
+<Connector class="oracle.dbtools.crest.swingui.relational.TVFKRelation" oid="6520C2E9-FF05-8567-7756-62E8D741AC0B" otype="FKIndexAssociation" vid_source="AF1E0C72-695E-B0E3-66A2-64553D693927" vid_target="2D6A90AC-0F12-8652-A2AA-9B143BF78440">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<backgroundColor>-16777216</backgroundColor>
+<lineWidth>1</lineWidth>
+<points>
+<point x="132" y="146"/>
+<point x="132" y="194"/>
+</points>
+</Connector>
+<Connector class="oracle.dbtools.crest.swingui.relational.TVFKRelation" oid="91E835B6-BA19-16DF-65EB-341101400902" otype="FKIndexAssociation" vid_source="2D6A90AC-0F12-8652-A2AA-9B143BF78440" vid_target="C68208D3-50D0-56C6-09D0-9F2038541928">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<backgroundColor>-16777216</backgroundColor>
+<lineWidth>1</lineWidth>
+<points>
+<point x="267" y="262"/>
+<point x="614" y="262"/>
+</points>
+</Connector>
+<Connector class="oracle.dbtools.crest.swingui.relational.TVFKRelation" oid="D91601A3-45A7-6D74-9FD3-BC0D5F8A5EED" otype="FKIndexAssociation" vid_source="AF1E0C72-695E-B0E3-66A2-64553D693927" vid_target="32658B97-4670-5BA0-905E-CCFD362DC3EF">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<backgroundColor>-16777216</backgroundColor>
+<lineWidth>1</lineWidth>
+<points>
+<point x="240" y="78"/>
+<point x="307" y="78"/>
+</points>
+</Connector>
+<Connector class="oracle.dbtools.crest.swingui.relational.TVFKRelation" oid="DA70CE0E-BEF6-D52B-1C6D-372A205497F0" otype="FKIndexAssociation" vid_source="E9CDF560-75EB-EA78-9FA1-A5D26929EC67" vid_target="B52CA8A9-7E4E-4AA4-6B79-F4147DC257A0">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<backgroundColor>-16777216</backgroundColor>
+<lineWidth>1</lineWidth>
+<points>
+<point x="555" y="443"/>
+<point x="505" y="443"/>
+</points>
+</Connector>
+</connectors>
+</mainView>
+</relationalModel>
