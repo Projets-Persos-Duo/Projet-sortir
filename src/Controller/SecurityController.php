@@ -6,6 +6,8 @@ use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Security\AppCustomAuthenticator;
 use Doctrine\ORM\EntityManagerInterface;
+use Egulias\EmailValidator\EmailValidator;
+use Egulias\EmailValidator\Validation\RFCValidation;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,6 +15,8 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
+use Symfony\Component\Validator\Constraint;
+use Symfony\Component\Validator\Constraints\Email;
 
 class SecurityController extends AbstractController
 {
@@ -48,6 +52,14 @@ class SecurityController extends AbstractController
 
         $user->setIsAdmin(false);
         $user->setIsActive(true);
+
+        /* Si l'utilisateur envoie un oseudo qui ressemble à un email,
+           on lui met aussi le champ email */
+        $emailValidator = new EmailValidator();
+        $emailValidation = new RFCValidation();
+        if($emailValidator->isValid($form->get('username')->getData(), $emailValidation)) {
+            $user->setEmail($form->get('username')->getData());
+        }
 
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
