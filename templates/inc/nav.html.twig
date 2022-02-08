@@ -4,6 +4,7 @@
         <li><a href="{{ path('sorties_list') }}" title="Liste des sorties">Sorties</a></li>
 
         {%  if app.user %}
+        <li><a href="{{ path('user_show', {'id': app.user.id}) }}">({{ app.user.userIdentifier }})</a></li>
         <li><a href="{{ path('app_logout') }}" title="Se déconnecter">Se déconnecter</a> </li>
         <li><a href="{{ path('sorties_create') }}" title="Proposer une sortie">Ajout sortie</a></li>
         <li><a href="{{ path('lieu_index') }}">Gerer lieux</a></li>
