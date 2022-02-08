@@ -2,16 +2,21 @@
     <ul>
         <li><a href="{{ path('main_home') }}" title="Accueil">Accueil</a></li>
         <li><a href="{{ path('sorties_list') }}" title="Liste des sorties">Sorties</a></li>
-        <li><a href="{{ path('sorties_create') }}" title="Proposer une sortie">Ajout sortie</a></li>
 
         {%  if app.user %}
         <li><a href="{{ path('app_logout') }}" title="Se déconnecter">Se déconnecter</a> </li>
+        <li><a href="{{ path('sorties_create') }}" title="Proposer une sortie">Ajout sortie</a></li>
+        <li><a href="{{ path('lieu_index') }}">Gerer lieux</a></li>
+
+            {% if is_granted("ROLE_ADMIN") %}
+                <li><a href="{{ path('admin_dashboard') }}" title="Admin Dashboard">Admin</a> </li>
+                <li><a href="{{ path('campus_index') }}">Gerer Campus</a></li>
+                <li><a href="{{ path('ville_index') }}">Gerer villes</a></li>
+            {% endif %}
+
         {% else %}
         <li><a href="{{ path('app_login') }}" title="Se connecter">Se connecter</a> </li>
         <li><a href="{{ path('app_register') }}" title="S'inscrire'">S'inscrire</a> </li>
         {% endif %}
-        <li><a href="{{ path('ville_index') }}">Gerer villes</a></li>
-        <li><a href="{{ path('lieu_index') }}">Gerer lieux</a></li>
-        <li><a href="{{ path('campus_index') }}">Gerer Campus</a></li>
     </ul>
 </nav>

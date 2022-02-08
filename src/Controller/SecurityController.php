@@ -45,6 +45,9 @@ class SecurityController extends AbstractController
                              EntityManagerInterface $entityManager): Response
     {
         $user = new User();
+
+        $user->setRoles(["ROLE_USER"]);//@lucie
+
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
