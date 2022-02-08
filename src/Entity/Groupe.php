@@ -29,6 +29,16 @@ class Groupe
         $this->Users = new ArrayCollection();
     }
 
+    /**
+     * @ORM\OneToMany(targetEntity=Sortie::class, mappedBy="groupe")
+     */
+    private $sortie;
+
+    public function __construct()
+    {
+        $this->sortie = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -54,6 +64,36 @@ class Groupe
     public function removeUser(user $user): self
     {
         $this->Users->removeElement($user);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Sortie[]
+     */
+    public function getSortie(): Collection
+    {
+        return $this->sortie;
+    }
+
+    public function addSortie(Sortie $sortie): self
+    {
+        if (!$this->sortie->contains($sortie)) {
+            $this->sortie[] = $sortie;
+            $sortie->setGroupe($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSortie(Sortie $sortie): self
+    {
+        if ($this->sortie->removeElement($sortie)) {
+            // set the owning side to null (unless already changed)
+            if ($sortie->getGroupe() === $this) {
+                $sortie->setGroupe(null);
+            }
+        }
 
         return $this;
     }

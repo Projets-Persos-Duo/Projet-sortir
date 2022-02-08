@@ -93,6 +93,11 @@ class Sortie
      */
     private $campus;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Groupe::class, inversedBy="sortie")
+     */
+    private $groupe;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -250,6 +255,18 @@ class Sortie
     public function setEstCloture(?bool $est_cloture): self
     {
         $this->est_cloture = $est_cloture;
+
+        return $this;
+    }
+
+    public function getGroupe(): ?Groupe
+    {
+        return $this->groupe;
+    }
+
+    public function setGroupe(?Groupe $groupe): self
+    {
+        $this->groupe = $groupe;
 
         return $this;
     }
