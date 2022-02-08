@@ -17,28 +17,26 @@ class SortieType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nom', TextType::class, ['label'=>'Nom de la sortie'])
-            ->add('date_debut', DateType::class, ['label'=>'Date de la sortie',
+            ->add('nom', TextType::class, ['label'=>'Nom de la sortie :'])
+            ->add('date_debut', DateType::class, ['label'=>'Date de la sortie :',
                                      'html5'=>true,
                                     'widget'=>'single_text' ])
-            ->add('heure_debut', TimeType::class, ['label'=>'Heure de la sortie',
+            ->add('heure_debut', TimeType::class, ['label'=>'Heure de la sortie :',
+                                         'html5'=>true,
+                                        'widget'=>'text' ])
+            ->add('date_fin', DateType::class, ['label'=>'Date de fin de la sortie :',
+                                        'html5'=>true,
+                                        'widget'=>'single_text',
+                                        'required'=>false])
+            ->add('heure_fin', TimeType::class, ['label'=>'Heure de fin de la sortie :',
                                      'html5'=>true,
-                                    'widget'=>'single_text' ])
-            ->add('date_fin', DateType::class, ['label'=>'Date de fin de la sortie',
-                'html5'=>true,
-                'widget'=>'single_text'])
-            ->add('heure_fin', TimeType::class, ['label'=>'Heure de fin de la sortie',
-                                     'html5'=>true,
-                                    'widget'=>'single_text' ])
-           /* ->add('duree', NumberType::class, ['label'=>'Durée'])*/
-            ->add('date_cloture', DateType::class, ['label'=>'Date limite d\'inscription',
+                                    'widget'=>'text'])
+            ->add('duree', NumberType::class, ['label'=>'Durée :', 'mapped'=>false])
+            ->add('date_cloture', DateType::class, ['label'=>'Date limite d\'inscription :',
                                     'html5'=>true,
                                       'widget'=>'single_text'])
-            ->add('heure_cloture', TimeType::class, ['label'=>'Veuillez indiquer l\'heure de cloture des inscriptions',
-                                    'html5'=>true,
-                                   'widget'=>'single_text' ])
-            ->add('limite_participants', NumberType::class, ['label'=>'Nombre de places'])
-            ->add('infos_sortie', TextareaType::class, ['label'=>'Description et infos'])
+            ->add('limite_participants', NumberType::class, ['label'=>'Nombre de places :'])
+            ->add('infos_sortie', TextareaType::class, ['label'=>'Description et infos complémentaires :', 'required'=>false])
 
         ;
     }

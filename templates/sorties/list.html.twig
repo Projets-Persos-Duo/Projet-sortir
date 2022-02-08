@@ -5,7 +5,10 @@
 {% block body %}
     {% for sortie  in sorties %}
 
-          <div> {{ sortie.nom }}</div>
+
+        <article>
+            <a href="{{ path('sorties_detail', {id:sortie.id}) }}" title="Détails de la sortie">{{ sortie.nom }} </a>
+        </article>
 
 
 

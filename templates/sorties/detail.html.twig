@@ -3,7 +3,12 @@
 {% block title %}Détail de la sortie{% endblock %}
 
 {% block body %}
-    <h2>{{ sortie.nom }}</h2>
+    <h2 class="libelle">{{ sortie.nom }}</h2>
+
+    <div>Date : {{ sortie.dateDebut|date("d/m/Y") }}</div>
+    <div>Fin des inscriptions : {{ sortie.dateCloture|date("d/m/Y") }}</div>
+    <div>Description : {{ sortie.infosSortie }}</div>
+    <div>Nombre limite de participants : {{ sortie.limiteParticipants }}</div>
 
 
 
