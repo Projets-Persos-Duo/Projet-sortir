@@ -40,6 +40,11 @@ class Ville
         $this->lieus = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->nom;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
