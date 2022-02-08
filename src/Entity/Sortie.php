@@ -88,6 +88,11 @@ class Sortie
      */
     private $theme;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Campus::class, inversedBy="sortie")
+     */
+    private $campus;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -257,6 +262,18 @@ class Sortie
     public function setTheme(?Thematiques $theme): self
     {
         $this->theme = $theme;
+
+        return $this;
+    }
+
+    public function getCampus(): ?Campus
+    {
+        return $this->campus;
+    }
+
+    public function setCampus(?Campus $campus): self
+    {
+        $this->campus = $campus;
 
         return $this;
     }

@@ -29,9 +29,15 @@ class Campus
      */
     private $eleves;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Sortie::class, mappedBy="campus")
+     */
+    private $sortie;
+
     public function __construct()
     {
         $this->eleves = new ArrayCollection();
+        $this->sortie = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -75,6 +81,36 @@ class Campus
             // set the owning side to null (unless already changed)
             if ($elefe->getCampus() === $this) {
                 $elefe->setCampus(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Sortie[]
+     */
+    public function getSortie(): Collection
+    {
+        return $this->sortie;
+    }
+
+    public function addSortie(Sortie $sortie): self
+    {
+        if (!$this->sortie->contains($sortie)) {
+            $this->sortie[] = $sortie;
+            $sortie->setCampus($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSortie(Sortie $sortie): self
+    {
+        if ($this->sortie->removeElement($sortie)) {
+            // set the owning side to null (unless already changed)
+            if ($sortie->getCampus() === $this) {
+                $sortie->setCampus(null);
             }
         }
 
