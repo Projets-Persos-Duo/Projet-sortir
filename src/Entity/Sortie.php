@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\SortieRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -96,7 +98,23 @@ class Sortie
     /**
      * @ORM\ManyToOne(targetEntity=Groupe::class, inversedBy="sortie")
      */
-    private $groupe;
+    private $groupes;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="sortiesOrganisees")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $organisateur;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=User::class, inversedBy="sortiesParticipees")
+     */
+    private $participants;
+
+    public function __construct()
+    {
+        $this->participants = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -259,14 +277,26 @@ class Sortie
         return $this;
     }
 
-    public function getGroupe(): ?Groupe
+    public function getGroupes(): ?Groupe
     {
-        return $this->groupe;
+        return $this->groupes;
     }
 
-    public function setGroupe(?Groupe $groupe): self
+    public function setGroupes(?Groupe $groupes): self
     {
-        $this->groupe = $groupe;
+        $this->groupes = $groupes;
+
+        return $this;
+    }
+
+    public function getOrganisateur(): ?User
+    {
+        return $this->organisateur;
+    }
+
+    public function setOrganisateur(?User $organisateur): self
+    {
+        $this->organisateur = $organisateur;
 
         return $this;
     }
@@ -283,6 +313,23 @@ class Sortie
         return $this;
     }
 
+    /**
+     * @return Collection|User[]
+     */
+    public function getParticipants(): Collection
+    {
+        return $this->participants;
+    }
+
+    public function addParticipant(User $participant): self
+    {
+        if (!$this->participants->contains($participant)) {
+            $this->participants[] = $participant;
+        }
+
+        return $this;
+    }
+
     public function getCampus(): ?Campus
     {
         return $this->campus;
@@ -291,6 +338,13 @@ class Sortie
     public function setCampus(?Campus $campus): self
     {
         $this->campus = $campus;
+
+        return $this;
+    }
+
+    public function removeParticipant(User $participant): self
+    {
+        $this->participants->removeElement($participant);
 
         return $this;
     }

@@ -76,6 +76,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $photos;
 
     /**
+<<<<<<< HEAD
      * @ORM\ManyToOne(targetEntity=Campus::class, inversedBy="eleves")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -86,10 +87,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $groupes;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Sortie::class, mappedBy="organisateur")
+     */
+    private $sortiesOrganisees;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Sortie::class, mappedBy="participants")
+     */
+    private $sortiesParticipees;
+
     public function __construct()
     {
         $this->photos = new ArrayCollection();
         $this->groupes = new ArrayCollection();
+        $this->sortiesOrganisees = new ArrayCollection();
+        $this->sortiesParticipees = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -296,10 +309,40 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    /**
+     * @return Collection|Sortie[]
+     */
+    public function getSortiesOrganisees(): Collection
+    {
+        return $this->sortiesOrganisees;
+    }
+
+    public function addSortiesOrganisee(Sortie $sortiesOrganisee): self
+    {
+        if (!$this->sortiesOrganisees->contains($sortiesOrganisee)) {
+            $this->sortiesOrganisees[] = $sortiesOrganisee;
+            $sortiesOrganisee->setOrganisateur($this);
+        }
+
+        return $this;
+    }
+
     public function removeGroupe(Groupe $groupe): self
     {
         if ($this->groupes->removeElement($groupe)) {
             $groupe->removeUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSortiesOrganisee(Sortie $sortiesOrganisee): self
+    {
+        if ($this->sortiesOrganisees->removeElement($sortiesOrganisee)) {
+            // set the owning side to null (unless already changed)
+            if ($sortiesOrganisee->getOrganisateur() === $this) {
+                $sortiesOrganisee->setOrganisateur(null);
+            }
         }
 
         return $this;
@@ -313,6 +356,33 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setCampus(?Campus $campus): self
     {
         $this->campus = $campus;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Sortie[]
+     */
+    public function getSortiesParticipees(): Collection
+    {
+        return $this->sortiesParticipees;
+    }
+
+    public function addSortiesParticipee(Sortie $sortiesParticipee): self
+    {
+        if (!$this->sortiesParticipees->contains($sortiesParticipee)) {
+            $this->sortiesParticipees[] = $sortiesParticipee;
+            $sortiesParticipee->addParticipant($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSortiesParticipee(Sortie $sortiesParticipee): self
+    {
+        if ($this->sortiesParticipees->removeElement($sortiesParticipee)) {
+            $sortiesParticipee->removeParticipant($this);
+        }
 
         return $this;
     }
