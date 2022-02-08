@@ -51,7 +51,7 @@ class SecurityController extends AbstractController
         $user->setIsAdmin(false);
         $user->setIsActive(true);
 
-        /* Si l'utilisateur envoie un oseudo qui ressemble à un email,
+        /* Si l'utilisateur envoie un pseudo qui ressemble à un email,
            on lui met aussi le champ email */
         $emailValidator = new EmailValidator();
         $emailValidation = new RFCValidation();
