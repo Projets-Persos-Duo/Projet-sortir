@@ -65,7 +65,7 @@ class Campus
         return $this->eleves;
     }
 
-    public function addElefe(User $elefe): self
+    public function addEleve(User $elefe): self
     {
         if (!$this->eleves->contains($elefe)) {
             $this->eleves[] = $elefe;
@@ -75,7 +75,7 @@ class Campus
         return $this;
     }
 
-    public function removeElefe(User $elefe): self
+    public function removeEleve(User $elefe): self
     {
         if ($this->eleves->removeElement($elefe)) {
             // set the owning side to null (unless already changed)
