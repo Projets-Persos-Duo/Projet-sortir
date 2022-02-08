@@ -81,9 +81,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $campus;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Groupe::class, mappedBy="Users")
+     */
+    private $groupes;
+
     public function __construct()
     {
         $this->photos = new ArrayCollection();
+        $this->groupes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -267,6 +273,33 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             if ($photo->getUser() === $this) {
                 $photo->setUser(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Groupe[]
+     */
+    public function getGroupes(): Collection
+    {
+        return $this->groupes;
+    }
+
+    public function addGroupe(Groupe $groupe): self
+    {
+        if (!$this->groupes->contains($groupe)) {
+            $this->groupes[] = $groupe;
+            $groupe->addUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGroupe(Groupe $groupe): self
+    {
+        if ($this->groupes->removeElement($groupe)) {
+            $groupe->removeUser($this);
         }
 
         return $this;
