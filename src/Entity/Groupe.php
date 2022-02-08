@@ -22,12 +22,9 @@ class Groupe
     /**
      * @ORM\ManyToMany(targetEntity=user::class, inversedBy="groupes")
      */
-    private $Users;
+    private $membres;
 
-    public function __construct()
-    {
-        $this->Users = new ArrayCollection();
-    }
+
 
     /**
      * @ORM\OneToMany(targetEntity=Sortie::class, mappedBy="groupe")
@@ -36,6 +33,7 @@ class Groupe
 
     public function __construct()
     {
+        $this->membres = new ArrayCollection();
         $this->sortie = new ArrayCollection();
     }
 
@@ -47,23 +45,23 @@ class Groupe
     /**
      * @return Collection|user[]
      */
-    public function getUsers(): Collection
+    public function getMembres(): Collection
     {
-        return $this->Users;
+        return $this->membres;
     }
 
-    public function addUser(user $user): self
+    public function addMembre(user $user): self
     {
-        if (!$this->Users->contains($user)) {
-            $this->Users[] = $user;
+        if (!$this->membres->contains($user)) {
+            $this->membres[] = $user;
         }
 
         return $this;
     }
 
-    public function removeUser(user $user): self
+    public function removeMembre(user $user): self
     {
-        $this->Users->removeElement($user);
+        $this->membres->removeElement($user);
 
         return $this;
     }
