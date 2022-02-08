@@ -3,78 +3,91 @@
 namespace App\Controller;
 
 use App\Entity\Campus;
-use App\Form\CampusType;
+use App\Form\Campus1Type;
 use App\Repository\CampusRepository;
-
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @Route("/campus")
+ */
 class CampusController extends AbstractController
 {
     /**
-     * @Route("/campus", name="campus_list")
+     * @Route("/", name="campus_index", methods={"GET"})
      */
-    public function list(CampusRepository $campusRepository): Response
+    public function index(CampusRepository $campusRepository): Response
     {
-        $campus = $campusRepository->findAll();
-
-        return $this->render('/campus/gererCampus.html.twig',['campus'=>$campus]);
+        return $this->render('campus/index.html.twig', [
+            'campuses' => $campusRepository->findAll(),
+        ]);
     }
 
     /**
-     * @Route("/campus/create", name="campus_create")
+     * @Route("/new", name="campus_new", methods={"GET", "POST"})
      */
-
-    public function create(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $campus = new Campus();
+        $form = $this->createForm(Campus1Type::class, $campus);
+        $form->handleRequest($request);
 
-        $campusForm = $this->createForm(CampusType::class, $campus);
-        /*$campusForm->handleRequest($request);
-
-        if ($campusForm->isSubmitted() && $campusForm->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($campus);
             $entityManager->flush();
 
-            //message d'info à l'utilisateur pour la redirection, dans le base.html.twig il faudra l'afficher
-            $this->addFlash('success', 'Campus added!');
-            return $this->redirectToRoute('campus_list');
-        }*/
+            return $this->redirectToRoute('campus_index', [], Response::HTTP_SEE_OTHER);
+        }
 
-        return $this->render('campus/gererCampus.html.twig', [
-            'campusForm' => $campusForm->createView()
+        return $this->renderForm('campus/new.html.twig', [
+            'campus' => $campus,
+            'form' => $form,
         ]);
     }
 
-    /*public function create(
-        Request $request,
-        EntityManagerInterface $entityManager
-    ): Response
+    /**
+     * @Route("/{id}", name="campus_show", methods={"GET"})
+     */
+    public function show(Campus $campus): Response
     {
-        $serie = new Serie();
-        //remplissage de la propriété de l'entité automatique pour dateCreation, pas à compléter via le formulaire
-        $serie->setDateCreated(new \DateTime());//peut aussi être fait dans l'entité
+        return $this->render('campus/show.html.twig', [
+            'campus' => $campus,
+        ]);
+    }
 
-        $serieForm = $this->createForm(SerieType::class, $serie);
+    /**
+     * @Route("/{id}/edit", name="campus_edit", methods={"GET", "POST"})
+     */
+    public function edit(Request $request, Campus $campus, EntityManagerInterface $entityManager): Response
+    {
+        $form = $this->createForm(Campus1Type::class, $campus);
+        $form->handleRequest($request);
 
-        //traiter le formulaire
-        $serieForm->handleRequest($request);//symfony prend les données soumises et les injecte dans $serie
-
-        if ($serieForm->isSubmitted() && $serieForm->isValid()){
-            $entityManager->persist($serie);
+        if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            //message d'info à l'utilisateur pour la redirection, dans le base.html.twig il faudra l'afficher
-            $this->addFlash('success', 'Serie added!');
-            return $this->redirectToRoute('serie_details', ['id' => $serie->getId()]);
+            return $this->redirectToRoute('campus_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        //passer l'objet formulaire à twig, en paramètre du render
-        return $this->render('serie/create.html.twig', [
-            'serieForm' => $serieForm->createView()
+        return $this->renderForm('campus/edit.html.twig', [
+            'campus' => $campus,
+            'form' => $form,
         ]);
-    }*/
+    }
+
+    /**
+     * @Route("/{id}", name="campus_delete", methods={"POST"})
+     */
+    public function delete(Request $request, Campus $campus, EntityManagerInterface $entityManager): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$campus->getId(), $request->request->get('_token'))) {
+            $entityManager->remove($campus);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('campus_index', [], Response::HTTP_SEE_OTHER);
+    }
 }
