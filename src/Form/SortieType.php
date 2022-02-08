@@ -18,6 +18,7 @@ class SortieType extends AbstractType
     {
         $builder
             ->add('nom', TextType::class, ['label'=>'Nom de la sortie :'])
+            ->add('theme', TextareaType::class, ['label'=>'Thème de la sortie :'])
             ->add('date_debut', DateType::class, ['label'=>'Date de la sortie :',
                                      'html5'=>true,
                                     'widget'=>'single_text' ])
@@ -37,6 +38,9 @@ class SortieType extends AbstractType
                                       'widget'=>'single_text'])
             ->add('limite_participants', NumberType::class, ['label'=>'Nombre de places :'])
             ->add('infos_sortie', TextareaType::class, ['label'=>'Description et infos complémentaires :', 'required'=>false])
+            ->add('campus', TextareaType::class, ['label'=>'Campus :'])
+            ->add('lieu', TextareaType::class, ['label'=>'Ville :'])
+            ->add('lieuRDV', TextareaType::class, ['label'=>'Campus :', 'required'=>false])
 
         ;
     }
