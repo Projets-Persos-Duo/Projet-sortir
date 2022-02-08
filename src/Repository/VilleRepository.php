@@ -6,6 +6,7 @@ use App\Entity\Ville;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
+
 /**
  * @method Ville|null find($id, $lockMode = null, $lockVersion = null)
  * @method Ville|null findOneBy(array $criteria, array $orderBy = null)
