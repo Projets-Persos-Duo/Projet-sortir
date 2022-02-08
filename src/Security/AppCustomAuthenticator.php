@@ -28,6 +28,13 @@ class AppCustomAuthenticator extends AbstractLoginFormAuthenticator
         $this->urlGenerator = $urlGenerator;
     }
 
+    public function supports(Request $request) : bool
+    {
+        return self::LOGIN_ROUTE === $request->attributes->get('_route')
+            && $request->isMethod('POST');
+    }
+
+
     public function authenticate(Request $request): Passport
     {
         $username = $request->request->get('username', '');
