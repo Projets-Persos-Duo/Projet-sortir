@@ -75,6 +75,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $photos;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Campus::class, inversedBy="eleves")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $campus;
+
     public function __construct()
     {
         $this->photos = new ArrayCollection();
@@ -262,6 +268,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $photo->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCampus(): ?Campus
+    {
+        return $this->campus;
+    }
+
+    public function setCampus(?Campus $campus): self
+    {
+        $this->campus = $campus;
 
         return $this;
     }

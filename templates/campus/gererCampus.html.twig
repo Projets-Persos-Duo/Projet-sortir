@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des campus{% endblock %}
+
+{% block body %}
+    <div>
+         Liste des campus
+         <section class="series-list">
+            {% for campus in campus %}
+                <article>
+
+                        {{  campus.nom}}
+
+                </article>
+            {% endfor %}
+        </section>
+
+    </div>
+
+    <div>
+        Ajouter un nouveau campus
+
+
+        {{ form_start(campusForm) }}
+
+        {{ form_widget(campusForm) }}
+
+        <button>Ajouter ce campus</button>
+
+        {{ form_end(campusForm) }}
+    </div>
+
+
+{% endblock %}
