@@ -82,6 +82,12 @@ class Sortie
      */
     private $est_cloture;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Thematiques::class, inversedBy="sorties")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $theme;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -239,6 +245,18 @@ class Sortie
     public function setEstCloture(?bool $est_cloture): self
     {
         $this->est_cloture = $est_cloture;
+
+        return $this;
+    }
+
+    public function getTheme(): ?Thematiques
+    {
+        return $this->theme;
+    }
+
+    public function setTheme(?Thematiques $theme): self
+    {
+        $this->theme = $theme;
 
         return $this;
     }
