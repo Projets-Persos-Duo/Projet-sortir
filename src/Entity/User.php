@@ -97,6 +97,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $sortiesParticipees;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Groupe::class, mappedBy="proprietaire", cascade={"persist", "remove"})
+     */
+    private $groupesGeres;
+
     public function __construct()
     {
         $this->photos = new ArrayCollection();
@@ -383,6 +388,23 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         if ($this->sortiesParticipees->removeElement($sortiesParticipee)) {
             $sortiesParticipee->removeParticipant($this);
         }
+
+        return $this;
+    }
+
+    public function getGroupesGeres(): ?Groupe
+    {
+        return $this->groupesGeres;
+    }
+
+    public function setGroupesGeres(Groupe $groupesGeres): self
+    {
+        // set the owning side of the relation if necessary
+        if ($groupesGeres->getProprietaire() !== $this) {
+            $groupesGeres->setProprietaire($this);
+        }
+
+        $this->groupesGeres = $groupesGeres;
 
         return $this;
     }

@@ -31,6 +31,12 @@ class Groupe
      */
     private $sortie;
 
+    /**
+     * @ORM\OneToOne(targetEntity=User::class, inversedBy="groupesGeres", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $proprietaire;
+
     public function __construct()
     {
         $this->membres = new ArrayCollection();
@@ -92,6 +98,18 @@ class Groupe
                 $sortie->setGroupes(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getProprietaire(): ?User
+    {
+        return $this->proprietaire;
+    }
+
+    public function setProprietaire(User $proprietaire): self
+    {
+        $this->proprietaire = $proprietaire;
 
         return $this;
     }
