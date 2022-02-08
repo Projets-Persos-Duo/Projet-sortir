@@ -18,6 +18,9 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class SortiesController extends AbstractController
 {
+
+
+
     /**
      * @Route("/list", name="list")
      */
@@ -30,6 +33,37 @@ class SortiesController extends AbstractController
             'sorties' => $sorties,
         ]);
     }
+
+    /**
+     * @Route("/list/campus", name="campus_list")
+     */
+    public function listeSortiesCampus(SortieRepository $sortieRepository): Response
+    {
+        //TODO : retravailler cette fonction
+        $sorties=$sortieRepository->sortiesParCampus();
+
+        return $this->render('sorties/list.html.twig', [
+            'sorties' => $sorties,
+        ]);
+    }
+
+
+    /**
+     * @Route("/list/theme", name="thematique_list")
+     */
+    public function listeSortiesThematiques(SortieRepository $sortieRepository): Response
+    {
+        //TODO : retravailler cette fonction
+
+        $sorties=$sortieRepository->sortiesParTheme();
+
+
+        return $this->render('sorties/list.html.twig', [
+            'sorties' => $sorties,
+        ]);
+    }
+
+
 
     /**
      * @Route("/details/{id}", name="detail")

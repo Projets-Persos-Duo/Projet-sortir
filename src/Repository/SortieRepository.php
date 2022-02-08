@@ -19,6 +19,36 @@ class SortieRepository extends ServiceEntityRepository
         parent::__construct($registry, Sortie::class);
     }
 
+
+    /**
+     * Lister les sorties en fonction du campus choisi
+     */
+    public function sortiesParCampus (sortie $sortie):array
+    {
+
+        $entityManager=$this->getEntityManager();
+        $dql="SELECT c FROM App\Entity\Sortie WHERE c.campus=? ORDER BY c.nom DESC";
+       $query=$entityManager->createQuery($dql);
+       $query->setMaxResults(30);
+        return $query->getResult();
+    }
+
+
+    /**
+     * Lister les sorties en fonction du thème choisi
+     */
+    public function sortiesParTheme (sortie $sortie):array
+    {
+        $entityManager=$this->getEntityManager();
+        $dql="SELECT c FROM App\Entity\Sortie WHERE c.theme=? ORDER BY c.nom DESC";
+        $query=$entityManager->createQuery($dql);
+        $query->setMaxResults(30);
+        return $query->getResult();
+    }
+
+
+
+
     // /**
     //  * @return Sortie[] Returns an array of Campus objects
     //  */
