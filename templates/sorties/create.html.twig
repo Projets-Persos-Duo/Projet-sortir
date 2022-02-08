@@ -5,7 +5,9 @@
 {% endblock %}
 
 {% block body %}
-    <h2>Créer une sortie </h2>
+    <h1>Créer une sortie </h1>
+
+    <section class="sortie-create">
     {{ form_start(sortieForm) }}
 
 
@@ -16,5 +18,7 @@
     <button>Let's go!</button>
 
     {{ form_end(sortieForm) }}
+
+    </section>
 
 {% endblock %}

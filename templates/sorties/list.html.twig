@@ -3,10 +3,12 @@
 {% block title %}Liste des sorties{% endblock %}
 
 {% block body %}
+
+    <h1>Liste des sorties</h1>
     {% for sortie  in sorties %}
 
 
-        <article>
+        <article class="sorties-liste">
             <a href="{{ path('sorties_detail', {id:sortie.id}) }}" title="Détails de la sortie">{{ sortie.nom }} </a>
         </article>
 

@@ -8,6 +8,13 @@ body {
 
 
 }
+.navigation {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+
+}
 
 .container {
     max-width: 1000px;
@@ -54,3 +61,26 @@ nav li {
 footer {
     text-align: center;
 }
+
+h1 {
+    color: #B0413E;
+    text-align: center;
+}
+
+.sortie-create {
+   display: block;
+    width: 500px;
+    float: left;
+    margin: 50px 200px;
+    line-height: 30px;
+
+
+
+}
+
+.sorties-liste {
+    text-align: left;
+    margin-left:200px;
+
+}
+
