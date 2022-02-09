@@ -38,7 +38,7 @@ class SortieType extends AbstractType
             ->add('heure_fin', TimeType::class, ['label'=>'Heure de fin de la sortie :',
                                      'html5'=>true,
                                     'widget'=>'text'])
-            ->add('duree', NumberType::class, ['label'=>'Durée :', 'mapped'=>false])
+            ->add('duree', NumberType::class, ['label'=>'Durée (min):', 'mapped'=>false, 'required'=>false])
             ->add('date_cloture', DateType::class, ['label'=>'Date limite d\'inscription :',
                                     'html5'=>true,
                                       'widget'=>'single_text'])
