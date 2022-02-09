@@ -52,7 +52,7 @@ class AppFixtures extends Fixture
 
         $toto = new User();
         $toto->setUsername('toto');
-        $admin->setRoles(['ROLE_USER']);
+        $toto->setRoles(['ROLE_USER']);
 
         $password = $this->hasher->hashPassword($toto, '123');
         $toto->setPassword($password);
