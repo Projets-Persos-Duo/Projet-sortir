@@ -68,22 +68,22 @@ class AppFixtures extends Fixture
         $lyon = new Ville();
         $lyon->setNom("Lyon");
         $lyon->setCodePostal("69000");
-        $lyon->persist($lyon);
+        $manager->persist($lyon);
 
         $strasbourg = new Ville();
         $strasbourg->setNom("Strasbourg");
         $strasbourg->setCodePostal("67000");
-        $strasbourg->persist($strasbourg);
+        $manager->persist($strasbourg);
 
         $lille = new Ville();
         $lille->setNom("Lille");
         $lille->setCodePostal("59000");
-        $lille->persist( $lille);
+        $manager->persist( $lille);
 
         $poitiers = new Ville();
         $poitiers->setNom("Poitiers");
         $poitiers->setCodePostal("86000");
-        $poitiers->persist($poitiers);
+        $manager->persist($poitiers);
 
 
         //Campus Fixtures
@@ -111,70 +111,70 @@ class AppFixtures extends Fixture
         $cinema1->setAdresse("Place de la Brèche. 79000 Niort");
         $cinema1->setLatitude("46.32242");
         $cinema1->setLongitude("-0.456899");
-        $cinema1->persist($cinema1);
+        $manager->persist($cinema1);
 
         $cinema2 = new Lieu();
         $cinema2->setNom("CGRMoulins");
         $cinema2->setAdresse("16, rue Marcellin Desboutin. 03000 Moulins");
         $cinema2->setLatitude("46.564351");
         $cinema2->setLongitude("3.339655");
-        $cinema2->persist($cinema2);
+        $manager->persist($cinema2);
 
         $theatre1 = new Lieu();
         $theatre1->setNom("Théatre Nantes");
         $theatre1->setAdresse("6 rue des Carmélites. 44000 Nantes");
         $theatre1->setLatitude(" 47.21666");
         $theatre1->setLongitude(" -1.55145");
-        $theatre1->persist( $theatre1);
+        $manager->persist( $theatre1);
 
         $zoo1 = new Lieu();
         $zoo1->setNom("Zooparc de Beauval");
         $zoo1->setAdresse("Avenue du Blanc. 41110 St Aignan");
         $zoo1->setLatitude("47.24801");
         $zoo1->setLongitude("1.35304");
-        $zoo1->persist($zoo1);
+        $manager->persist($zoo1);
 
         $piscine1 = new Lieu();
         $piscine1->setNom("Piscine Rennes");
         $piscine1->setAdresse("10 boulevard Albert 1er. 35000 Rennes");
         $piscine1->setLatitude("48.08905");
         $piscine1->setLongitude("1.69100");
-        $piscine1->persist( $piscine1);
+        $manager->persist( $piscine1);
 
         $piscine2 = new Lieu();
         $piscine2->setNom("Aquaworld Rennes");
         $piscine2->setAdresse("2 bis Rue du Bourg Nouveau. 35000 Rennes");
         $piscine2->setLatitude("48.11594");
         $piscine2->setLongitude("1.71841");
-        $piscine2->persist($piscine2);
+        $manager->persist($piscine2);
 
         $parc1 = new Lieu();
         $parc1->setNom("Parc et jardins du château");
         $parc1->setAdresse("90 All. de Lanniron. 29000 Quimper");
         $parc1->setLatitude("47.97592");
         $parc1->setLongitude("4.11059");
-        $parc1->persist(  $parc1);
+        $manager->persist(  $parc1);
 
         $parc2 = new Lieu();
         $parc2->setNom("Parc de la glisse");
         $parc2->setAdresse("131 Bd de Créac'h Gwen. 29000 Quimper");
         $parc2->setLatitude("47.97390");
         $parc2->setLongitude("-4.09912");
-        $parc2->persist($parc2);
+        $manager->persist($parc2);
 
         $parc3 = new Lieu();
         $parc3->setNom("Les machines de l'île");
         $parc3->setAdresse("Parc des Chantiers, Bd Léon Bureau. 44200 Nantes");
         $parc3->setLatitude("47.20738");
         $parc3->setLongitude("-1.56425");
-        $parc3->persist($parc3);
+        $manager->persist($parc3);
 
         $expo1 = new Lieu();
         $expo1->setNom("Muséum d'histoire Naturelle");
         $expo1->setAdresse("12 Rue Voltaire. 44000 Nantes");
         $expo1->setLatitude("47.21355");
         $expo1->setLongitude("-1.56474");
-        $expo1->persist($expo1);
+        $manager->persist($expo1);
 
         //User Fixtures
         $admin = new User();
