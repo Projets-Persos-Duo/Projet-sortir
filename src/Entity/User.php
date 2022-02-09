@@ -186,7 +186,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function eraseCredentials()
     {
         // If you store any temporary, sensitive data on the user, clear it here
-        $this->password = null;
+        // do not touch !!!
+//        $this->password = null;
     }
 
     public function getEmail(): ?string
