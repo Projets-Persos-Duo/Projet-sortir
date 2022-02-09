@@ -86,12 +86,12 @@ class Sortie
     private ?Thematiques $theme;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Campus::class, inversedBy="sortie")
+     * @ORM\ManyToOne(targetEntity=Campus::class, inversedBy="sorties")
      */
     private ?Campus $campus;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Groupe::class, inversedBy="sortie")
+     * @ORM\ManyToOne(targetEntity=Groupe::class, inversedBy="sorties")
      */
     private ?Groupe $groupe;
 
@@ -118,7 +118,7 @@ class Sortie
     private ?Lieu $lieu;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Lieu::class, inversedBy="sorties")
+     * @ORM\ManyToOne(targetEntity=Lieu::class, inversedBy="sortiesRDV")
      */
     private ?Lieu $lieuRDV;
 

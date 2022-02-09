@@ -45,13 +45,19 @@ class Lieu
     private ?Ville $ville;
 
     /**
-     * @ORM\OneToMany(targetEntity=Sortie::class, mappedBy="lieu", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Sortie::class, mappedBy="lieu")
      */
     private $sorties;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Sortie::class, mappedBy="lieuRDV")
+     */
+    private $sortiesRDV;
 
     public function __construct()
     {
         $this->sorties = new ArrayCollection();
+        $this->sortiesRDV = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -127,7 +133,7 @@ class Lieu
         return $this->sorties;
     }
 
-    public function addSorty(Sortie $sorty): self
+    public function addSortie(Sortie $sorty): self
     {
         if (!$this->sorties->contains($sorty)) {
             $this->sorties[] = $sorty;
@@ -137,9 +143,39 @@ class Lieu
         return $this;
     }
 
-    public function removeSorty(Sortie $sorty): self
+    public function removeSortie(Sortie $sorty): self
     {
         if ($this->sorties->removeElement($sorty)) {
+            // set the owning side to null (unless already changed)
+            if ($sorty->getLieu() === $this) {
+                $sorty->setLieu(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Sortie[]
+     */
+    public function getSortiesRDV(): Collection
+    {
+        return $this->sortiesRDV;
+    }
+
+    public function addSortieRDV(Sortie $sorty): self
+    {
+        if (!$this->sortiesRDV->contains($sorty)) {
+            $this->sortiesRDV[] = $sorty;
+            $sorty->setLieu($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSortieRDV(Sortie $sorty): self
+    {
+        if ($this->sortiesRDV->removeElement($sorty)) {
             // set the owning side to null (unless already changed)
             if ($sorty->getLieu() === $this) {
                 $sorty->setLieu(null);

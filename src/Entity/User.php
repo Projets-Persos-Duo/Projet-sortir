@@ -82,7 +82,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?Campus $campus;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Groupe::class, mappedBy="Users")
+     * @ORM\ManyToMany(targetEntity=Groupe::class, mappedBy="membres")
      */
     private $groupes;
 
