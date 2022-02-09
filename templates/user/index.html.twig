@@ -10,38 +10,37 @@
             <tr>
                 <th>Id</th>
                 <th>Username</th>
-                <th>Roles</th>
-                <th>Password</th>
                 <th>Email</th>
-                <th>FamilyName</th>
-                <th>FirstName</th>
+                <th>Nom de famille</th>
+                <th>Prenom</th>
                 <th>Telephone</th>
-                <th>IsAdmin</th>
-                <th>IsActive</th>
-                <th>actions</th>
+                <th>Est activé</th>
             </tr>
         </thead>
         <tbody>
         {% for user in users %}
             <tr>
                 <td>{{ user.id }}</td>
-                <td>{{ user.username }}</td>
-                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-                <td>{{ user.password }}</td>
+                <td>
+                    <a href="{{ path('user_show', {'id': user.id}) }}">{{ user.userIdentifier }}
+                    {% if "ROLE_ADMIN" in user.roles %}
+                        ⚔
+                    {% endif %}
+                    </a>
+                    {% if app.user.id == user.id %}
+                        (<a href="{{ path('user_edit', {'id': user.id}) }}">modifier</a>)
+                    {% endif %}
+
+                </td>
                 <td>{{ user.email }}</td>
                 <td>{{ user.familyName }}</td>
                 <td>{{ user.firstName }}</td>
                 <td>{{ user.telephone }}</td>
-                <td>{{ user.isAdmin ? 'Yes' : 'No' }}</td>
-                <td>{{ user.isActive ? 'Yes' : 'No' }}</td>
-                <td>
-                    <a href="{{ path('user_show', {'id': user.id}) }}">show</a>
-                    <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
-                </td>
+                <td>{{ user.isActive ? 'Oui' : 'Non' }}</td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="11">no records found</td>
+                <td colspan="11">Aucun enregistrement</td>
             </tr>
         {% endfor %}
         </tbody>
