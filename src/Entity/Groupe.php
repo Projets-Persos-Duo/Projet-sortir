@@ -29,18 +29,18 @@ class Groupe
     /**
      * @ORM\OneToMany(targetEntity=Sortie::class, mappedBy="groupe")
      */
-    private $sortie;
+    private $sorties;
 
     /**
      * @ORM\OneToOne(targetEntity=User::class, inversedBy="groupesGeres", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      */
-    private $proprietaire;
+    private ?User $proprietaire;
 
     public function __construct()
     {
         $this->membres = new ArrayCollection();
-        $this->sortie = new ArrayCollection();
+        $this->sorties = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -75,15 +75,15 @@ class Groupe
     /**
      * @return Collection|Sortie[]
      */
-    public function getSortie(): Collection
+    public function getSorties(): Collection
     {
-        return $this->sortie;
+        return $this->sorties;
     }
 
     public function addSortie(Sortie $sortie): self
     {
-        if (!$this->sortie->contains($sortie)) {
-            $this->sortie[] = $sortie;
+        if (!$this->sorties->contains($sortie)) {
+            $this->sorties[] = $sortie;
             $sortie->setGroupe($this);
         }
 
@@ -92,7 +92,7 @@ class Groupe
 
     public function removeSortie(Sortie $sortie): self
     {
-        if ($this->sortie->removeElement($sortie)) {
+        if ($this->sorties->removeElement($sortie)) {
             // set the owning side to null (unless already changed)
             if ($sortie->getGroupe() === $this) {
                 $sortie->setGroupe(null);

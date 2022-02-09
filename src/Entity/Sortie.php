@@ -104,7 +104,7 @@ class Sortie
     /**
      * @ORM\ManyToMany(targetEntity=User::class, inversedBy="sortiesParticipees")
      */
-    private ArrayCollection $participants;
+    private $participants;
 
     public function __construct()
     {

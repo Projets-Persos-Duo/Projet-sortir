@@ -27,12 +27,12 @@ class Campus
     /**
      * @ORM\OneToMany(targetEntity=User::class, mappedBy="campus")
      */
-    private ArrayCollection $eleves;
+    private $eleves;
 
     /**
      * @ORM\OneToMany(targetEntity=Sortie::class, mappedBy="campus")
      */
-    private ArrayCollection $sorties;
+    private $sorties;
 
     public function __construct()
     {

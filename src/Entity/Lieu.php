@@ -47,7 +47,7 @@ class Lieu
     /**
      * @ORM\OneToMany(targetEntity=Sortie::class, mappedBy="lieu", orphanRemoval=true)
      */
-    private ArrayCollection $sorties;
+    private $sorties;
 
     public function __construct()
     {

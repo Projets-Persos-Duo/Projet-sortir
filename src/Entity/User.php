@@ -73,7 +73,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\OneToMany(targetEntity=Photo::class, mappedBy="user", orphanRemoval=true)
      */
-    private ArrayCollection $photos;
+    private $photos;
 
     /**
      * @ORM\ManyToOne(targetEntity=Campus::class, inversedBy="eleves")
@@ -84,17 +84,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\ManyToMany(targetEntity=Groupe::class, mappedBy="Users")
      */
-    private ArrayCollection $groupes;
+    private $groupes;
 
     /**
      * @ORM\OneToMany(targetEntity=Sortie::class, mappedBy="organisateur")
      */
-    private ArrayCollection $sortiesOrganisees;
+    private $sortiesOrganisees;
 
     /**
      * @ORM\ManyToMany(targetEntity=Sortie::class, mappedBy="participants")
      */
-    private ArrayCollection $sortiesParticipees;
+    private $sortiesParticipees;
 
     /**
      * @ORM\OneToOne(targetEntity=Groupe::class, mappedBy="proprietaire", cascade={"persist", "remove"})
