@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sortie index{% endblock %}
+
+{% block body %}
+    <h1>Sortie index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Date_annonce</th>
+                <th>Heure_annonce</th>
+                <th>Date_cloture</th>
+                <th>Heure_cloture</th>
+                <th>Date_debut</th>
+                <th>Heure_debut</th>
+                <th>Date_fin</th>
+                <th>Heure_fin</th>
+                <th>Raison_annulation</th>
+                <th>Limite_participants</th>
+                <th>Infos_sortie</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for sortie in sorties %}
+            <tr>
+                <td>{{ sortie.id }}</td>
+                <td>{{ sortie.nom }}</td>
+                <td>{{ sortie.dateAnnonce ? sortie.dateAnnonce|date('Y-m-d') : '' }}</td>
+                <td>{{ sortie.heureAnnonce ? sortie.heureAnnonce|date('H:i:s') : '' }}</td>
+                <td>{{ sortie.dateCloture ? sortie.dateCloture|date('Y-m-d') : '' }}</td>
+                <td>{{ sortie.heureCloture ? sortie.heureCloture|date('H:i:s') : '' }}</td>
+                <td>{{ sortie.dateDebut ? sortie.dateDebut|date('Y-m-d') : '' }}</td>
+                <td>{{ sortie.heureDebut ? sortie.heureDebut|date('H:i:s') : '' }}</td>
+                <td>{{ sortie.dateFin ? sortie.dateFin|date('Y-m-d') : '' }}</td>
+                <td>{{ sortie.heureFin ? sortie.heureFin|date('H:i:s') : '' }}</td>
+                <td>{{ sortie.raisonAnnulation }}</td>
+                <td>{{ sortie.limiteParticipants }}</td>
+                <td>{{ sortie.infosSortie }}</td>
+                <td>
+                    <a href="{{ path('crud_sortie_show', {'id': sortie.id}) }}">show</a>
+                    <a href="{{ path('crud_sortie_edit', {'id': sortie.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="14">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('crud_sortie_new') }}">Create new</a>
+{% endblock %}

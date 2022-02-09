@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Thematiques index{% endblock %}
+
+{% block body %}
+    <h1>Thematiques index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Theme</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for thematique in thematiques %}
+            <tr>
+                <td>{{ thematique.id }}</td>
+                <td>{{ thematique.Theme }}</td>
+                <td>
+                    <a href="{{ path('crud_thematiques_show', {'id': thematique.id}) }}">show</a>
+                    <a href="{{ path('crud_thematiques_edit', {'id': thematique.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('crud_thematiques_new') }}">Create new</a>
+{% endblock %}

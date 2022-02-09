@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sortie{% endblock %}
+
+{% block body %}
+    <h1>Sortie</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ sortie.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ sortie.nom }}</td>
+            </tr>
+            <tr>
+                <th>Date_annonce</th>
+                <td>{{ sortie.dateAnnonce ? sortie.dateAnnonce|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Heure_annonce</th>
+                <td>{{ sortie.heureAnnonce ? sortie.heureAnnonce|date('H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Date_cloture</th>
+                <td>{{ sortie.dateCloture ? sortie.dateCloture|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Heure_cloture</th>
+                <td>{{ sortie.heureCloture ? sortie.heureCloture|date('H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Date_debut</th>
+                <td>{{ sortie.dateDebut ? sortie.dateDebut|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Heure_debut</th>
+                <td>{{ sortie.heureDebut ? sortie.heureDebut|date('H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Date_fin</th>
+                <td>{{ sortie.dateFin ? sortie.dateFin|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Heure_fin</th>
+                <td>{{ sortie.heureFin ? sortie.heureFin|date('H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Raison_annulation</th>
+                <td>{{ sortie.raisonAnnulation }}</td>
+            </tr>
+            <tr>
+                <th>Limite_participants</th>
+                <td>{{ sortie.limiteParticipants }}</td>
+            </tr>
+            <tr>
+                <th>Infos_sortie</th>
+                <td>{{ sortie.infosSortie }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('crud_sortie_index') }}">back to list</a>
+
+    <a href="{{ path('crud_sortie_edit', {'id': sortie.id}) }}">edit</a>
+
+    {{ include('admin/crud_sortie/_delete_form.html.twig') }}
+{% endblock %}
