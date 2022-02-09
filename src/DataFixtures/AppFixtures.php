@@ -3,7 +3,9 @@
 namespace App\DataFixtures;
 
 use App\Entity\Campus;
+use App\Entity\Thematiques;
 use App\Entity\User;
+use App\Entity\Ville;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -19,6 +21,50 @@ class AppFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
+        //Thematique Fixtures
+        foreach (
+            [
+                'Cinéma',
+                'Théâtre',
+                'Danse',
+                'Concert',
+                'Exposition',
+                'Loisirs',
+                'Conférence',
+                'Restaurant',
+                'Sport',
+                'Autres'
+            ] as $theme) {
+            $thematique = new Thematiques();
+            $thematique->setTheme($theme);
+            $manager->persist($thematique);
+        }
+
+
+        //Ville Fixtures
+        $nantes = new Ville();
+        $nantes->setNom("Nantes");
+        $nantes->setCodePostal("44000");
+        $manager->persist($nantes);
+
+        $niort = new Ville();
+        $niort->setNom("Niort");
+        $niort->setCodePostal("79000");
+        $manager->persist($niort);
+
+        $rennes = new Ville();
+        $rennes->setNom("Rennes");
+        $rennes->setCodePostal("35000");
+        $manager->persist($rennes);
+
+        $quimper = new Ville();
+        $quimper->setNom("Quimper");
+        $quimper->setCodePostal("29000");
+        $manager->persist($quimper);
+
+
+
+        //Campus Fixtures
         $campus_en_ligne = null;
         foreach (
             [
@@ -36,6 +82,7 @@ class AppFixtures extends Fixture
             $manager->persist($campus);
         }
 
+        //User Fixtures
         $admin = new User();
         $admin->setUsername('admin');
 
@@ -62,6 +109,7 @@ class AppFixtures extends Fixture
         $toto->setCampus($campus_en_ligne);
 
         $manager->persist($toto);
+
 
         $manager->flush();
     }
