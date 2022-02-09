@@ -40,7 +40,7 @@ class Lieu
     private ?float $longitude;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Ville::class, inversedBy="lieus")
+     * @ORM\ManyToOne(targetEntity=Ville::class, inversedBy="lieux")
      */
     private ?Ville $ville;
 
