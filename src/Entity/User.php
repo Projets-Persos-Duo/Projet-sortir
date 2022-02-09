@@ -187,7 +187,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // do not touch !!!
-//        $this->password = null;
+        // $this->password = null;
     }
 
     public function getEmail(): ?string
