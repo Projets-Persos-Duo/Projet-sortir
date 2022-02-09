@@ -42,7 +42,7 @@ class AppFixtures extends Fixture
         $password = $this->hasher->hashPassword($admin, '123');
         $admin->setPassword($password);
 
-        $admin->setRoles(['ROLE_ADMIN']);
+        $admin->setRoles(['ROLE_ADMIN', 'ROLE_USER']);
         $admin->setIsAdmin(true);
         $admin->setIsActive(true);
         $admin->setCampus($campus_en_ligne);
@@ -52,6 +52,7 @@ class AppFixtures extends Fixture
 
         $toto = new User();
         $toto->setUsername('toto');
+        $admin->setRoles(['ROLE_USER']);
 
         $password = $this->hasher->hashPassword($toto, '123');
         $toto->setPassword($password);
