@@ -23,14 +23,19 @@ class SortieRepository extends ServiceEntityRepository
     /**
      * Lister les sorties en fonction du campus choisi
      */
-    public function sortiesParCampus (sortie $sortie):array
+    public function sortiesParCampus (Campus $campus):array
     {
-
         $entityManager=$this->getEntityManager();
-        $dql="SELECT c FROM App\Entity\Sortie WHERE c.campus=? ORDER BY c.nom DESC";
-       $query=$entityManager->createQuery($dql);
-       $query->setMaxResults(30);
+
+        $dql="SELECT sortie 
+                FROM App\Entity\Sortie sortie
+                WHERE sortie.campus = :campus";
+        $query=$entityManager->createQuery($dql);
+        $query->setParameter('campus', $campus);
+        $query->setMaxResults(4);
         return $query->getResult();
+
+
     }
 
 

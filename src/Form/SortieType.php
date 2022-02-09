@@ -2,7 +2,11 @@
 
 namespace App\Form;
 
+use App\Entity\Campus;
 use App\Entity\Sortie;
+use App\Entity\Thematiques;
+use Doctrine\ORM\EntityRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -18,7 +22,9 @@ class SortieType extends AbstractType
     {
         $builder
             ->add('nom', TextType::class, ['label'=>'Nom de la sortie :'])
-            ->add('theme', TextareaType::class, ['label'=>'Thème de la sortie :'])
+            ->add('theme', EntityType::class, ['label'=>'Thème de la sortie :',
+                'class'=>Thematiques::class,
+                'choice_label'=>'Theme',])
             ->add('date_debut', DateType::class, ['label'=>'Date de la sortie :',
                                      'html5'=>true,
                                     'widget'=>'single_text' ])
@@ -38,9 +44,13 @@ class SortieType extends AbstractType
                                       'widget'=>'single_text'])
             ->add('limite_participants', NumberType::class, ['label'=>'Nombre de places :'])
             ->add('infos_sortie', TextareaType::class, ['label'=>'Description et infos complémentaires :', 'required'=>false])
-            ->add('campus', TextareaType::class, ['label'=>'Campus :'])
+            ->add('campus', EntityType::class, [
+                'label'=>'Campus :',
+                'class'=>Campus::class,
+                'choice_label'=>'nom',])
             ->add('lieu', TextareaType::class, ['label'=>'Ville :'])
-            ->add('lieuRDV', TextareaType::class, ['label'=>'Campus :', 'required'=>false])
+            ->add('lieuRDV', TextareaType::class, ['label'=>'Lieu de RDV :', 'required'=>false])
+
 
         ;
     }
