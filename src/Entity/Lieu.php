@@ -22,32 +22,32 @@ class Lieu
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $nom;
+    private ?string $nom;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $adresse;
+    private ?string $adresse;
 
     /**
      * @ORM\Column(type="float", nullable=true)
      */
-    private $latitude;
+    private ?float $latitude;
 
     /**
      * @ORM\Column(type="float", nullable=true)
      */
-    private $longitude;
+    private ?float $longitude;
 
     /**
      * @ORM\ManyToOne(targetEntity=Ville::class, inversedBy="lieus")
      */
-    private $ville;
+    private ?Ville $ville;
 
     /**
      * @ORM\OneToMany(targetEntity=Sortie::class, mappedBy="lieu", orphanRemoval=true)
      */
-    private $sorties;
+    private ArrayCollection $sorties;
 
     public function __construct()
     {

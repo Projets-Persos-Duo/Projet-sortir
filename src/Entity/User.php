@@ -13,7 +13,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @ORM\Table(name="`user`")
- * @UniqueEntity(fields={"username"}, message="There is already an account with this username")
+ * @UniqueEntity(fields={"username"}, message="Un compte avec ce nom d'utilisateur existe deja !")
  */
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
@@ -27,80 +27,79 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      */
-    private $username;
+    private string $username;
 
     /**
      * @ORM\Column(type="json")
      */
-    private $roles = [];
+    private array $roles = [];
 
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
      */
-    private $password;
+    private string $password;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $email;
+    private ?string $email;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $familyName;
+    private ?string $familyName;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $firstName;
+    private ?string $firstName;
 
     /**
      * @ORM\Column(type="string", length=20, nullable=true)
      */
-    private $telephone;
+    private ?string $telephone;
 
     /**
      * @ORM\Column(type="boolean")
      */
-    private $isAdmin;
+    private ?bool $isAdmin;
 
     /**
      * @ORM\Column(type="boolean")
      */
-    private $isActive;
+    private ?bool $isActive;
 
     /**
      * @ORM\OneToMany(targetEntity=Photo::class, mappedBy="user", orphanRemoval=true)
      */
-    private $photos;
+    private ArrayCollection $photos;
 
     /**
-<<<<<<< HEAD
      * @ORM\ManyToOne(targetEntity=Campus::class, inversedBy="eleves")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $campus;
+    private ?Campus $campus;
 
     /**
      * @ORM\ManyToMany(targetEntity=Groupe::class, mappedBy="Users")
      */
-    private $groupes;
+    private ArrayCollection $groupes;
 
     /**
      * @ORM\OneToMany(targetEntity=Sortie::class, mappedBy="organisateur")
      */
-    private $sortiesOrganisees;
+    private ArrayCollection $sortiesOrganisees;
 
     /**
      * @ORM\ManyToMany(targetEntity=Sortie::class, mappedBy="participants")
      */
-    private $sortiesParticipees;
+    private ArrayCollection $sortiesParticipees;
 
     /**
      * @ORM\OneToOne(targetEntity=Groupe::class, mappedBy="proprietaire", cascade={"persist", "remove"})
      */
-    private $groupesGeres;
+    private ?Groupe $groupesGeres;
 
     public function __construct()
     {
@@ -187,7 +186,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function eraseCredentials()
     {
         // If you store any temporary, sensitive data on the user, clear it here
-        // $this->plainPassword = null;
+        $this->password = null;
     }
 
     public function getEmail(): ?string
@@ -304,7 +303,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if (!$this->groupes->contains($groupe)) {
             $this->groupes[] = $groupe;
-            $groupe->addUser($this);
+            $groupe->addMembre($this);
         }
 
         return $this;
@@ -331,7 +330,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function removeGroupe(Groupe $groupe): self
     {
         if ($this->groupes->removeElement($groupe)) {
-            $groupe->removeUser($this);
+            $groupe->removeMembre($this);
         }
 
         return $this;

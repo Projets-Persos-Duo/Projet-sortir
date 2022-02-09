@@ -22,22 +22,22 @@ class Campus
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $nom;
+    private ?string $nom;
 
     /**
      * @ORM\OneToMany(targetEntity=User::class, mappedBy="campus")
      */
-    private $eleves;
+    private ArrayCollection $eleves;
 
     /**
      * @ORM\OneToMany(targetEntity=Sortie::class, mappedBy="campus")
      */
-    private $sortie;
+    private ArrayCollection $sorties;
 
     public function __construct()
     {
         $this->eleves = new ArrayCollection();
-        $this->sortie = new ArrayCollection();
+        $this->sorties = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -90,15 +90,15 @@ class Campus
     /**
      * @return Collection|Sortie[]
      */
-    public function getSortie(): Collection
+    public function getSorties(): Collection
     {
-        return $this->sortie;
+        return $this->sorties;
     }
 
     public function addSortie(Sortie $sortie): self
     {
-        if (!$this->sortie->contains($sortie)) {
-            $this->sortie[] = $sortie;
+        if (!$this->sorties->contains($sortie)) {
+            $this->sorties[] = $sortie;
             $sortie->setCampus($this);
         }
 
@@ -107,7 +107,7 @@ class Campus
 
     public function removeSortie(Sortie $sortie): self
     {
-        if ($this->sortie->removeElement($sortie)) {
+        if ($this->sorties->removeElement($sortie)) {
             // set the owning side to null (unless already changed)
             if ($sortie->getCampus() === $this) {
                 $sortie->setCampus(null);

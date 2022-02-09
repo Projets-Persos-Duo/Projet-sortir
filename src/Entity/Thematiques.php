@@ -27,7 +27,7 @@ class Thematiques
     /**
      * @ORM\OneToMany(targetEntity=Sortie::class, mappedBy="theme", orphanRemoval=true)
      */
-    private $sorties;
+    private ArrayCollection $sorties;
 
     public function __construct()
     {

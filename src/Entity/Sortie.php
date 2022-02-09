@@ -22,94 +22,89 @@ class Sortie
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $nom;
+    private ?string $nom;
 
     /**
      * @ORM\Column(type="date")
      */
-    private $date_annonce;
+    private ?\DateTimeInterface $date_annonce;
 
     /**
      * @ORM\Column(type="time")
      */
-    private $heure_annonce;
+    private ?\DateTimeInterface $heure_annonce;
 
     /**
      * @ORM\Column(type="date")
      */
-    private $date_cloture;
+    private ?\DateTimeInterface $date_cloture;
 
     /**
      * @ORM\Column(type="time")
      */
-    private $heure_cloture;
+    private ?\DateTimeInterface $heure_cloture;
 
     /**
      * @ORM\Column(type="date")
      */
-    private $date_debut;
+    private ?\DateTimeInterface $date_debut;
 
     /**
      * @ORM\Column(type="time")
      */
-    private $heure_debut;
+    private ?\DateTimeInterface $heure_debut;
 
     /**
      * @ORM\Column(type="date")
      */
-    private $date_fin;
+    private ?\DateTimeInterface $date_fin;
 
     /**
      * @ORM\Column(type="time", nullable=true)
      */
-    private $heure_fin;
+    private ?\DateTimeInterface $heure_fin;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $raison_annulation;
+    private ?string $raison_annulation;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $limite_participants;
+    private ?int $limite_participants;
 
     /**
      * @ORM\Column(type="string", length=1500, nullable=true)
      */
-    private $infos_sortie;
-
-    /**
-     * @ORM\Column(type="boolean", nullable=true)
-     */
-    private $est_cloture;
+    private ?string $infos_sortie;
 
     /**
      * @ORM\ManyToOne(targetEntity=Thematiques::class, inversedBy="sorties")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $theme;
+    private ?Thematiques $theme;
 
     /**
      * @ORM\ManyToOne(targetEntity=Campus::class, inversedBy="sortie")
      */
-    private $campus;
+    private ?Campus $campus;
 
     /**
      * @ORM\ManyToOne(targetEntity=Groupe::class, inversedBy="sortie")
      */
-    private $groupes;
+    private ?Groupe $groupe;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="sortiesOrganisees")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $organisateur;
+    private ?User $organisateur;
 
     /**
      * @ORM\ManyToMany(targetEntity=User::class, inversedBy="sortiesParticipees")
      */
-    private $participants;
+    private ArrayCollection $participants;
 
     public function __construct()
     {
@@ -120,12 +115,12 @@ class Sortie
      * @ORM\ManyToOne(targetEntity=Lieu::class, inversedBy="sorties")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $lieu;
+    private ?Lieu $lieu;
 
     /**
      * @ORM\ManyToOne(targetEntity=Lieu::class, inversedBy="sorties")
      */
-    private $lieuRDV;
+    private ?Lieu $lieuRDV;
 
     public function getId(): ?int
     {
@@ -276,26 +271,14 @@ class Sortie
         return $this;
     }
 
-    public function getEstCloture(): ?bool
+    public function getGroupe(): ?Groupe
     {
-        return $this->est_cloture;
+        return $this->groupe;
     }
 
-    public function setEstCloture(?bool $est_cloture): self
+    public function setGroupe(?Groupe $groupe): self
     {
-        $this->est_cloture = $est_cloture;
-
-        return $this;
-    }
-
-    public function getGroupes(): ?Groupe
-    {
-        return $this->groupes;
-    }
-
-    public function setGroupes(?Groupe $groupes): self
-    {
-        $this->groupes = $groupes;
+        $this->groupe = $groupe;
 
         return $this;
     }

@@ -20,18 +20,18 @@ class Photo
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $chemin_dd;
+    private ?string $chemin_dd;
 
     /**
      * @ORM\Column(type="boolean")
      */
-    private $isProfilePicture;
+    private ?bool $isProfilePicture;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="photos")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $user;
+    private ?User $user;
 
     public function getId(): ?int
     {

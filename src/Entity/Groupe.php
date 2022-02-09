@@ -84,7 +84,7 @@ class Groupe
     {
         if (!$this->sortie->contains($sortie)) {
             $this->sortie[] = $sortie;
-            $sortie->setGroupes($this);
+            $sortie->setGroupe($this);
         }
 
         return $this;
@@ -95,7 +95,7 @@ class Groupe
         if ($this->sortie->removeElement($sortie)) {
             // set the owning side to null (unless already changed)
             if ($sortie->getGroupe() === $this) {
-                $sortie->setGroupes(null);
+                $sortie->setGroupe(null);
             }
         }
 

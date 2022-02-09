@@ -23,17 +23,17 @@ class Ville
     /**
      * @ORM\Column(type="string", length=50)
      */
-    private $nom;
+    private ?string $nom;
 
     /**
      * @ORM\Column(type="string", length=5)
      */
-    private $codePostal;
+    private ?string $codePostal;
 
     /**
      * @ORM\OneToMany(targetEntity=Lieu::class, mappedBy="ville")
      */
-    private $lieus;
+    private ArrayCollection $lieus;
 
     public function __construct()
     {
