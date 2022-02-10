@@ -17,6 +17,10 @@ framework:
     php_errors:
         log: true
 
+    # https://symfony.com/doc/5.4/forms.html#form-validation-messages
+    form:
+        legacy_error_messages: false
+
 when@test:
     framework:
         test: true

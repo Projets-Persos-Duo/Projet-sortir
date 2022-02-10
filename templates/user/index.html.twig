@@ -1,15 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User index{% endblock %}
+{% block title %}Liste utilisateurs{% endblock %}
 
 {% block body %}
-    <h1>User index</h1>
+    <h1>Liste utilisateurs</h1>
 
-    <table class="table">
+    <table class="table table-dark">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Username</th>
+                <th>Pseudo</th>
                 <th>Email</th>
                 <th>Nom de famille</th>
                 <th>Prenom</th>
@@ -22,11 +22,11 @@
             <tr>
                 <td>{{ user.id }}</td>
                 <td>
-                    <a href="{{ path('user_show', {'id': user.id}) }}">{{ user.userIdentifier }}
+                    <a href="{{ path('user_show', {'id': user.id}) }}">{{ user.userIdentifier }}</a>
                     {% if "ROLE_ADMIN" in user.roles %}
-                        ⚔
+                        <span title="admin">⚔</span>
                     {% endif %}
-                    </a>
+
                     {% if app.user.id == user.id %}
                         (<a href="{{ path('user_edit', {'id': user.id}) }}">modifier</a>)
                     {% endif %}
@@ -46,5 +46,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('user_new') }}">Create new</a>
+    {% if is_granted('ROLE_ADMIN') %}
+    <a href="{{ path('user_new') }}" class="btn btn-primary">Ajouter un utilisateur</a>
+    {% endif %}
 {% endblock %}
