@@ -66,10 +66,17 @@ class UserController extends AbstractController
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
+        $selfUser = $this->getUser(); // @type
+        if(!$this->getUser()->getIsAdmin()) {
+            if($this->getUser()->getId() !== (int)$request->get('id')) {
+                throw $this->createAccessDeniedException('Non autorisé');
+            }
+        };
+
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('user_show', ['id'=>$user->getId()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('user/edit.html.twig', [

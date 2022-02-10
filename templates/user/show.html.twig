@@ -3,7 +3,12 @@
 {% block title %}User{% endblock %}
 
 {% block body %}
-    <h1>User</h1>
+    <h1>
+        {{ user.userIdentifier }}
+        {% if 'ROLE_ADMIN' in user.roles %}
+            ⚔
+        {%  endif %}
+    </h1>
 
     <table class="table">
         <tbody>
@@ -12,27 +17,15 @@
                 <td>{{ user.id }}</td>
             </tr>
             <tr>
-                <th>Username</th>
-                <td>{{ user.username }}</td>
-            </tr>
-            <tr>
-                <th>Roles</th>
-                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-            </tr>
-            <tr>
-                <th>Password</th>
-                <td>{{ user.password }}</td>
-            </tr>
-            <tr>
                 <th>Email</th>
                 <td>{{ user.email }}</td>
             </tr>
             <tr>
-                <th>FamilyName</th>
+                <th>Nom de famille</th>
                 <td>{{ user.familyName }}</td>
             </tr>
             <tr>
-                <th>FirstName</th>
+                <th>Prenom</th>
                 <td>{{ user.firstName }}</td>
             </tr>
             <tr>
@@ -40,11 +33,7 @@
                 <td>{{ user.telephone }}</td>
             </tr>
             <tr>
-                <th>IsAdmin</th>
-                <td>{{ user.isAdmin ? 'Yes' : 'No' }}</td>
-            </tr>
-            <tr>
-                <th>IsActive</th>
+                <th>Est actif</th>
                 <td>{{ user.isActive ? 'Yes' : 'No' }}</td>
             </tr>
         </tbody>
@@ -52,7 +41,11 @@
 
     <a href="{{ path('user_index') }}">back to list</a>
 
-    <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
+    {% if is_granted('ROLE_ADMIN') or app.user.id == user.id %}
+    <a href="{{ path('user_edit', {'id': user.id}) }}">Modifier</a>
+    {% endif %}
 
+    {% if is_granted('ROLE_ADMIN') %}
     {{ include('user/_delete_form.html.twig') }}
+    {% endif %}
 {% endblock %}
