@@ -5,12 +5,40 @@
 {% block body %}
     <h2 class="libelle">{{ sortie.nom }}</h2>
 
-    <div>Date : {{ sortie.dateDebut|date("d/m/Y") }}</div>
-    <div>Fin des inscriptions : {{ sortie.dateCloture|date("d/m/Y") }}</div>
-    <div>Description : {{ sortie.infosSortie }}</div>
-    <div>Nombre limite de participants : {{ sortie.limiteParticipants }}</div>
     <div>Thématique : {{ sortie.theme.theme }}</div>
+    <div>Date : le {{ sortie.dateDebut|date("d/m/Y")}}, de {{ sortie.heureDebut|date('H:i') }} à {{ sortie.heureFin|date('H:i') }}</div>
+    <div>Description : {{ sortie.infosSortie }}</div>
 
+    <div>Lieu : {{ sortie.lieu.nom }} à {{ sortie.lieu.ville.nom }}</div>
+
+    <div>Nombre maximal de participants : {{ sortie.limiteParticipants }}</div>
+    <div>Nombre de places restantes : {{ sortie.limiteParticipants-sortie.participants|length }} / {{ sortie.limiteParticipants }}</div>
+    <div>Nombre d'inscrits : {{ sortie.participants|length }}</div>
+    <div>Date limite d'inscription : {{ sortie.dateCloture|date("d/m/Y") }}</div>
+
+
+
+
+
+    {# message si user vient de cliquer sur s'inscrire #}
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="flash flash-{{ label }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+    {% if app.user %}
+    {{ form_start(inscriptionSortieForm) }}
+
+    {{ form_widget(inscriptionSortieForm) }}
+
+    {{ form_end(inscriptionSortieForm) }}
+    {% else %}
+        <li><a href="{{ path('app_login') }}" title="Se connecter">Se connecter</a> </li>
+        <li><a href="{{ path('app_register') }}" title="S'inscrire'">S'inscrire</a> </li>
+    {% endif %}
 
 
 {% endblock %}
