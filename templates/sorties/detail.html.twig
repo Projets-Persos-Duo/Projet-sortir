@@ -17,10 +17,7 @@
     <div>Date limite d'inscription : {{ sortie.dateCloture|date("d/m/Y") }}</div>
 
 
-
-
-
-    {# message si user vient de cliquer sur s'inscrire #}
+    {# message si user vient de cliquer sur s'inscrire ou se désinscrire #}
     {% for label, messages in app.flashes %}
         {% for message in messages %}
             <div class="flash flash-{{ label }}">
@@ -30,14 +27,23 @@
     {% endfor %}
 
     {% if app.user %}
-    {{ form_start(inscriptionSortieForm) }}
 
-    {{ form_widget(inscriptionSortieForm) }}
+        {#  Si déjà inscrit, pouvoir se désinscrire #}
+        {% if app.user.sortiesParticipees.contains(sortie) %}
 
-    {{ form_end(inscriptionSortieForm) }}
+            <h3>Vous êtes inscrit à cette sortie</h3>
+            {{ form(desinscriptionSortieForm) }}
+
+          {% else %}
+            {# Sinon pouvoir s'inscrire #}
+            {{ form(inscriptionSortieForm) }}
+
+        {% endif %}
+
     {% else %}
+        <h3>Pour pouvoir s'inscrire, veuillez vous connecter à votre compte utilisateur</h3>
         <li><a href="{{ path('app_login') }}" title="Se connecter">Se connecter</a> </li>
-        <li><a href="{{ path('app_register') }}" title="S'inscrire'">S'inscrire</a> </li>
+        <li><a href="{{ path('app_register') }}" title="S'inscrire'">Créer un compte</a> </li>
     {% endif %}
 
 

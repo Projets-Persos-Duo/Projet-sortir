@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Campus;
 use App\Entity\Sortie;
 use App\Entity\User;
+use App\Form\DesinscriptionSortieFormType;
 use App\Form\InscriptionSortieFormType;
 use App\Form\SortieType;
 use App\Repository\CampusRepository;
@@ -104,8 +105,9 @@ class SortiesController extends AbstractController
         /** @var \App\Entity\User $user *///pour que le user soit bien un objet App/Entity/User et pas un UserInterface
         $user = $this->getUser();
 
-       $inscriptionSortieForm = $this->createForm(InscriptionSortieFormType::class, $sortie);
-       $inscriptionSortieForm->handleRequest($request);
+        $inscriptionSortieForm = $this->createForm(InscriptionSortieFormType::class, $sortie);
+        $inscriptionSortieForm->handleRequest($request);
+
        if ($inscriptionSortieForm->isSubmitted() && $inscriptionSortieForm->isValid()){
            $sortie->addParticipant($user);
            $user->addSortiesParticipee($sortie);
@@ -116,12 +118,25 @@ class SortiesController extends AbstractController
            $this->addFlash('success', "Vous êtes bien inscrit à cette sortie");
            return $this->redirectToRoute('sorties_detail',['id' => $id]);
        }
+        $desinscriptionSortieForm = $this->createForm(DesinscriptionSortieFormType::class, $sortie);
+        $desinscriptionSortieForm->handleRequest($request);
 
+        if ($desinscriptionSortieForm->isSubmitted()){
+            $sortie->removeParticipant($user);
+            $user->removeSortiesParticipee($sortie);
+            $entityManager->persist($user);
+            $entityManager->persist($sortie);
+            $entityManager->flush();
+
+            $this->addFlash('success', "Désincription enregistrée");
+            return $this->redirectToRoute('sorties_detail',['id' => $id]);
+        }
 
         return $this->render('sorties/detail.html.twig',
             [
                 "sortie"=>$sortie,
-                'inscriptionSortieForm'=>$inscriptionSortieForm->createView()
+                'inscriptionSortieForm'=>$inscriptionSortieForm->createView(),
+                'desinscriptionSortieForm'=>$desinscriptionSortieForm->createView()
             ]);
     }
 
