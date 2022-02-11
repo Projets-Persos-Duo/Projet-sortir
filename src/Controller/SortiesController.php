@@ -125,7 +125,7 @@ class SortiesController extends AbstractController
             return $this->redirectToRoute('sorties_detail',['id' => $id]);
         }
 
-        if ($desinscriptionSortieForm->isSubmitted()){
+        if ($desinscriptionSortieForm->isSubmitted() && $desinscriptionSortieForm->isValid()){
             $sortie->removeParticipant($user);
             $user->removeSortiesParticipee($sortie);
             $entityManager->persist($user);
