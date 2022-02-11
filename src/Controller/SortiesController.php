@@ -4,9 +4,13 @@ namespace App\Controller;
 
 use App\Data\SearchData;
 use App\Entity\Sortie;
+use App\Entity\User;
+use App\Form\DesinscriptionSortieFormType;
+use App\Form\InscriptionSortieFormType;
 use App\Form\SearchForm;
 use App\Form\SortieType;
 use App\Repository\SortieRepository;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -97,12 +101,45 @@ class SortiesController extends AbstractController
     /**
      * @Route("/details/{id}", name="detail")
      */
-    public function detailSortie(int $id, SortieRepository $sortieRepository): Response
+    public function detailSortie(int $id, Request $request, EntityManagerInterface $entityManager,UserRepository $userRepository, SortieRepository $sortieRepository): Response
     {
-
        $sortie = $sortieRepository->find($id);
+
+        /** @var User $user *///pour que le user soit bien un objet App/Entity/User et pas un UserInterface
+        $user = $this->getUser();
+
+        $inscriptionSortieForm = $this->createForm(InscriptionSortieFormType::class, $sortie);
+        $inscriptionSortieForm->handleRequest($request);
+
+        $desinscriptionSortieForm = $this->createForm(DesinscriptionSortieFormType::class, $sortie);
+        $desinscriptionSortieForm->handleRequest($request);
+
+        if ($inscriptionSortieForm->isSubmitted() && $inscriptionSortieForm->isValid()){
+            $sortie->addParticipant($user);
+            $user->addSortiesParticipee($sortie);
+            $entityManager->persist($user);
+            $entityManager->persist($sortie);
+            $entityManager->flush();
+
+            $this->addFlash('success', "Vous êtes bien inscrit à cette sortie");
+            return $this->redirectToRoute('sorties_detail',['id' => $id]);
+        }
+
+        if ($desinscriptionSortieForm->isSubmitted()){
+            $sortie->removeParticipant($user);
+            $user->removeSortiesParticipee($sortie);
+            $entityManager->persist($user);
+            $entityManager->persist($sortie);
+            $entityManager->flush();
+
+            $this->addFlash('success', "Désincription enregistrée");
+            return $this->redirectToRoute('sorties_detail',['id' => $id]);
+        }
+
         return $this->render('sorties/detail.html.twig', [
             "sortie"=>$sortie,
+            'inscriptionSortieForm'=>$inscriptionSortieForm->createView(),
+            'desinscriptionSortieForm'=>$desinscriptionSortieForm->createView()
         ]);
     }
 
