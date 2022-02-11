@@ -9,18 +9,7 @@
 
     <h1>Liste des sorties</h1>
 
-    {% for sortie  in sorties %}
-
-
-        <article class="sorties-liste">
-            <a href="{{ path('sorties_detail', {id:sortie.id}) }}" title="Détails de la sortie">{{ sortie.nom }} </a>
-
-        </article>
-
-
-
-    {% endfor %}
-
+{% include '_liste_sorties.html.twig' %}
 
 
 {% endblock %}

@@ -26,7 +26,7 @@
         <div class="col-md-9">
             <div class="sorties-liste">
                 {# TODO/ arriver à inclure le twig liste... Problème: la page s'affiche mais pas la liste #}
-                {#     {% include 'sorties/list.html.twig' with {sorties: sortie} only %}#}
+                {% include 'sorties/_liste_sorties.html.twig' with {sorties: sortie} only %}
                 <li><a href="{{ path('sorties_list') }}" title="Liste des sorties">Liste des sorties</a></li>
             </div>
         </div>

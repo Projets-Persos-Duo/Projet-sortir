@@ -1,0 +1,11 @@
+{% for sortie  in sorties %}
+
+
+    <article class="sorties-liste">
+        <a href="{{ path('sorties_detail', {id:sortie.id}) }}" title="Détails de la sortie">{{ sortie.nom }} </a>
+
+    </article>
+
+
+
+{% endfor %}
