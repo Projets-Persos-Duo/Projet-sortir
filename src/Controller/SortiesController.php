@@ -32,20 +32,20 @@ class SortiesController extends AbstractController
         $data= new SearchData();
         $sortieChoixForm = $this->createForm(SearchForm::class, $data);
         $sortieChoixForm->handleRequest($request);
-        $sortie=new Sortie();
+        $sorties = $sortieRepository->findAll();
 
 
         if ($sortieChoixForm->isSubmitted() &&  $sortieChoixForm->isValid()) {
-            $sortie = $sortieRepository->findSearchCampus($data);
+            $sorties = $sortieRepository->findSearchCampus($data);
 
 
-            return $this->redirectToRoute('sorties_select', ['sortie'=>$sortie]);
+            return $this->redirectToRoute('sorties_select', ['sorties'=>$sorties]);
 
         }
 
 
         return $this->renderForm('sorties/accueil.html.twig', [
-            'sortie' => $sortie,
+            'sorties' => $sorties,
             'sortieChoixForm' => $sortieChoixForm,
         ]);
 
