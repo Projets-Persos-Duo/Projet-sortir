@@ -106,3 +106,13 @@ h1 {
 label, legend {
     color: var(--bs-light);
 }
+.user-enregistrer {
+    text-align: center;
+}
+.modif-user {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 20px;
+
+}

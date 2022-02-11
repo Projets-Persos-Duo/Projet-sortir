@@ -20,9 +20,15 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
+
     <body>
 
+    {% block header %}
+    <header>
         {% include 'inc/nav.html.twig' %}
+    </header>
+    {% endblock %}
+
         <div class="container">
             {% for label, messages in app.flashes %}
                 {% for message in messages %}
@@ -32,17 +38,19 @@
                 {% endfor %}
             {% endfor %}
 
-            {% block body %}{% endblock %}
+            {% block body %} {% endblock %}
         </div>
-        {% include 'inc/nav.html.twig' %}
 
 
 
+    {% block footer %}
         {# Pied de page du site #}
         <footer>
             <div class ="container">
+                {% include 'inc/nav.html.twig' %}
                 <div>&copy;  Site de sortie ENI {{ "now"|date("Y") }}</div>
             </div>
         </footer>
+    {% endblock %}
     </body>
 </html>

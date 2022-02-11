@@ -5,7 +5,7 @@
     <article class="sorties-liste">
         <a
                 href="{{ path('sorties_detail', {id:sortie.id}) }}"
-                title="Détails de la sortie">{{ sortie.nom }}
+                title="Détails de la sortie">{{ sortie.nom }} ({{ sortie.dateDebut|date("d/m/Y") }})
         </a>
         - Organisé par :
 
