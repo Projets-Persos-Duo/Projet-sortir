@@ -23,6 +23,9 @@
         {{ form_row(sortieForm.infos_sortie) }}
         {{ form_row(sortieForm.campus) }}
         {{ form_row(sortieForm.lieu) }}
+        <p>
+        <a href="{{ path('lieu_new') }}" >Ajouter un lieu</a>
+        </p>
         {{ form_rest(sortieForm) }}
 
 
