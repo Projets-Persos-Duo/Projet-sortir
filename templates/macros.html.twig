@@ -1,0 +1,13 @@
+{% macro liste_utilisateurs(utilisateurs, debut='(', fin=')', sep=', ') %}
+    {% if utilisateurs.count %}
+
+        {{ debut }}{% for participant in utilisateurs %}
+        <a href="{{ path('user_show', {'id': participant.id}) }}">
+            {{ participant.friendlyName }}
+        </a>
+        {% if not loop.last %}{{ sep }}{% endif %}
+    {% endfor %}{{ fin }}
+
+    {% endif %}
+
+{% endmacro %}

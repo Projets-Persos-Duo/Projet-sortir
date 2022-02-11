@@ -1,4 +1,5 @@
 {% extends 'base.html.twig' %}
+{% import 'macros.html.twig' as macros %}
 
 {% block title %}Détail de la sortie{% endblock %}
 
@@ -13,16 +14,7 @@
     <div>Nombre maximal de participants : {{ sortie.limiteParticipants }}</div>
     <div>Nombre d'inscrits : {{ sortie.participants|length }}
 
-        {% if sortie.participants.count %}
-
-            ({% for participant in sortie.participants %}
-            <a href="{{ path('user_show', {'id': participant.id}) }}">
-                {{ participant.friendlyName }}
-            </a>
-            {% if not loop.last %}, {% endif %}
-        {% endfor %})
-
-        {% endif %}
+        {{ macros.liste_utilisateurs(sortie.participants) }}
 
     </div>
     <div>Nombre de places restantes : {{ sortie.limiteParticipants-sortie.participants|length }} / {{ sortie.limiteParticipants }}</div>
