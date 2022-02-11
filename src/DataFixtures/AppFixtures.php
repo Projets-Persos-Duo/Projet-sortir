@@ -287,10 +287,12 @@ class AppFixtures extends Fixture
         $sortieEnCours = new Sortie();
         $sortieEnCours->setNom("Natation débutant");
         $sortieEnCours->setDateAnnonce(new DateTime('2022-02-02'));
+        $sortieEnCours->setHeureCloture(new DateTime('20:00:00'));
+        $sortieEnCours->setDateCloture(new DateTime('2022-02-06'));
         $sortieEnCours->setHeureAnnonce(new DateTime('20:00:00'));
-        $sortieEnCours->setDateDebut(new DateTime('2022-20-02'));
+        $sortieEnCours->setDateDebut(new DateTime('2022-02-20'));
         $sortieEnCours->setHeureDebut(new DateTime('14:00:00'));
-        $sortieEnCours->setDateFin(new DateTime('2022-20-02'));
+        $sortieEnCours->setDateFin(new DateTime('2022-02-20'));
         $sortieEnCours->setHeureFin(new DateTime('16:00:00'));
         $sortieEnCours->setRaisonAnnulation('null');
         $sortieEnCours->setLimiteParticipants(5);
@@ -306,9 +308,11 @@ class AppFixtures extends Fixture
         $sortieAnnulee->setNom("Star Wars");
         $sortieAnnulee->setDateAnnonce(new DateTime('2022-02-02'));
         $sortieAnnulee->setHeureAnnonce(new DateTime('20:00:00'));
-        $sortieAnnulee->setDateDebut(new DateTime('2022-20-02'));
+        $sortieAnnulee->setHeureCloture(new DateTime('20:00:00'));
+        $sortieAnnulee->setDateCloture(new DateTime('2022-02-06'));
+        $sortieAnnulee->setDateDebut(new DateTime('2022-02-20'));
         $sortieAnnulee->setHeureDebut(new DateTime('20:00:00'));
-        $sortieAnnulee->setDateFin(new DateTime('2022-20-02'));
+        $sortieAnnulee->setDateFin(new DateTime('2022-02-20'));
         $sortieAnnulee->setHeureFin(new DateTime('22:00:00'));
         $sortieAnnulee->setRaisonAnnulation("Cinéma fermé");
         $sortieAnnulee->setLimiteParticipants(20);
@@ -325,9 +329,9 @@ class AppFixtures extends Fixture
         $sortieCloturee->setHeureAnnonce(new DateTime('19:00:00'));
         $sortieCloturee->setDateCloture(new DateTime('2022-05-02'));
         $sortieCloturee->setHeureCloture(new DateTime('14:32:00'));
-        $sortieCloturee->setDateDebut(new DateTime('2022-19-02'));
+        $sortieCloturee->setDateDebut(new DateTime('2022-02-19'));
         $sortieCloturee->setHeureDebut(new DateTime('21:00:00'));
-        $sortieCloturee->setDateFin(new DateTime('2022-19-02'));
+        $sortieCloturee->setDateFin(new DateTime('2022-02-20'));
         $sortieCloturee->setHeureFin(new DateTime('23:00:00'));
         $sortieCloturee->setLimiteParticipants(4);
         $sortieCloturee->setInfosSortie("Places assises");
@@ -343,8 +347,10 @@ class AppFixtures extends Fixture
 
         $sortieArchivee = new Sortie();
         $sortieArchivee->setNom("Visite du château");
-        $sortieArchivee->setDateAnnonce(new DateTime('2021-12-12'));
+        $sortieArchivee->setDateAnnonce(new DateTime('2022-12-12'));
         $sortieArchivee->setHeureAnnonce(new DateTime('19:00:00'));
+        $sortieArchivee->setDateCloture(new DateTime('2022-05-02'));
+        $sortieArchivee->setHeureCloture(new DateTime('14:32:00'));
         $sortieArchivee->setDateDebut(new DateTime('2022-01-01'));
         $sortieArchivee->setHeureDebut(new DateTime('10:00:00'));
         $sortieArchivee->setDateFin(new DateTime('2022-01-01'));
