@@ -3,29 +3,33 @@
 {% block title %}Accueil des sorties{% endblock %}
 
 {% block body %}
-    <h2 class="accueil-sorties">Filtrage des sorties</h2>
-
-    <section class="sortie-filtre">
-
-        {{ form_start(sortieChoixForm) }}
-
-
-        {{ form_widget(sortieChoixForm)}}
-        <button type="submit" class="btn">Filtrer</button>
-
-        {{ form_end(sortieChoixForm) }}
+    <h1 class="accueil-sorties">Sorties</h1>
 
 
 
+<div    class="container">
+
+    <div class="row">
+
+        <div class="col-md-3">
+            <div class="sortie-filtre">
+                 {{ form_start(sortieChoixForm) }}
+                 {{form_widget(sortieChoixForm)}}
+                <button type="submit" class="btn btn-lg btn-primary">Filtrer</button>
+                  {{ form_end(sortieChoixForm) }}
+            </div>
+        </div>
 
 
-    </section>
 
 
-    <li><a href="{{ path('sorties_list') }}" title="Liste des sorties">Liste des sorties</a></li>
-
-
-
+        <div class="col-md-9">
+            <div class="sorties-liste">
+             <li><a href="{{ path('sorties_list') }}" title="Liste des sorties">Liste des sorties</a></li>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 {% endblock %}
