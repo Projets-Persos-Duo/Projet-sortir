@@ -2,7 +2,20 @@
 
 
     <article class="sorties-liste">
-        <a href="{{ path('sorties_detail', {id:sortie.id}) }}" title="Détails de la sortie">{{ sortie.nom }} </a>
+        <a
+                href="{{ path('sorties_detail', {id:sortie.id}) }}"
+                title="Détails de la sortie">{{ sortie.nom }}
+        </a>
+        {% if sortie.participants.count %}
+
+            ({% for participant in sortie.participants %}
+            <a href="{{ path('user_show', {'id': participant.id}) }}">
+            {{ participant.friendlyName }}
+            </a>
+            {% if not loop.last %}, {% endif %}
+        {% endfor %})
+
+        {% endif %}
 
     </article>
 

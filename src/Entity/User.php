@@ -140,6 +140,27 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
+     * Une fonction qui affiche une version lisible
+     * de la personne, pour l'afficher sur la liste
+     * des gens inscrits à une sortie par exemple
+     * @return string
+     */
+    public function getFriendlyName(): string
+    {
+        if($this->firstName && $this->familyName)
+        {
+            return "$this->firstName {$this->familyName[0]}.";
+        }
+
+        if(str_contains($this->username, '@'))
+        {
+            return explode('@', $this->username)[0];
+        }
+
+        return $this->username;
+    }
+
+    /**
      * @see UserInterface
      */
     public function getRoles(): array
