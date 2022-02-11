@@ -3,9 +3,9 @@
 namespace App\Form;
 
 use App\Entity\Campus;
+use App\Entity\Lieu;
 use App\Entity\Sortie;
 use App\Entity\Thematiques;
-use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -37,7 +37,8 @@ class SortieType extends AbstractType
                                         'required'=>false])
             ->add('heure_fin', TimeType::class, ['label'=>'Heure de fin de la sortie :',
                                      'html5'=>true,
-                                    'widget'=>'text'])
+                                    'widget'=>'text',
+                                    'required'=>false])
             ->add('duree', NumberType::class, ['label'=>'Durée (min):', 'mapped'=>false, 'required'=>false])
             ->add('date_cloture', DateType::class, ['label'=>'Date limite d\'inscription :',
                                     'html5'=>true,
@@ -47,9 +48,12 @@ class SortieType extends AbstractType
             ->add('campus', EntityType::class, [
                 'label'=>'Campus :',
                 'class'=>Campus::class,
-                'choice_label'=>'nom',])
-            ->add('lieu', TextareaType::class, ['label'=>'Ville :'])
-            ->add('lieuRDV', TextareaType::class, ['label'=>'Lieu de RDV :', 'required'=>false])
+                'choice_label'=>'nom'])
+            ->add('lieu', EntityType::class, [
+                'label'=>'Lieu :',
+                'class'=>Lieu::class,
+                'choice_label'=>'nom'])
+
 
 
         ;

@@ -2,22 +2,17 @@
 
 namespace App\Controller;
 
-use App\Entity\Campus;
+use App\Data\SearchData;
 use App\Entity\Sortie;
-use App\Entity\User;
-use App\Form\DesinscriptionSortieFormType;
-use App\Form\InscriptionSortieFormType;
+use App\Form\SearchForm;
 use App\Form\SortieType;
-use App\Repository\CampusRepository;
 use App\Repository\SortieRepository;
-use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Security;
 
 /**
  * @Route("/sorties", name="sorties_")
@@ -27,11 +22,67 @@ class SortiesController extends AbstractController
 {
 
 
+    /**
+     * @Route("/findSelect", name="findSelect")
+     */
+    public function FindSortieBySelection(Request $request, SortieRepository $sortieRepository): Response
+
+    {
+
+        $data= new SearchData();
+        $sortieChoixForm = $this->createForm(SearchForm::class, $data);
+        $sortieChoixForm->handleRequest($request);
+        $sortie=new Sortie();
+
+
+        if ($sortieChoixForm->isSubmitted() &&  $sortieChoixForm->isValid()) {
+            $sortie = $sortieRepository->findSearchCampus($data);
+
+
+            return $this->redirectToRoute('sorties_select', ['sortie'=>$sortie]);
+
+        }
+
+
+        return $this->renderForm('sorties/accueil.html.twig', [
+            'sortie' => $sortie,
+            'sortieChoixForm' => $sortieChoixForm,
+        ]);
+
+    }
+
+    /**
+     * @Route("/select", name="select")
+     */
+
+    public function listeSelectSorties(SortieRepository $sortieRepository, Request $request): Response
+    {
+        //TODO / FINIR CETTE FONCTION QUI LISTE LES SORTIES SELON LEUR SELECTION
+//findby??
+
+//$request->get('');
+
+//        $sortie=$sortieRepository->findBy(
+//            ['sortie' => '$nom'],
+//            ['nom' => 'desc'],
+//           30,
+//           0);
+        $sorties=new Sortie();
+//        dump($sorties);
+
+        return $this->render('sorties/listSelect.html.twig', [
+            'sorties' => $sorties,
+        ]);
+
+
+    }
+
+
 
     /**
      * @Route("/list", name="list")
      */
-    public function listeSorties(SortieRepository $sortieRepository): Response
+    public function listeAllSorties(SortieRepository $sortieRepository): Response
     {
         $sorties=$sortieRepository->findAll();
 
@@ -41,103 +92,18 @@ class SortiesController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/list/campus/{id}", name="campus_list")
-     */
-    public function listeSortiesCampus(int $id, Request $request,
-                                       EntityManagerInterface $entityManager,
-                                       SortieRepository $sortieRepository,
-                                       CampusRepository $campusRepository): Response
-    {
-        $sortie = new Sortie();
-        $sortieForm = $this->createForm(SortieType::class, $sortie);
-
-        $sortieForm->handleRequest($request);
-
-        if ($sortieForm->isSubmitted() && $sortieForm->isValid()) {
-
-            $entityManager->persist($sortie);
-            $entityManager->flush();
-        }
-
-            $campus = $campusRepository->find($id);
-            $sorties = $sortieRepository->sortiesParCampus($campus);
-
-
-            return $this->render('sorties/listCampus.html.twig', [
-                'sorties' => $sorties,'sortieForm'=>$sortieForm->createView()
-            ]);
-    }
-
-
-
-    /**
-     * @Route("/list/theme", name="thematique_list")
-     */
-    /*public function listeSortiesThematiques(SortieRepository $sortieRepository): Response
-    {
-        //TODO : retravailler cette fonction
-
-        $sorties=$sortieRepository->findByCampus([$campus], [nom=> 'DESC'], 30, 0);
-
-
-        return $this->render('sorties/list.html.twig', [
-            'sorties' => $sorties]);
-
-
-
-        $sorties=$sortieRepository->sortiesParTheme();
-
-
-        return $this->render('sorties/listTheme.html.twig', [
-            'sorties' => $sorties,
-        ]);
-    }*/
 
 
     /**
      * @Route("/details/{id}", name="detail")
      */
-    public function detailSortie(int $id, Request $request, EntityManagerInterface $entityManager,UserRepository $userRepository, SortieRepository $sortieRepository): Response
+    public function detailSortie(int $id, SortieRepository $sortieRepository): Response
     {
+
        $sortie = $sortieRepository->find($id);
-
-        /** @var \App\Entity\User $user *///pour que le user soit bien un objet App/Entity/User et pas un UserInterface
-        $user = $this->getUser();
-
-        $inscriptionSortieForm = $this->createForm(InscriptionSortieFormType::class, $sortie);
-        $inscriptionSortieForm->handleRequest($request);
-
-       if ($inscriptionSortieForm->isSubmitted() && $inscriptionSortieForm->isValid()){
-           $sortie->addParticipant($user);
-           $user->addSortiesParticipee($sortie);
-           $entityManager->persist($user);
-           $entityManager->persist($sortie);
-           $entityManager->flush();
-
-           $this->addFlash('success', "Vous êtes bien inscrit à cette sortie");
-           return $this->redirectToRoute('sorties_detail',['id' => $id]);
-       }
-        $desinscriptionSortieForm = $this->createForm(DesinscriptionSortieFormType::class, $sortie);
-        $desinscriptionSortieForm->handleRequest($request);
-
-        if ($desinscriptionSortieForm->isSubmitted()){
-            $sortie->removeParticipant($user);
-            $user->removeSortiesParticipee($sortie);
-            $entityManager->persist($user);
-            $entityManager->persist($sortie);
-            $entityManager->flush();
-
-            $this->addFlash('success', "Désincription enregistrée");
-            return $this->redirectToRoute('sorties_detail',['id' => $id]);
-        }
-
-        return $this->render('sorties/detail.html.twig',
-            [
-                "sortie"=>$sortie,
-                'inscriptionSortieForm'=>$inscriptionSortieForm->createView(),
-                'desinscriptionSortieForm'=>$desinscriptionSortieForm->createView()
-            ]);
+        return $this->render('sorties/detail.html.twig', [
+            "sortie"=>$sortie,
+        ]);
     }
 
     /**
@@ -158,15 +124,16 @@ class SortiesController extends AbstractController
                 $sortie->setHeureAnnonce(new \DateTime());
 
 
-$entityManager->persist($sortie);
-$entityManager->flush();
+                $entityManager->persist($sortie);
+                $entityManager->flush();
 
-$this->addFlash('success', 'Sortie ajoutée avec succés');
+            $this->addFlash('success', 'Sortie ajoutée avec succés');
 
-return $this->redirectToRoute('sorties_list');
+            return $this->redirectToRoute('sorties_list');
     }
 
-    return  $this -> render ('sorties/create.html.twig', ['sortieForm'=>$sortieForm->createView()]);
+    return  $this -> render ('sorties/create.html.twig', [
+        'sortieForm'=>$sortieForm->createView()]);
 
 
     }

@@ -83,12 +83,12 @@ class Sortie
      * @ORM\ManyToOne(targetEntity=Thematiques::class, inversedBy="sorties")
      * @ORM\JoinColumn(nullable=false)
      */
-    private ?Thematiques $theme;
+    private Thematiques $theme;
 
     /**
      * @ORM\ManyToOne(targetEntity=Campus::class, inversedBy="sorties")
      */
-    private ?Campus $campus;
+    private Campus $campus;
 
     /**
      * @ORM\ManyToOne(targetEntity=Groupe::class, inversedBy="sorties")
@@ -365,5 +365,11 @@ class Sortie
         $this->participants->removeElement($participant);
 
         return $this;
+    }
+
+
+    public function __toString()
+    {
+        return $this->nom;
     }
 }

@@ -1,17 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des sorties{% endblock %}
-
 {% block body %}
-
-
-
-
-    <h1>Liste des sorties</h1>
+    <h1>Liste des sorties après selection</h1>
     {% for sortie  in sorties %}
 
 
-        <article class="sorties-liste">
+        <article class="sorties-liste-campus">
             <a href="{{ path('sorties_detail', {id:sortie.id}) }}" title="Détails de la sortie">{{ sortie.nom }} </a>
 
         </article>
@@ -19,7 +13,9 @@
 
 
     {% endfor %}
-
-
-
 {% endblock %}
+
+{% block title %}
+    <h1>Liste des sorties après selection</h1>
+{% endblock %}
+

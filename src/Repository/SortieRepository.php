@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Data\SearchData;
 use App\Entity\Campus;
 use App\Entity\Sortie;use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -21,65 +22,59 @@ class SortieRepository extends ServiceEntityRepository
 
 
     /**
-     * Lister les sorties en fonction du campus choisi
+     * Lister les sorties en fonction du campus choisi via nouvelle methode
+     * On ajoute aussi ici que le type de retour est un tableau de "sortie" (lié à entité sortie)
+     * @return Sortie []
      */
-    public function sortiesParCampus (Campus $campus):array
+    public function findSearchCampus (SearchData $search):array
     {
-        $entityManager=$this->getEntityManager();
+    $queryBuilder =$this
+        ->createQueryBuilder('s')
+        ->select('c','s')
+        ->innerJoin('s.campus', 'c');
 
-        $dql="SELECT sortie 
-                FROM App\Entity\Sortie sortie
-                WHERE sortie.campus = :campus";
-        $query=$entityManager->createQuery($dql);
-        $query->setParameter('campus', $campus);
-        $query->setMaxResults(4);
-        return $query->getResult();
 
+
+    if(!empty($search->campus)){
+    $queryBuilder=$queryBuilder
+        ->andWhere('s.campus = :campus')
+        ->setParameter('campus', $search->campus);
 
     }
 
+$queryBuilder->setMaxResults(10);
+        $query=$queryBuilder->getQuery();
+        return  $query->getResult();
+
+
+    }
 
     /**
-     * Lister les sorties en fonction du thème choisi
+     * Lister les sorties en fonction du campus choisi via nouvelle methode
+     * On ajoute aussi ici que le type de retour est un tableau de "sortie" (lié à entité sortie)
+     * @return Sortie []
      */
-    public function sortiesParTheme (sortie $sortie):array
+    public function findSearchThematique (SearchData $search):array
     {
-        $entityManager=$this->getEntityManager();
-        $dql="SELECT c FROM App\Entity\Sortie WHERE c.theme=? ORDER BY c.nom DESC";
-        $query=$entityManager->createQuery($dql);
-        $query->setMaxResults(30);
-        return $query->getResult();
+        $queryBuilder =$this
+            ->createQueryBuilder('s')
+            ->select('t','s')
+             ->join('s.theme', 't');
+
+
+        if(!empty($search->thematiques)){
+            $queryBuilder=$queryBuilder
+                ->andWhere('c.id IN (:thematiques)')
+                ->setParameter('thematiques', $search->thematiques);
+
+        }
+
+
+        $query=$queryBuilder->getQuery();
+        return  $query->getResult();
+
+
     }
 
 
-
-
-    // /**
-    //  * @return Sortie[] Returns an array of Campus objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Campus
-    {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }
