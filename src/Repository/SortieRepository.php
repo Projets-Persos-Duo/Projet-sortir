@@ -35,6 +35,21 @@ class SortieRepository extends ServiceEntityRepository
     }
 
     /**
+     * Ne retourne que les sorties archivées (peut être utile)
+     * @return Sortie[]
+     */
+    public function findArchivees(): array
+    {
+        $sorties = parent::findAll();
+        $sorties = array_filter($sorties, function (Sortie $sortie) {
+            return $sortie->getDateFin() <= new \DateTime('-2 month');
+        });
+
+        return $sorties;
+
+    }
+
+    /**
      * Lister les sorties en fonction du campus choisi via nouvelle methode
      * On ajoute aussi ici que le type de retour est un tableau de "sortie" (lié à entité sortie)
      * @return Sortie []
