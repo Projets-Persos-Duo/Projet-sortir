@@ -11,8 +11,19 @@
     {{ form_start(sortieForm) }}
 
 
-    {{ form_widget(sortieForm) }}
-
+        {{ form_row(sortieForm.nom) }}
+        {{ form_row(sortieForm.theme) }}
+        {{ form_row(sortieForm.date_debut) }}
+        {{ form_row(sortieForm.heure_debut) }}
+        {{ form_row(sortieForm.date_fin) }}
+        {{ form_row(sortieForm.heure_fin) }}
+        {{ form_row(sortieForm.duree) }}
+        {{ form_row(sortieForm.date_cloture) }}
+        {{ form_row(sortieForm.limite_participants) }}
+        {{ form_row(sortieForm.infos_sortie) }}
+        {{ form_row(sortieForm.campus) }}
+        {{ form_row(sortieForm.lieu) }}
+        {{ form_rest(sortieForm) }}
 
 
     <button type="submit" class="btn">Enregistrer</button>
