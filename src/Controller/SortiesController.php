@@ -196,9 +196,15 @@ class SortiesController extends AbstractController
 
         if($sortie->getDateCloture() > new \DateTime('now')) {
             $this->addFlash(
-                'error',
+                'danger',
                 'La sortie ne peut plus etre modifiée après la date de cloture !'
             );
+            return $this->redirectToRoute(
+                'sorties_detail',
+                ['id'=>$sortie->getId()],
+                Response::HTTP_SEE_OTHER
+            );
+
         }
 
         if ($form->isSubmitted() && $form->isValid()) {
