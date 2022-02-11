@@ -28,36 +28,6 @@
     <div>Nombre de places restantes : {{ sortie.limiteParticipants-sortie.participants|length }} / {{ sortie.limiteParticipants }}</div>
     <div>Date limite d'inscription : {{ sortie.dateCloture|date("d/m/Y") }}</div>
 
-    {% if sortie.dateCloture|date('d - m -Y') < 'now'|date('d - m -Y') %}
-        <h3>La date limite d'inscription est dépassée</h3>
-    {% else %}
-
-        {% if sortie.participants|length >= sortie.limiteParticipants %}
-            <h3>Il n'y plus de places disponibles</h3>
-        {% else %}
-
-            {% if app.user %}
-
-                {#  Si déjà inscrit, pouvoir se désinscrire #}
-                {% if app.user.sortiesParticipees.contains(sortie) %}
-
-                    <h3>Vous êtes inscrit à cette sortie</h3>
-                    {{ form(desinscriptionSortieForm) }}
-
-                  {% else %}
-                    {# Sinon pouvoir s'inscrire #}
-                    {{ form(inscriptionSortieForm) }}
-
-                {% endif %}
-
-            {% else %}
-                <h3>Pour pouvoir s'inscrire, veuillez vous connecter à votre compte utilisateur</h3>
-                <li><a href="{{ path('app_login') }}" title="Se connecter">Se connecter</a> </li>
-                <li><a href="{{ path('app_register') }}" title="S'inscrire'">Créer un compte</a> </li>
-            {% endif %}
-
-        {% endif %}
-
-    {% endif %}
+    {% include('inc/inscriptionSortie.html.twig') %}
 
 {% endblock %}
