@@ -11,7 +11,20 @@
     <div>Description : {{ sortie.infosSortie }}</div>
 
     <div>Nombre maximal de participants : {{ sortie.limiteParticipants }}</div>
-    <div>Nombre d'inscrits : {{ sortie.participants|length }}</div>
+    <div>Nombre d'inscrits : {{ sortie.participants|length }}
+
+        {% if sortie.participants.count %}
+
+            ({% for participant in sortie.participants %}
+            <a href="{{ path('user_show', {'id': participant.id}) }}">
+                {{ participant.friendlyName }}
+            </a>
+            {% if not loop.last %}, {% endif %}
+        {% endfor %})
+
+        {% endif %}
+
+    </div>
     <div>Nombre de places restantes : {{ sortie.limiteParticipants-sortie.participants|length }} / {{ sortie.limiteParticipants }}</div>
     <div>Date limite d'inscription : {{ sortie.dateCloture|date("d/m/Y") }}</div>
 
