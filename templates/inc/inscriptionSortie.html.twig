@@ -1,34 +1,40 @@
-{% if sortie.dateDebut|date('d - m -Y') > 'now'|date('d - m -Y')%}
+{% if sortie.raisonAnnulation is defined and sortie.raisonAnnulation is null %}
 
-    {% if app.user %}
+    {% if sortie.dateDebut|date('d - m -Y') > 'now'|date('d - m -Y')%}
 
+        {% if app.user %}
 
-        {% if app.user.sortiesParticipees.contains(sortie) %}
-            <h3>Vous êtes inscrit à cette sortie</h3>
-            {{ form(desinscriptionSortieForm) }}
-
-        {% else %}
-            {% if sortie.dateCloture|date('d - m -Y') >= 'now'|date('d - m -Y') %}
-                {% if sortie.participants|length < sortie.limiteParticipants %}
-
-                    {{ form(inscriptionSortieForm) }}
-
-                {% else %}
-                    <h3>Il n'y plus de places disponibles</h3>
-                {% endif %}
+            {% if app.user.sortiesParticipees.contains(sortie) %}
+                <h3>Vous êtes inscrit à cette sortie</h3>
+                {{ form(desinscriptionSortieForm) }}
 
             {% else %}
-                <h3>La date limite d'inscription est dépassée</h3>
+                {% if sortie.dateCloture|date('d - m -Y') >= 'now'|date('d - m -Y') %}
+                    {% if sortie.participants|length < sortie.limiteParticipants %}
+
+                        {{ form(inscriptionSortieForm) }}
+
+                    {% else %}
+                        <h3>Il n'y plus de places disponibles</h3>
+                    {% endif %}
+
+                {% else %}
+                    <h3>La date limite d'inscription est dépassée</h3>
+                {% endif %}
+
             {% endif %}
 
+        {% else %}
+            <h3>Pour pouvoir s'inscrire, veuillez vous connecter à votre compte utilisateur</h3>
+            <li><a href="{{ path('app_login') }}" title="Se connecter">Se connecter</a> </li>
+            <li><a href="{{ path('app_register') }}" title="S'inscrire'">Créer un compte</a> </li>
         {% endif %}
 
     {% else %}
-        <h3>Pour pouvoir s'inscrire, veuillez vous connecter à votre compte utilisateur</h3>
-        <li><a href="{{ path('app_login') }}" title="Se connecter">Se connecter</a> </li>
-        <li><a href="{{ path('app_register') }}" title="S'inscrire'">Créer un compte</a> </li>
+        <h3>La date de cette sortie est dépassée, elle a eu lieu le {{ sortie.dateDebut|date('d - m -Y') }}</h3>
     {% endif %}
 
-{% else %}
-    <h3>La date de cette sortie est dépassée, elle a eu lieu le {{ sortie.dateDebut|date('d - m -Y') }}</h3>
+{% elseif sortie.raisonAnnulation is defined and sortie.raisonAnnulation is not null %}
+    <h3>Cette sortie a été annulée</h3>
+    {{ sortie.raisonAnnulation }}
 {% endif %}
