@@ -7,7 +7,14 @@
                 href="{{ path('sorties_detail', {id:sortie.id}) }}"
                 title="Détails de la sortie">{{ sortie.nom }}
         </a>
-        {{ macros.liste_utilisateurs(sortie.participants) }}
+        - Organisé par :
+
+            <a href="{{ path('user_show', {'id': sortie.organisateur.id}) }}">
+                {{ sortie.organisateur.friendlyName }}
+            </a>
+
+
+        {{ macros.liste_utilisateurs(sortie.participants, ' - Participants: ', '') }}
 
     </article>
 

@@ -10,6 +10,11 @@
     <div>Thématique : {{ sortie.theme.theme }}</div>
     <div>Lieu : {{ sortie.lieu.nom }} à {{ sortie.lieu.ville.nom }}</div>
     <div>Description : {{ sortie.infosSortie }}</div>
+    <div>Organisateur :
+        <a href="{{ path('user_show', {'id': sortie.organisateur.id}) }}">
+            {{ sortie.organisateur.friendlyName }}
+        </a>
+    </div>
 
     <div>Nombre maximal de participants : {{ sortie.limiteParticipants }}</div>
     <div>Nombre d'inscrits : {{ sortie.participants|length }}
