@@ -48,7 +48,7 @@ class UserType extends AbstractType
                 'required' => false,
                 'type' => PasswordType::class
             ])
-//            ->add('campus')
+            ->add('campus')
 //            ->add('groupes')
 //            ->add('sortiesParticipees')
 //            ->add('groupesGeres')
