@@ -9,7 +9,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\AbstractType;
 
-class SearchForm extends AbstractType
+class SortieSearchForm extends AbstractType
 {
 
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -37,22 +37,22 @@ class SearchForm extends AbstractType
 
 
     public function configureOptions(OptionsResolver $resolver)
-{
-    $resolver->setDefaults([
-        'data_class'=>SearchData::class,
-        'method'=>'GET',
-        'csrf_protection'=>false
+    {
+        $resolver->setDefaults([
+            'data_class'=>SearchData::class,
+            'method'=>'GET',
+            'csrf_protection'=>false
 
-    ]);
-}
+        ]);
+    }
 
     /**
      * @return string
      */
 
-public function getBlockPrefix()
-{
-    return '';
-}
+    public function getBlockPrefix()
+    {
+        return '';
+    }
 
 }

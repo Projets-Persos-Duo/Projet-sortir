@@ -6,32 +6,7 @@
     <h1 class="accueil-sorties">Sorties</h1>
 
 
-
-<div    class="container">
-
-    <div class="row">
-
-        <div class="col-md-3">
-            <div class="sortie-filtre">
-                 {{ form_start(sortieChoixForm) }}
-                 {{form_row(sortieChoixForm)}}
-                <button type="submit" class="btn btn-lg btn-primary">Filtrer</button>
-                  {{ form_end(sortieChoixForm) }}
-            </div>
-        </div>
-
-
-
-
-        <div class="col-md-9">
-            <div class="sorties-liste">
-                {# TODO/ arriver à inclure le twig liste... Problème: la page s'affiche mais pas la liste #}
-                {% include 'sorties/_liste_sorties.html.twig' %}
-                <li><a href="{{ path('sorties_list') }}" title="Liste des sorties">Liste des sorties</a></li>
-            </div>
-        </div>
-    </div>
-</div>
+    {% include 'sorties/_interface.html.twig' %}
 
 
 {% endblock %}
