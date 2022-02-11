@@ -93,3 +93,7 @@ h1 {
 }
 
 .flash-success {background-color: lawngreen}
+
+label, legend {
+    color: var(--bs-light);
+}

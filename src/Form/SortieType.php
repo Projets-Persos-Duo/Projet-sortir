@@ -21,30 +21,56 @@ class SortieType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('nom', TextType::class, ['label'=>'Nom de la sortie :'])
-            ->add('theme', EntityType::class, ['label'=>'Thème de la sortie :',
+            ->add('nom', TextType::class, [
+                    'label'=>'Nom de la sortie :',
+                ]
+            )
+            ->add('theme', EntityType::class, [
+                'label'=>'Thème de la sortie :',
                 'class'=>Thematiques::class,
-                'choice_label'=>'Theme',])
-            ->add('date_debut', DateType::class, ['label'=>'Date de la sortie :',
-                                     'html5'=>true,
-                                    'widget'=>'single_text' ])
-            ->add('heure_debut', TimeType::class, ['label'=>'Heure de la sortie :',
-                                         'html5'=>true,
-                                        'widget'=>'text' ])
-            ->add('date_fin', DateType::class, ['label'=>'Date de fin de la sortie :',
-                                        'html5'=>true,
-                                        'widget'=>'single_text',
-                                        'required'=>false])
-            ->add('heure_fin', TimeType::class, ['label'=>'Heure de fin de la sortie :',
-                                     'html5'=>true,
-                                    'widget'=>'text',
-                                    'required'=>false])
-            ->add('duree', NumberType::class, ['label'=>'Durée (min):', 'mapped'=>false, 'required'=>false])
-            ->add('date_cloture', DateType::class, ['label'=>'Date limite d\'inscription :',
-                                    'html5'=>true,
-                                      'widget'=>'single_text'])
-            ->add('limite_participants', NumberType::class, ['label'=>'Nombre de places :'])
-            ->add('infos_sortie', TextareaType::class, ['label'=>'Description et infos complémentaires :', 'required'=>false])
+                'choice_label'=>'Theme',
+                ]
+            )
+            ->add('date_debut', DateType::class, [
+                'label'=>'Date de la sortie :',
+                'html5'=>true,
+                'widget'=>'single_text'
+                ]
+            )
+            ->add('heure_debut', TimeType::class, [
+                'label'=>'Heure de la sortie :',
+                'html5'=>true,
+                'widget'=>'text'
+            ])
+            ->add('date_fin', DateType::class, [
+                'label'=>'Date de fin de la sortie :',
+                'html5'=>true,
+                'widget'=>'single_text',
+                'required'=>false
+            ])
+            ->add('heure_fin', TimeType::class, [
+                'label'=>'Heure de fin de la sortie :',
+                'html5'=>true,
+                'widget'=>'text',
+                'required'=>false]
+            )
+            ->add('duree', NumberType::class, [
+                'label'=>'Durée (min):',
+                'mapped'=>false,
+                'required'=>false]
+            )
+            ->add('date_cloture', DateType::class, [
+                'label'=>'Date limite d\'inscription :',
+                'html5'=>true,
+                'widget'=>'single_text']
+            )
+            ->add('limite_participants', NumberType::class, [
+                'label'=>'Nombre de places :'
+            ])
+            ->add('infos_sortie', TextareaType::class, [
+                'label'=>'Description et infos complémentaires :',
+                'required'=>false]
+            )
             ->add('campus', EntityType::class, [
                 'label'=>'Campus :',
                 'class'=>Campus::class,
