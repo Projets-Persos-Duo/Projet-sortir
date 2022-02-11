@@ -347,13 +347,13 @@ class AppFixtures extends Fixture
 
         $sortieArchivee = new Sortie();
         $sortieArchivee->setNom("Visite du château");
-        $sortieArchivee->setDateAnnonce(new DateTime('2022-12-12'));
+        $sortieArchivee->setDateAnnonce(new DateTime('2020-12-12'));
         $sortieArchivee->setHeureAnnonce(new DateTime('19:00:00'));
-        $sortieArchivee->setDateCloture(new DateTime('2022-05-02'));
+        $sortieArchivee->setDateCloture(new DateTime('2020-05-02'));
         $sortieArchivee->setHeureCloture(new DateTime('14:32:00'));
-        $sortieArchivee->setDateDebut(new DateTime('2022-01-01'));
+        $sortieArchivee->setDateDebut(new DateTime('2020-01-01'));
         $sortieArchivee->setHeureDebut(new DateTime('10:00:00'));
-        $sortieArchivee->setDateFin(new DateTime('2022-01-01'));
+        $sortieArchivee->setDateFin(new DateTime('2020-01-01'));
         $sortieArchivee->setHeureFin(new DateTime('11:00:00'));
         $sortieArchivee->setLimiteParticipants(5);
         $sortieArchivee->setInfosSortie("Pensez à prendre un parapluie pour la visite des jardins");

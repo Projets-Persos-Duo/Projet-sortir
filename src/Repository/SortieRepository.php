@@ -5,12 +5,13 @@ namespace App\Repository;
 use App\Data\SearchData;
 use App\Entity\Campus;
 use App\Entity\Sortie;use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\DBAL\Types\DateTimeType;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * @method Sortie|null find($id, $lockMode = null, $lockVersion = null)
  * @method Sortie|null findOneBy(array $criteria, array $orderBy = null)
- * @method Sortie[]    findAll()
  * @method Sortie[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class SortieRepository extends ServiceEntityRepository
@@ -20,6 +21,18 @@ class SortieRepository extends ServiceEntityRepository
         parent::__construct($registry, Sortie::class);
     }
 
+    /**
+     * @return Sortie[]
+     */
+    public function findAll(): array
+    {
+        $sorties = parent::findAll();
+        $sorties = array_filter($sorties, function (Sortie $sortie) {
+            return $sortie->getDateFin() > new \DateTime('-2 month');
+        });
+
+        return $sorties;
+    }
 
     /**
      * Lister les sorties en fonction du campus choisi via nouvelle methode
@@ -28,24 +41,25 @@ class SortieRepository extends ServiceEntityRepository
      */
     public function findSearchCampus (SearchData $search):array
     {
-    $queryBuilder =$this
-        ->createQueryBuilder('s')
-        ->select('c','s')
-        ->innerJoin('s.campus', 'c');
+        $queryBuilder =$this
+            ->createQueryBuilder('s')
+            ->select('c','s')
+            ->innerJoin('s.campus', 'c');
+
+        if(!empty($search->campus)){
+            $queryBuilder=$queryBuilder
+                ->andWhere('s.campus = :campus')
+                ->setParameter('campus', $search->campus);
+
+        }
+
+        $queryBuilder = $this->exclureSortiesExpirees($queryBuilder);
 
 
-
-    if(!empty($search->campus)){
-    $queryBuilder=$queryBuilder
-        ->andWhere('s.campus = :campus')
-        ->setParameter('campus', $search->campus);
-
-    }
-
-$queryBuilder->setMaxResults(10);
+        $queryBuilder->setMaxResults(10);
         $query=$queryBuilder->getQuery();
-        return  $query->getResult();
 
+        return  $query->getResult();
 
     }
 
@@ -61,7 +75,6 @@ $queryBuilder->setMaxResults(10);
             ->select('t','s')
              ->join('s.theme', 't');
 
-
         if(!empty($search->thematiques)){
             $queryBuilder=$queryBuilder
                 ->andWhere('c.id IN (:thematiques)')
@@ -69,11 +82,22 @@ $queryBuilder->setMaxResults(10);
 
         }
 
+        $queryBuilder = $this->exclureSortiesExpirees($queryBuilder);
+
 
         $query=$queryBuilder->getQuery();
         return  $query->getResult();
 
 
+    }
+
+    private function exclureSortiesExpirees(QueryBuilder $queryBuilder): QueryBuilder
+    {
+        $queryBuilder->andWhere('s.date_fin < :date')->setParameter(
+            'date', new \DateTimeImmutable()
+        );
+
+        return $queryBuilder;
     }
 
 
