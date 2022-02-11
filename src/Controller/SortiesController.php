@@ -167,13 +167,59 @@ class SortiesController extends AbstractController
             $this->addFlash('success', 'Sortie ajoutée avec succés');
 
             return $this->redirectToRoute('sorties_list');
-    }
+        }
 
-    return  $this -> render ('sorties/create.html.twig', [
-        'sortieForm'=>$sortieForm->createView()]);
-
-
-    }
+        return  $this -> render ('sorties/create.html.twig', [
+            'sortieForm'=>$sortieForm->createView()]);
 
 
     }
+
+    /**
+     * @Route("/edit/{id}", name="edit")
+     */
+    public function edit(
+        int $id,
+        Request $request,
+        EntityManagerInterface $entityManager,
+        SortieRepository $sortieRepository
+    ): Response
+    {
+        $sortie = $sortieRepository->find($id);
+        $form = $this->createForm(SortieType::class, $sortie);
+
+        $form->handleRequest($request);
+
+        if($this->getUser()->getId() != $sortie->getOrganisateur()->getId()) {
+            throw $this->createAccessDeniedException('Non autorisé');
+        }
+
+        if($sortie->getDateCloture() > new \DateTime('now')) {
+            $this->addFlash(
+                'error',
+                'La sortie ne peut plus etre modifiée après la date de cloture !'
+            );
+        }
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($sortie);
+            $entityManager->flush();
+            $this->addFlash('success', 'Sortie modifiée !');
+
+            return $this->redirectToRoute(
+                'sorties_detail',
+                ['id'=>$sortie->getId()],
+                Response::HTTP_SEE_OTHER
+            );
+
+        }
+
+        fail:
+        return $this->renderForm('sorties/edit.html.twig', [
+            'sortie' => $sortie,
+            'form' => $form,
+        ]);
+
+    }
+
+}

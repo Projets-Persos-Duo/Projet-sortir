@@ -26,5 +26,10 @@
     <div>Date limite d'inscription : {{ sortie.dateCloture|date("d/m/Y") }}</div>
 
     {% include('inc/inscriptionSortie.html.twig') %}
+    {% if sortie.organisateur == app.user %}
+    <a href="{{ path('sorties_edit', {'id': sortie.id}) }}" class="btn btn-secondary">
+        Modifier
+    </a>
+    {% endif %}
 
 {% endblock %}
