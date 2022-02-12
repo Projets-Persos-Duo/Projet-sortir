@@ -54,15 +54,18 @@ class SecurityController extends AbstractController
         $user->setIsAdmin(false);
         $user->setIsActive(true);
 
-        /* Si l'utilisateur envoie un pseudo qui ressemble à un email,
-           on lui met aussi le champ email */
-        $emailValidator = new EmailValidator();
-        $emailValidation = new RFCValidation();
-        if($emailValidator->isValid($form->get('username')->getData(), $emailValidation)) {
-            $user->setEmail($form->get('username')->getData());
-        }
 
         if ($form->isSubmitted() && $form->isValid()) {
+            /* Si l'utilisateur envoie un pseudo qui ressemble à un email,
+                on lui met aussi le champ email */
+
+            $emailValidator = new EmailValidator();
+            $emailValidation = new RFCValidation();
+            if($emailValidator->isValid($form->get('username')->getData(), $emailValidation)) {
+                $user->setEmail($form->get('username')->getData());
+            }
+
+
             // encode the plain password
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
