@@ -304,6 +304,49 @@ class AppFixtures extends Fixture
         $sortieEnCours->addParticipant($toto);
         $manager->persist($sortieEnCours);
 
+        $sortieEnCours1 = new Sortie();
+        $sortieEnCours1->setNom("Randonnée en bord de mer");
+        $sortieEnCours1->setDateAnnonce(new DateTime('2022-02-13'));
+        $sortieEnCours1->setHeureCloture(new DateTime('20:00:00'));
+        $sortieEnCours1->setDateCloture(new DateTime('2022-03-06'));
+        $sortieEnCours1->setHeureAnnonce(new DateTime('20:00:00'));
+        $sortieEnCours1->setDateDebut(new DateTime('2022-04-20'));
+        $sortieEnCours1->setHeureDebut(new DateTime('09:00:00'));
+        $sortieEnCours1->setDateFin(new DateTime('2022-04-20'));
+        $sortieEnCours1->setHeureFin(new DateTime('13:00:00'));
+        $sortieEnCours1->setRaisonAnnulation('null');
+        $sortieEnCours1->setLimiteParticipants(15);
+        $sortieEnCours1->setInfosSortie("Prévoir tenues adapatées (marche et pluie)");
+        $sortieEnCours1->setTheme($sport);
+        $sortieEnCours1->setCampus($campusQuimper);
+        $sortieEnCours1->setOrganisateur($sego);
+        $sortieEnCours1->setLieu($parc2);
+        $sortieEnCours1->addParticipant($toto);
+        $sortieEnCours1->addParticipant($lulu);
+        $sortieEnCours1->addParticipant($sego);
+        $sortieEnCours1->addParticipant($fred);
+        $manager->persist($sortieEnCours1);
+
+        $sortieEnCours2 = new Sortie();
+        $sortieEnCours2->setNom("Conférence sur la préhistoire");
+        $sortieEnCours2->setDateAnnonce(new DateTime('2022-02-02'));
+        $sortieEnCours2->setHeureCloture(new DateTime('20:00:00'));
+        $sortieEnCours2->setDateCloture(new DateTime('2022-02-25'));
+        $sortieEnCours2->setHeureAnnonce(new DateTime('20:00:00'));
+        $sortieEnCours2->setDateDebut(new DateTime('2022-03-20'));
+        $sortieEnCours2->setHeureDebut(new DateTime('20:00:00'));
+        $sortieEnCours2->setDateFin(new DateTime('2022-03-20'));
+        $sortieEnCours2->setHeureFin(new DateTime('22:00:00'));
+        $sortieEnCours2->setRaisonAnnulation('null');
+        $sortieEnCours2->setLimiteParticipants(5);
+        $sortieEnCours2->setInfosSortie("Les premiers outils");
+        $sortieEnCours2->setTheme($conference);
+        $sortieEnCours2->setCampus($campusNantes);
+        $sortieEnCours2->setOrganisateur($toto);
+        $sortieEnCours2->setLieu($expo1);
+        $sortieEnCours2->addParticipant($toto);
+        $manager->persist($sortieEnCours2);
+
         $sortieAnnulee = new Sortie();
         $sortieAnnulee->setNom("Star Wars");
         $sortieAnnulee->setDateAnnonce(new DateTime('2022-02-02'));
@@ -327,7 +370,7 @@ class AppFixtures extends Fixture
         $sortieCloturee->setNom("Concert U2");
         $sortieCloturee->setDateAnnonce(new DateTime('2022-02-02'));
         $sortieCloturee->setHeureAnnonce(new DateTime('19:00:00'));
-        $sortieCloturee->setDateCloture(new DateTime('2022-05-02'));
+        $sortieCloturee->setDateCloture(new DateTime('2022-02-15'));
         $sortieCloturee->setHeureCloture(new DateTime('14:32:00'));
         $sortieCloturee->setDateDebut(new DateTime('2022-02-19'));
         $sortieCloturee->setHeureDebut(new DateTime('21:00:00'));
