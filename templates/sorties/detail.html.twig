@@ -4,7 +4,7 @@
 {% block title %}Détail de la sortie{% endblock %}
 
 {% block body %}
-    <h2 class="libelle">{{ sortie.nom }}</h2>
+    <h2 class="libelle-sortie">{{ sortie.nom }}</h2>
 
     <div>Date : le {{ sortie.dateDebut|date("d/m/Y")}}, de {{ sortie.heureDebut|date('H:i') }} à {{ sortie.heureFin|date('H:i') }}</div>
     <div>Thématique : {{ sortie.theme.theme }}</div>

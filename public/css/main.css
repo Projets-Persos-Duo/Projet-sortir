@@ -70,8 +70,12 @@ footer {
 h1 {
     color: #B0413E;
     text-align: center;
-}
 
+
+.libelle-sortie {
+    text-align: center;
+    color: #B0413E;
+}
 
 .sortie-create {
    display: block;
@@ -116,3 +120,4 @@ label, legend {
     margin: 20px;
 
 }
+
