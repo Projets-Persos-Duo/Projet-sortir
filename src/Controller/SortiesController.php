@@ -162,17 +162,20 @@ class SortiesController extends AbstractController
 
     public function create(Request $request, EntityManagerInterface $entityManager): Response
     {
+        /** @var User $user *///pour que le user soit bien un objet App/Entity/User et pas un UserInterface
+        $user = $this->getUser();
+
         $sortie = new Sortie();
 
             $sortieForm=$this->createForm(SortieType::class, $sortie);
-
             $sortieForm->handleRequest($request);
 
             if ($sortieForm->isSubmitted() && $sortieForm->isValid()){
 
+                $sortie->setOrganisateur($user);
+                $sortie->setHeureCloture(new \DateTime('23:59:59'));
                 $sortie->setDateAnnonce(new \DateTime());
                 $sortie->setHeureAnnonce(new \DateTime());
-
 
                 $entityManager->persist($sortie);
                 $entityManager->flush();
@@ -184,8 +187,6 @@ class SortiesController extends AbstractController
 
         return  $this -> render ('sorties/create.html.twig', [
             'sortieForm'=>$sortieForm->createView()]);
-
-
     }
 
     /**
