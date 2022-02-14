@@ -14,6 +14,7 @@ use App\Repository\SortieRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -87,9 +88,19 @@ class SortiesController extends AbstractController
     /**
      * @Route("/list", name="list")
      */
-    public function listeAllSorties(SortieRepository $sortieRepository): Response
+    public function listeAllSorties(SortieRepository $sortieRepository,
+                                    PaginatorInterface $paginator,
+                                    Request $request
+                                ): Response
     {
-        $sorties=$sortieRepository->findAll();
+
+            $data=$sortieRepository->findAll();
+//paginator va nous permettre de choisir le nombre de sorties affichées par page (ici 6)
+            $sorties = $paginator->paginate(
+                $data,
+                $request->query->getInt('page', 1),
+                6
+        );
 
         return $this->render('sorties/list.html.twig', [
             'sorties' => $sorties,
