@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Data\SearchData;
 use App\Entity\Sortie;
+use App\Form\AnnulationSortieFormType;
 use App\Form\SortieSearchForm;
 use App\Entity\User;
 use App\Form\DesinscriptionSortieFormType;
@@ -238,6 +239,37 @@ class SortiesController extends AbstractController
             'form' => $form,
         ]);
 
+    }
+    /**
+     * @Route("/annuler/{id}", name="annuler")
+     */
+    public function annuler( int $id, Request $request, EntityManagerInterface $entityManager, SortieRepository $sortieRepository):Response
+    {
+        $sortie = $sortieRepository->find($id);
+        if($this->getUser()->getId() != $sortie->getOrganisateur()->getId()) {
+            throw $this->createAccessDeniedException('Non autorisé');
+        }
+
+        $annulationSortieForm = $this->createForm(AnnulationSortieFormType::class, $sortie);
+        $annulationSortieForm->handleRequest($request);
+
+        /*if ($annulationSortieForm->isSubmitted() && $annulationSortieForm->isValid())
+        {
+            $raison = $request->
+
+
+            $entityManager->persist($sortie);
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Sortie ajoutée avec succés');
+
+            return $this->redirectToRoute('sorties_list');
+        }*/
+
+        return $this->render('sorties/annuler.html.twig', [
+            "sortie"=>$sortie,
+            'annulationSortieForm'=>$annulationSortieForm->createView(),
+        ]);
     }
 
 }

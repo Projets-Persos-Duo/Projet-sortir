@@ -1,0 +1,22 @@
+{% import 'macros.html.twig' as macros %}
+<h2 class="libelle-sortie">{{ sortie.nom }}</h2>
+
+<div>Date : le {{ sortie.dateDebut|date("d/m/Y")}}, de {{ sortie.heureDebut|date('H:i') }} à {{ sortie.heureFin|date('H:i') }}</div>
+<div>Campus : {{ sortie.campus.nom }}</div>
+<div>Thématique : {{ sortie.theme.theme }}</div>
+<div>Lieu : {{ sortie.lieu.nom }} à {{ sortie.lieu.ville.nom }}</div>
+<div>Description : {{ sortie.infosSortie }}</div>
+<div>Organisateur :
+    <a href="{{ path('user_show', {'id': sortie.organisateur.id}) }}">
+        {{ sortie.organisateur.friendlyName }}
+    </a>
+</div>
+
+<div>Nombre maximal de participants : {{ sortie.limiteParticipants }}</div>
+<div>Nombre d'inscrits : {{ sortie.participants|length }}
+
+    {{ macros.liste_utilisateurs(sortie.participants) }}
+
+</div>
+<div>Nombre de places restantes : {{ sortie.limiteParticipants-sortie.participants|length }} / {{ sortie.limiteParticipants }}</div>
+<div>Date limite d'inscription : {{ sortie.dateCloture|date("d/m/Y") }}</div>

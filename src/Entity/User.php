@@ -347,6 +347,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    public function removeGroupe(Groupe $groupe): self
+    {
+        if ($this->groupes->removeElement($groupe)) {
+            $groupe->removeMembre($this);
+        }
+
+        return $this;
+    }
+
     /**
      * @return Collection|Sortie[]
      */
@@ -360,15 +369,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         if (!$this->sortiesOrganisees->contains($sortiesOrganisee)) {
             $this->sortiesOrganisees[] = $sortiesOrganisee;
             $sortiesOrganisee->setOrganisateur($this);
-        }
-
-        return $this;
-    }
-
-    public function removeGroupe(Groupe $groupe): self
-    {
-        if ($this->groupes->removeElement($groupe)) {
-            $groupe->removeMembre($this);
         }
 
         return $this;
