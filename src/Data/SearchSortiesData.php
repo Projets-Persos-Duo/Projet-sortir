@@ -7,7 +7,7 @@ use App\Entity\Sortie;
 use App\Entity\Thematiques;
 
 
-class SearchData
+class SearchSortiesData
 {
 
     /**

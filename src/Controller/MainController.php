@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Data\SearchData;
+use App\Data\SearchSortiesData;
 use App\Form\SortieSearchType;
 use App\Repository\SortieRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -19,7 +19,7 @@ class MainController extends AbstractController
 
     public function home(Request $request, SortieRepository $sortieRepository)
     {
-        $data= new SearchData();
+        $data= new SearchSortiesData();
         $sortieChoixForm = $this->createForm(SortieSearchType::class, $data);
         $sortieChoixForm->handleRequest($request);
 

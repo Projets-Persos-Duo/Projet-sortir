@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\Data\SearchData;
+use App\Data\SearchSortiesData;
 use App\Entity\Campus;
 use App\Entity\Thematiques;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -67,7 +67,7 @@ class SortieSearchType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class'=>SearchData::class,
+            'data_class'=>SearchSortiesData::class,
             'method'=>'GET',
             'csrf_protection'=>false
 

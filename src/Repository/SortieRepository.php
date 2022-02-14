@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Data\SearchData;
+use App\Data\SearchSortiesData;
 use App\Entity\Campus;
 use App\Entity\Sortie;use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\DBAL\Types\DateTimeType;
@@ -54,7 +54,7 @@ class SortieRepository extends ServiceEntityRepository
      * On ajoute aussi ici que le type de retour est un tableau de "sortie" (lié à entité sortie)
      * @return Sortie []
      */
-    public function findSearchCampus (SearchData $search):array
+    public function findSearchCampus (SearchSortiesData $search):array
     {
         $queryBuilder =$this
             ->createQueryBuilder('s')
@@ -83,7 +83,7 @@ class SortieRepository extends ServiceEntityRepository
      * On ajoute aussi ici que le type de retour est un tableau de "sortie" (lié à entité sortie)
      * @return Sortie []
      */
-    public function findSearchThematique (SearchData $search):array
+    public function findSearchThematique (SearchSortiesData $search):array
     {
         $queryBuilder =$this
             ->createQueryBuilder('s')
