@@ -37,6 +37,12 @@ class Groupe
      */
     private ?User $proprietaire;
 
+
+    public function __toString()
+    {
+        return "Groupe de $this->proprietaire";
+    }
+
     public function __construct()
     {
         $this->membres = new ArrayCollection();
