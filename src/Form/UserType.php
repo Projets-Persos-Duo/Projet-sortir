@@ -20,8 +20,10 @@ class UserType extends AbstractType
             ->add('username', TextType::class, [
                 'label' => 'Pseudo'
             ])
-//            ->add('roles')
-            ->add('email', EmailType::class)
+            ->add('email', EmailType::class, [
+                'required' => false,
+                'label' => 'Adresse e-mail'
+            ])
             ->add('familyName', TextType::class, [
                 'required' => false,
                 'label' => 'Nom de famille'
@@ -34,6 +36,7 @@ class UserType extends AbstractType
                 'label' => 'Téléphone',
                 'required' => false
             ])
+            ->add('campus')
             ->add('oldMDP', PasswordType::class, [
                 'label' => 'Ancien mot de passe',
                 'required' => false,
@@ -48,10 +51,10 @@ class UserType extends AbstractType
                 'required' => false,
                 'type' => PasswordType::class
             ])
-            ->add('campus')
 //            ->add('groupes')
 //            ->add('sortiesParticipees')
 //            ->add('groupesGeres')
+//            ->add('roles')
         ;
     }
 

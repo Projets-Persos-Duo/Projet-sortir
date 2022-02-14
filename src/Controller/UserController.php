@@ -65,11 +65,11 @@ class UserController extends AbstractController
      * @Route("/{id}/edit", name="user_edit", methods={"GET", "POST"})
      */
     public function edit(
-        Request $request,
-        User $user,
-        EntityManagerInterface $entityManager,
-        UserPasswordHasherInterface $userPasswordHasher
-    ): Response
+                            Request $request,
+                            User $user,
+                            EntityManagerInterface $entityManager,
+                            UserPasswordHasherInterface $userPasswordHasher
+                        ): Response
     {
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
