@@ -54,41 +54,16 @@ class SortieRepository extends ServiceEntityRepository
      * On ajoute aussi ici que le type de retour est un tableau de "sortie" (lié à entité sortie)
      * @return Sortie []
      */
-    public function findSearchCampus (SearchSortiesData $search):array
+    public function findSearch(SearchSortiesData $search):array
     {
-        $queryBuilder =$this
-            ->createQueryBuilder('s')
-            ->select('c','s')
-            ->innerJoin('s.campus', 'c');
+        $queryBuilder = $this
+            ->createQueryBuilder('sortie');
 
-        if(!empty($search->campus)){
-            $queryBuilder=$queryBuilder
-                ->andWhere('s.campus = :campus')
-                ->setParameter('campus', $search->campus);
-
+        if(!empty($data->campus)) {
+            $queryBuilder
+                ->andWhere('sortie.campus in (:cats)')
+                ->setParameter('cats', $data->campus);
         }
-
-        $queryBuilder = $this->exclureSortiesExpirees($queryBuilder);
-
-
-        $queryBuilder->setMaxResults(10);
-        $query=$queryBuilder->getQuery();
-
-        return  $query->getResult();
-
-    }
-
-    /**
-     * Lister les sorties en fonction du campus choisi via nouvelle methode
-     * On ajoute aussi ici que le type de retour est un tableau de "sortie" (lié à entité sortie)
-     * @return Sortie []
-     */
-    public function findSearchThematique (SearchSortiesData $search):array
-    {
-        $queryBuilder =$this
-            ->createQueryBuilder('s')
-            ->select('t','s')
-             ->join('s.theme', 't');
 
         if(!empty($search->thematiques)){
             $queryBuilder=$queryBuilder
@@ -100,9 +75,10 @@ class SortieRepository extends ServiceEntityRepository
         $queryBuilder = $this->exclureSortiesExpirees($queryBuilder);
 
 
+        $queryBuilder->setMaxResults(10);
         $query=$queryBuilder->getQuery();
-        return  $query->getResult();
 
+        return  $query->getResult();
 
     }
 
@@ -127,24 +103,6 @@ class SortieRepository extends ServiceEntityRepository
         $sorties = $queryBuilder->getQuery();
 
         return $sorties->getResult();
-    }
-
-    /**
-     * Retourne des sorties en fonction de criteres de recherche
-     * @return Sortie[]
-     */
-    public function findSearch(SearchSortiesData $data):array
-    {
-        $queryBuilder = $this
-            ->createQueryBuilder('sortie');
-
-        if(!empty($data->campus)) {
-            $queryBuilder
-                ->andWhere('sortie.campus in (:cats)')
-                ->setParameter('cats', $data->campus);
-        }
-
-        return $queryBuilder->getQuery()->getResult();
     }
 
 
