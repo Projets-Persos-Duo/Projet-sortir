@@ -294,7 +294,6 @@ class AppFixtures extends Fixture
         $sortieEnCours->setHeureDebut(new DateTime('14:00:00'));
         $sortieEnCours->setDateFin(new DateTime('2022-02-20'));
         $sortieEnCours->setHeureFin(new DateTime('16:00:00'));
-        $sortieEnCours->setRaisonAnnulation('null');
         $sortieEnCours->setLimiteParticipants(5);
         $sortieEnCours->setInfosSortie("Cours initiation débutant");
         $sortieEnCours->setTheme($sport);
@@ -314,7 +313,6 @@ class AppFixtures extends Fixture
         $sortieEnCours1->setHeureDebut(new DateTime('09:00:00'));
         $sortieEnCours1->setDateFin(new DateTime('2022-04-20'));
         $sortieEnCours1->setHeureFin(new DateTime('13:00:00'));
-        $sortieEnCours1->setRaisonAnnulation('null');
         $sortieEnCours1->setLimiteParticipants(15);
         $sortieEnCours1->setInfosSortie("Prévoir tenues adapatées (marche et pluie)");
         $sortieEnCours1->setTheme($sport);
@@ -337,7 +335,6 @@ class AppFixtures extends Fixture
         $sortieEnCours2->setHeureDebut(new DateTime('20:00:00'));
         $sortieEnCours2->setDateFin(new DateTime('2022-03-20'));
         $sortieEnCours2->setHeureFin(new DateTime('22:00:00'));
-        $sortieEnCours2->setRaisonAnnulation('null');
         $sortieEnCours2->setLimiteParticipants(5);
         $sortieEnCours2->setInfosSortie("Les premiers outils");
         $sortieEnCours2->setTheme($conference);

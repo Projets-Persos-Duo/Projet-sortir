@@ -3,9 +3,9 @@
 {% block title %}Groupe index{% endblock %}
 
 {% block body %}
-    <h1>Groupe index</h1>
+    <h1>Groupes</h1>
 
-    <table class="table">
+    <table class="table table-dark">
         <thead>
             <tr>
                 <th>Id</th>
@@ -17,8 +17,8 @@
             <tr>
                 <td>{{ groupe.id }}</td>
                 <td>
-                    <a href="{{ path('crud_groupe_show', {'id': groupe.id}) }}">show</a>
-                    <a href="{{ path('crud_groupe_edit', {'id': groupe.id}) }}">edit</a>
+                    <a href="{{ path('crud_groupe_show', {'id': groupe.id}) }}">voir</a>
+                    <a href="{{ path('crud_groupe_edit', {'id': groupe.id}) }}">modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -29,5 +29,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('crud_groupe_new') }}">Create new</a>
+    <a href="{{ path('crud_groupe_new') }}">Ajouter un groupe</a>
 {% endblock %}
