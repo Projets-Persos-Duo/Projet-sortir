@@ -28,7 +28,7 @@ class SortieRepository extends ServiceEntityRepository
     {
         $sorties = parent::findAll();
         $sorties = array_filter($sorties, function (Sortie $sortie) {
-            return $sortie->getDateFin() > new \DateTime('-2 month');
+            return $sortie->getDateFin() > new \DateTime('-1 month');
         });
 
         return $sorties;
@@ -42,7 +42,7 @@ class SortieRepository extends ServiceEntityRepository
     {
         $sorties = parent::findAll();
         $sorties = array_filter($sorties, function (Sortie $sortie) {
-            return $sortie->getDateFin() <= new \DateTime('-2 month');
+            return $sortie->getDateFin() <= new \DateTime('-1 month');
         });
 
         return $sorties;
