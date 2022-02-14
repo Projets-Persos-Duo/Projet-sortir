@@ -4,10 +4,11 @@
 
 {% block body %}
     <h1>Modifier un Lieu</h1>
-
+    <p>
     {{ include('lieu/_form.html.twig', {'button_label': 'Mise à jour'}) }}
-
-    <a href="{{ path('lieu_index') }}">Retour</a>
-
+    </p>
+<p>
+    <a class="btn btn-success" href="{{ path('lieu_index') }}">Retour</a>
+    </p>
     {{ include('lieu/_delete_form.html.twig') }}
 {% endblock %}

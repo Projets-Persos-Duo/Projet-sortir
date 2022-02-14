@@ -1,8 +1,8 @@
 {{ form_start(form) }}
     {{ form_widget(form) }}
     <p>
-        <a href="{{ path('ville_new') }}" >Ajouter une ville</a>
+        <a class="btn btn-warning" href="{{ path('ville_new') }}" >Ajouter une ville</a>
     </p>
 
-    <button class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
+    <button class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
 {{ form_end(form) }}

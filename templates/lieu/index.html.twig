@@ -3,7 +3,7 @@
 {% block title %}Lieu index{% endblock %}
 
 {% block body %}
-    <h1>Index des lieux</h1>
+    <h1>Lieux</h1>
 
     <table class="table table-dark">
         <thead>
@@ -37,5 +37,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('lieu_new') }}">Nouveau lieu</a>
+    <a class="btn btn-success" href="{{ path('lieu_new') }}">Ajouter un lieu</a>
 {% endblock %}

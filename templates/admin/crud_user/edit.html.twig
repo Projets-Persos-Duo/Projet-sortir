@@ -4,10 +4,10 @@
 
 {% block body %}
     <h1>Utilisateur - Modifier</h1>
-
+    <p>
     {{ include('admin/crud_user/_form.html.twig', {'button_label': 'Enregistrer'}) }}
-
+    </p><p>
     <a class="btn btn-success" href="{{ path('crud_user_index') }}">Retour</a>
-
+    </p>
     {{ include('admin/crud_user/_delete_form.html.twig') }}
 {% endblock %}

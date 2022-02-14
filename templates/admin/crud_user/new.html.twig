@@ -4,8 +4,8 @@
 
 {% block body %}
     <h1>Ajouter un utilisateur</h1>
-
+    <p>
     {{ include('admin/crud_user/_form.html.twig') }}
-
+    </p>
     <a class="btn btn-success" href="{{ path('crud_user_index') }}">Retour</a>
 {% endblock %}

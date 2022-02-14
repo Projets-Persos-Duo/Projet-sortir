@@ -4,8 +4,8 @@
 
 {% block body %}
     <h1>Ajouter un groupe</h1>
-
+    <p>
     {{ include('admin/crud_groupe/_form.html.twig') }}
-
+    </p>
     <a class="btn btn-success" href="{{ path('crud_groupe_index') }}">Retour</a>
 {% endblock %}

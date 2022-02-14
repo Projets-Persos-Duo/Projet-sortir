@@ -4,8 +4,8 @@
 
 {% block body %}
     <h1>Ajouter une photo</h1>
-
+    <p>
     {{ include('admin/crud_photo/_form.html.twig') }}
-
+    </p>
     <a class="btn btn-success" href="{{ path('crud_photo_index') }}">Retour</a>
 {% endblock %}

@@ -4,8 +4,8 @@
 
 {% block body %}
     <h1>Créer un nouveau lieu</h1>
-
+<p>
     {{ include('lieu/_form.html.twig') }}
-
-    <a href="{{ path('lieu_index') }}">Retour</a>
+    </p>
+    <a class="btn btn-success" href="{{ path('lieu_index') }}">Retour</a>
 {% endblock %}

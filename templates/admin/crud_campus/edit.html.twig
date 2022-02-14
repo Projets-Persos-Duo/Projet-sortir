@@ -4,10 +4,10 @@
 
 {% block body %}
     <h1>Campus - Modifier</h1>
-
+    <p>
     {{ include('admin/crud_campus/_form.html.twig', {'button_label': 'Enregistrer'}) }}
-
+    </p><p>
     <a class="btn btn-success" href="{{ path('crud_campus_index') }}">Retour</a>
-
+    </p>
     {{ include('admin/crud_campus/_delete_form.html.twig') }}
 {% endblock %}

@@ -4,8 +4,8 @@
 
 {% block body %}
     <h1>Ajouter un campus</h1>
-
+<p>
     {{ include('admin/crud_campus/_form.html.twig') }}
-
+</p>
     <a class="btn btn-success" href="{{ path('crud_campus_index') }}">Retour</a>
 {% endblock %}

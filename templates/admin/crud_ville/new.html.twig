@@ -4,8 +4,8 @@
 
 {% block body %}
     <h1>Ajouter une ville</h1>
-
+    <p>
     {{ include('admin/crud_ville/_form.html.twig') }}
-
+    </p>
     <a class="btn btn-success" href="{{ path('crud_ville_index') }}">Retour</a>
 {% endblock %}
