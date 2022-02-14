@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Sortie{% endblock %}
+{% block title %}Nouvelle Sortie{% endblock %}
 
 {% block body %}
-    <h1>Create new Sortie</h1>
+    <h1>Ajouter une sortie</h1>
 
     {{ include('admin/crud_sortie/_form.html.twig') }}
 
-    <a href="{{ path('crud_sortie_index') }}">back to list</a>
+    <a class="btn btn-success" href="{{ path('crud_sortie_index') }}">Retour</a>
 {% endblock %}

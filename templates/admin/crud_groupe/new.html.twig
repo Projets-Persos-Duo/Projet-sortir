@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Groupe{% endblock %}
+{% block title %}Nouveau Groupe{% endblock %}
 
 {% block body %}
-    <h1>Create new Groupe</h1>
+    <h1>Ajouter un groupe</h1>
 
     {{ include('admin/crud_groupe/_form.html.twig') }}
 
-    <a href="{{ path('crud_groupe_index') }}">back to list</a>
+    <a class="btn btn-success" href="{{ path('crud_groupe_index') }}">Retour</a>
 {% endblock %}

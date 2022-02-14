@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Photo{% endblock %}
+{% block title %}Modifier une photo{% endblock %}
 
 {% block body %}
-    <h1>Edit Photo</h1>
+    <h1>Photo - Modifier</h1>
 
-    {{ include('admin/crud_photo/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('admin/crud_photo/_form.html.twig', {'button_label': 'Enregistrer'}) }}
 
-    <a href="{{ path('crud_photo_index') }}">back to list</a>
+    <a class="btn btn-success" href="{{ path('crud_photo_index') }}">Retour</a>
 
     {{ include('admin/crud_photo/_delete_form.html.twig') }}
 {% endblock %}

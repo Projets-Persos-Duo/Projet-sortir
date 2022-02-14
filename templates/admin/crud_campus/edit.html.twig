@@ -3,11 +3,11 @@
 {% block title %}Edit Campus{% endblock %}
 
 {% block body %}
-    <h1>Edit Campus</h1>
+    <h1>Campus - Modifier</h1>
 
-    {{ include('admin/crud_campus/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('admin/crud_campus/_form.html.twig', {'button_label': 'Enregistrer'}) }}
 
-    <a href="{{ path('crud_campus_index') }}">back to list</a>
+    <a class="btn btn-success" href="{{ path('crud_campus_index') }}">Retour</a>
 
     {{ include('admin/crud_campus/_delete_form.html.twig') }}
 {% endblock %}

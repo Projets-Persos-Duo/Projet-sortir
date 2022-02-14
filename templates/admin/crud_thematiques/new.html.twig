@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Thematiques{% endblock %}
+{% block title %}Nouvelle Thématique{% endblock %}
 
 {% block body %}
-    <h1>Create new Thematiques</h1>
+    <h1>Ajouter une thématique</h1>
 
     {{ include('admin/crud_thematiques/_form.html.twig') }}
 
-    <a href="{{ path('crud_thematiques_index') }}">back to list</a>
+    <a class="btn btn-success" href="{{ path('crud_thematiques_index') }}">Retour</a>
 {% endblock %}

@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Thematiques{% endblock %}
+{% block title %}Modifier Thematiques{% endblock %}
 
 {% block body %}
-    <h1>Edit Thematiques</h1>
+    <h1>Thématique - Modifier</h1>
 
-    {{ include('admin/crud_thematiques/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('admin/crud_thematiques/_form.html.twig', {'button_label': 'Enregistrer'}) }}
 
-    <a href="{{ path('crud_thematiques_index') }}">back to list</a>
+    <a class="btn btn-success" href="{{ path('crud_thematiques_index') }}">Retour</a>
 
     {{ include('admin/crud_thematiques/_delete_form.html.twig') }}
 {% endblock %}
