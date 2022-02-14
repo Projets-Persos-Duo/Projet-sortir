@@ -6,9 +6,10 @@
     {% include('inc/detailsSortie.html.twig') %}
 
     <h3>Pour annuler cette sortie, veuillez compléter le champs ci-dessous puis cliquer sur "Annuler la sortie" pour valider</h3>
-
-    {{ form(annulationSortieForm) }}
-    <button type="submit" class="btn btn-secondary">Anuler la sortie</button>
+    {{ form_start(annulationSortieForm) }}
+    {{ form_widget(annulationSortieForm) }}
+    <button type="submit" class="btn btn-secondary">Annuler la sortie</button>
+    {{ form_end(annulationSortieForm) }}
 
 {% endblock %}
 
