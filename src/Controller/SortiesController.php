@@ -253,7 +253,7 @@ class SortiesController extends AbstractController
         $annulationSortieForm = $this->createForm(AnnulationSortieFormType::class, $sortie);
         $annulationSortieForm->handleRequest($request);
 
-        if ($annulationSortieForm->isSubmitted() && $annulationSortieForm->isValid())
+        if ($annulationSortieForm->isSubmitted() && $annulationSortieForm->isValid() && $sortie->getDateDebut() > new \DateTime('now'))
         {
             $entityManager->persist($sortie);
             $entityManager->flush();

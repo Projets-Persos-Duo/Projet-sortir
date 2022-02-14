@@ -3,17 +3,31 @@
 {% block title %}Détail de la sortie{% endblock %}
 
 {% block body %}
+
     {% include('inc/detailsSortie.html.twig') %}
 
-    {% include('inc/inscriptionSortie.html.twig') %}
-    {% if sortie.organisateur == app.user %}
-        <a href="{{ path('sorties_edit', {'id': sortie.id}) }}" class="btn btn-secondary">
-            Modifier la sortie
-        </a>
-        <a href="{{ path('sorties_annuler', {'id': sortie.id}) }}" class="btn btn-secondary">
-            Annuler la sortie
-        </a>
+    {% if sortie.raisonAnnulation is defined and sortie.raisonAnnulation is null %}
 
+        {% if sortie.dateDebut|date('d - m -Y') > 'now'|date('d - m -Y') %}
+
+            {% include('inc/inscriptionSortie.html.twig') %}
+
+            {% if sortie.organisateur == app.user %}
+                <a href="{{ path('sorties_edit', {'id': sortie.id}) }}" class="btn btn-secondary">
+                    Modifier la sortie
+                </a>
+                <a href="{{ path('sorties_annuler', {'id': sortie.id}) }}" class="btn btn-secondary">
+                    Annuler la sortie
+                </a>
+            {% endif %}
+
+        {% else %}
+            <h3>La date de cette sortie est dépassée, elle a eu lieu le {{ sortie.dateDebut|date('d - m -Y') }}</h3>
+        {% endif %}
+
+    {% elseif sortie.raisonAnnulation is defined and sortie.raisonAnnulation is not null %}
+        <h3>Cette sortie a été annulée</h3>
+        {{ sortie.raisonAnnulation }}
     {% endif %}
 
 {% endblock %}
