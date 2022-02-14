@@ -7,6 +7,7 @@
     <h2 class="libelle-sortie">{{ sortie.nom }}</h2>
 
     <div>Date : le {{ sortie.dateDebut|date("d/m/Y")}}, de {{ sortie.heureDebut|date('H:i') }} à {{ sortie.heureFin|date('H:i') }}</div>
+    <div>Campus : {{ sortie.campus.nom }}</div>
     <div>Thématique : {{ sortie.theme.theme }}</div>
     <div>Lieu : {{ sortie.lieu.nom }} à {{ sortie.lieu.ville.nom }}</div>
     <div>Description : {{ sortie.infosSortie }}</div>
