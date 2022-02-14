@@ -4,10 +4,12 @@ namespace App\Repository;
 
 use App\Data\SearchSortiesData;
 use App\Entity\Campus;
-use App\Entity\Sortie;use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use App\Entity\Sortie;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\DBAL\Types\DateTimeType;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @method Sortie|null find($id, $lockMode = null, $lockVersion = null)
@@ -54,8 +56,9 @@ class SortieRepository extends ServiceEntityRepository
      * On ajoute aussi ici que le type de retour est un tableau de "sortie" (lié à entité sortie)
      * @return Sortie []
      */
-    public function findSearch(SearchSortiesData $search):array
+    public function findSearch(SearchSortiesData $data, ?UserInterface $moi):array
     {
+        dump($data);
         $queryBuilder = $this
             ->createQueryBuilder('sortie');
 
@@ -65,15 +68,56 @@ class SortieRepository extends ServiceEntityRepository
                 ->setParameter('cats', $data->campus);
         }
 
-        if(!empty($search->thematiques)){
+        if(!empty($data->contient)) {
+            $queryBuilder
+                ->andWhere('sortie.nom LIKE :q')
+                ->setParameter('q', "%$data->contient%");
+        }
+
+        if(!empty($search->themes)){
             $queryBuilder=$queryBuilder
-                ->andWhere('c.id IN (:thematiques)')
-                ->setParameter('thematiques', $search->thematiques);
+                ->andWhere('sortie.theme IN (:thematiques)')
+                ->setParameter('thematiques', $search->themes);
 
         }
 
-        $queryBuilder = $this->exclureSortiesExpirees($queryBuilder);
+        if(!empty($data->entreDebut)) {
+            $queryBuilder
+                ->andWhere('sortie.date_debut >= :date')
+                ->setParameter('date', $data->entreDebut);
+        }
 
+        if(!empty($data->entreFin)) {
+            $queryBuilder
+                ->andWhere('sortie.date_debut <= :date')
+                ->setParameter('date', $data->entreFin);
+        }
+
+        if(!empty($data->queJOrganise && $moi)) {
+            $queryBuilder
+                ->andWhere('sortie.organisateur = :orga')
+                ->setParameter('orga', $moi);
+        }
+
+        if(!empty($data->ouJeSuisInscrit && $moi)) {
+            $queryBuilder
+                ->join('sortie.participants', 'participants')
+                ->andWhere('participants = :moi')
+                ->setParameter('moi', $moi);
+        }
+
+        if(!empty($data->ouJeSuisPasInscrit && $moi)) {
+            $queryBuilder
+                ->join('sortie.participants', 'non_participants')
+                ->andWhere('non_participants != :moi')
+                ->setParameter('moi', $moi);
+        }
+
+        if(!empty($data->sortiesPassees)) {
+            $queryBuilder
+                ->andWhere('sortie.date_fin < :ajd')
+                ->setParameter('ajd', new \DateTime("now"));
+        }
 
         $queryBuilder->setMaxResults(10);
         $query=$queryBuilder->getQuery();
@@ -84,9 +128,9 @@ class SortieRepository extends ServiceEntityRepository
 
     private function exclureSortiesExpirees(QueryBuilder $queryBuilder): QueryBuilder
     {
-//        $queryBuilder->andWhere('s.date_fin < :date')->setParameter(
-//            'date', new \DateTimeImmutable()
-//        );
+        $queryBuilder->andWhere('sortie.date_fin > :date')->setParameter(
+            'date', new \DateTime('-1 month')
+        );
 
         return $queryBuilder;
     }
