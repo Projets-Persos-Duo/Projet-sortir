@@ -61,8 +61,11 @@ class VilleController extends AbstractController
     /**
      * @Route("/{id}/edit", name="ville_edit", methods={"GET", "POST"})
      */
-    public function edit(Request $request, Ville $ville, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request,
+                         Ville $ville,
+                         EntityManagerInterface $entityManager): Response
     {
+
         $form = $this->createForm(VilleType::class, $ville);
         $form->handleRequest($request);
 

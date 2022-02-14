@@ -1,4 +1,15 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+        {{ form_row(form.username) }}
+        {{ form_row(form.password) }}
+        {{ form_row(form.familyName) }}
+      {#   {{ form_row(form.firstname) }} #}
+        {{ form_row(form.telephone) }}
+        {{ form_row(form.isAdmin) }}
+        {{ form_row(form.isActive) }}
+        {{ form_row(form.campus) }}
+        {{ form_row(form.groupes) }}
+        {{ form_row(form.sortiesParticipees) }}
+        {{ form_row(form.groupesGeres) }}
+
     <button class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
 {{ form_end(form) }}
