@@ -115,5 +115,18 @@ class SortieRepository extends ServiceEntityRepository
         return $queryBuilder;
     }
 
+    //Pour trier les sorties par dates asc, pour afficher d'abord les plus proches
+    /**
+     * @return Sortie[]
+     */
+    public function trierSortiesParDatesPlusProches(): array
+    {
+        $queryBuilder= $this->createQueryBuilder('s');$queryBuilder
+        ->orderBy('s.date_debut', 'ASC');
+
+        $sorties = $queryBuilder->getQuery();
+
+        return $sorties->getResult();
+    }
 
 }
