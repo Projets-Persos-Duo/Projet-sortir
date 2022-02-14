@@ -23,15 +23,13 @@ class MainController extends AbstractController
         $sortieChoixForm = $this->createForm(SortieSearchType::class, $data);
         $sortieChoixForm->handleRequest($request);
 
-//        $sorties = $sortieRepository->findSearch();
-        $sorties = $sortieRepository->findAll();
-
+        $sorties = $sortieRepository->findNonArchivees();
 
         if ($sortieChoixForm->isSubmitted() &&  $sortieChoixForm->isValid()) {
-            $sorties = $sortieRepository->findSearchCampus($data);
+            $sorties = $sortieRepository->findSearch($data);
 
 
-            return $this->redirectToRoute('sorties_select', ['sorties' => $sorties]);
+//            return $this->redirectToRoute('sorties_select', ['sorties' => $sorties]);
 
         }
 

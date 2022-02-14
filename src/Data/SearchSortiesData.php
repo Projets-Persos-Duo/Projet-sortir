@@ -13,14 +13,14 @@ class SearchSortiesData
     /**
      * @var Sortie []
      */
-    public array $campus =[];
+    public ?array $campus =[];
 
     public ?string $contient = null;
 
     /**
      * @var Thematiques[]
      */
-    public array $themes = [];
+    public ?array $themes = [];
 
     public ?\DateTime $entreDebut = null;
 

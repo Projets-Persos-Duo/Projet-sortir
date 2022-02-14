@@ -46,18 +46,43 @@ class SortieSearchType extends AbstractType
            ])
            ->add('entreDebut', DateTimeType::class, [
                'label' => 'Entre :',
+               'required'=>false,
                'html5' => true,
                'widget' => 'single_text'
            ])
            ->add('entreFin', DateTimeType::class, [
                'label' => 'Et :',
+               'required'=>false,
                'html5' => true,
                'widget' => 'single_text'
            ])
-           ->add('queJOrganise', CheckboxType::class, ['label_attr' => ['class' => 'checkbox-switch',],])
-           ->add('ouJeSuisInscrit', CheckboxType::class, ['label_attr' => ['class' => 'checkbox-switch',],])
-           ->add('ouJeSuisPasInscrit', CheckboxType::class, ['label_attr' => ['class' => 'checkbox-switch',],])
-           ->add('sortiesPassees', CheckboxType::class, ['label_attr' => ['class' => 'checkbox-switch',],])
+           ->add('queJOrganise', CheckboxType::class, [
+               'required'=>false,
+               'label_attr' => [
+                   'class' => 'checkbox-switch',
+                   ],
+               ]
+           )
+           ->add(
+               'ouJeSuisInscrit',
+               CheckboxType::class, [
+                   'required'=>false,
+                   'label_attr' => [
+                       'class' => 'checkbox-switch',
+                   ],
+               ]
+           )
+           ->add('ouJeSuisPasInscrit', CheckboxType::class, [
+               'required'=>false,
+               'label_attr' => [
+                   'class' => 'checkbox-switch',
+               ],
+           ])
+           ->add('sortiesPassees', CheckboxType::class, [
+               'required'=>false,
+               'label_attr' => ['class' => 'checkbox-switch',],
+               ]
+           )
 
 
        ;

@@ -24,7 +24,7 @@ class SortieRepository extends ServiceEntityRepository
     /**
      * @return Sortie[]
      */
-    public function findAll(): array
+    public function findNonArchivees(): array
     {
         $sorties = parent::findAll();
         $sorties = array_filter($sorties, function (Sortie $sortie) {
@@ -108,9 +108,9 @@ class SortieRepository extends ServiceEntityRepository
 
     private function exclureSortiesExpirees(QueryBuilder $queryBuilder): QueryBuilder
     {
-        $queryBuilder->andWhere('s.date_fin < :date')->setParameter(
-            'date', new \DateTimeImmutable()
-        );
+//        $queryBuilder->andWhere('s.date_fin < :date')->setParameter(
+//            'date', new \DateTimeImmutable()
+//        );
 
         return $queryBuilder;
     }
@@ -128,12 +128,23 @@ class SortieRepository extends ServiceEntityRepository
 
         return $sorties->getResult();
     }
+
     /**
      * Retourne des sorties en fonction de criteres de recherche
      * @return Sortie[]
      */
-    public function findSearch():array
+    public function findSearch(SearchSortiesData $data):array
     {
+        $queryBuilder = $this
+            ->createQueryBuilder('sortie');
+
+        if(!empty($data->campus)) {
+            $queryBuilder
+                ->andWhere('sortie.campus in (:cats)')
+                ->setParameter('cats', $data->campus);
+        }
+
+        return $queryBuilder->getQuery()->getResult();
     }
 
 
