@@ -177,7 +177,7 @@ class SortiesController extends AbstractController
                 $entityManager->persist($sortie);
                 $entityManager->flush();
 
-            $this->addFlash('success', 'Sortie ajoutée avec succés');
+            $this->addFlash('success', 'Sortie ajoutée avec succès');
 
             return $this->redirectToRoute('sorties_list');
         }
@@ -253,18 +253,15 @@ class SortiesController extends AbstractController
         $annulationSortieForm = $this->createForm(AnnulationSortieFormType::class, $sortie);
         $annulationSortieForm->handleRequest($request);
 
-        /*if ($annulationSortieForm->isSubmitted() && $annulationSortieForm->isValid())
+        if ($annulationSortieForm->isSubmitted() && $annulationSortieForm->isValid())
         {
-            $raison = $request->
-
-
             $entityManager->persist($sortie);
             $entityManager->flush();
 
-            $this->addFlash('success', 'Sortie ajoutée avec succés');
+            $this->addFlash('success', 'L\'annulation de la sortie a bien été enregistrée');
 
-            return $this->redirectToRoute('sorties_list');
-        }*/
+            return $this->redirectToRoute('sorties_detail',['id' => $id]);
+        }
 
         return $this->render('sorties/annuler.html.twig', [
             "sortie"=>$sortie,
