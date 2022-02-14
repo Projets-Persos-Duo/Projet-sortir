@@ -106,10 +106,6 @@ class Sortie
      */
     private $participants;
 
-    public function __construct()
-    {
-        $this->participants = new ArrayCollection();
-    }
 
     /**
      * @ORM\ManyToOne(targetEntity=Lieu::class, inversedBy="sorties")
@@ -121,6 +117,17 @@ class Sortie
      * @ORM\ManyToOne(targetEntity=Lieu::class, inversedBy="sortiesRDV")
      */
     private ?Lieu $lieuRDV;
+
+    public function __construct()
+    {
+        $this->participants = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->nom;
+    }
+
 
     public function getId(): ?int
     {
@@ -365,11 +372,5 @@ class Sortie
         $this->participants->removeElement($participant);
 
         return $this;
-    }
-
-
-    public function __toString()
-    {
-        return $this->nom;
     }
 }

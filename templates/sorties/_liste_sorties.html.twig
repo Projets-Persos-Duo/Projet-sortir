@@ -1,5 +1,6 @@
 {% import 'macros.html.twig' as macros %}
-{% for sortie  in sorties %}
+
+    {% for sortie  in sorties %}
 
 
     <article class="sorties-liste">
@@ -7,6 +8,12 @@
                 href="{{ path('sorties_detail', {id:sortie.id}) }}"
                 title="Détails de la sortie">{{ sortie.nom }} ({{ sortie.dateDebut|date("d/m/Y") }})
         </a>
+        {% if app.user.peutRejoindre(sortie) %}
+            - <a href="{{ path('main_home', {'rejoindre': sortie.id}) }}">Rejoindre </a>
+        {% endif %}
+        {% if app.user.peutQuitter(sortie) %}
+            - <a href="{{ path('main_home', {'quitter': sortie.id}) }}">Quitter </a>
+        {% endif %}
         - Organisé par :
 
             <a href="{{ path('user_show', {'id': sortie.organisateur.id}) }}">
@@ -14,10 +21,12 @@
             </a>
 
 
-        {{ macros.liste_utilisateurs(sortie.participants, ' - Participants: ', '') }}
+        {{ macros.liste_utilisateurs(
+            sortie.participants,
+            ' - Participants: (' ~ sortie.participants.count ~ '/'~ sortie.limiteParticipants ~ ') :',
+            ''
+        ) }}
 
     </article>
 
-
-
-{% endfor %}
+    {% endfor %}

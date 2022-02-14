@@ -114,7 +114,9 @@ class SortiesController extends AbstractController
     /**
      * @Route("/details/{id}", name="detail")
      */
-    public function detailSortie(int $id, Request $request, EntityManagerInterface $entityManager,UserRepository $userRepository, SortieRepository $sortieRepository): Response
+    public function detailSortie(
+        int $id, Request $request, EntityManagerInterface $entityManager,
+        UserRepository $userRepository, SortieRepository $sortieRepository): Response
     {
        $sortie = $sortieRepository->find($id);
 
@@ -128,7 +130,7 @@ class SortiesController extends AbstractController
         $desinscriptionSortieForm->handleRequest($request);
 
         if ($inscriptionSortieForm->isSubmitted() && $inscriptionSortieForm->isValid()){
-            $sortie->addParticipant($user);
+//            $sortie->addParticipant($user); je crois que removeSortiesParticipee le fait, ivo
             $user->addSortiesParticipee($sortie);
             $entityManager->persist($user);
             $entityManager->persist($sortie);
@@ -139,7 +141,7 @@ class SortiesController extends AbstractController
         }
 
         if ($desinscriptionSortieForm->isSubmitted() && $desinscriptionSortieForm->isValid()){
-            $sortie->removeParticipant($user);
+            //$sortie->removeParticipant($user); je crois que removeSortiesParticipee le fait, ivo
             $user->removeSortiesParticipee($sortie);
             $entityManager->persist($user);
             $entityManager->persist($sortie);

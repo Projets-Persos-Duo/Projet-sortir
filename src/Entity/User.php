@@ -114,6 +114,34 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->username;
     }
 
+    /**
+    * Si un utilisateur peut rejoindre
+    */
+    public function peutRejoindre(Sortie $sortie): bool {
+        if ($sortie->getParticipants()->contains($this)) {
+            return false;
+        }
+
+        if(count($sortie->getParticipants()) >= $sortie->getLimiteParticipants()) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Si un utilisateur peut quitter
+     */
+    public function peutQuitter(Sortie $sortie): bool {
+        if ($sortie->getParticipants()->contains($this)) {
+            return true;
+        }
+
+        return false;
+    }
+
+
+
     public function getId(): ?int
     {
         return $this->id;
