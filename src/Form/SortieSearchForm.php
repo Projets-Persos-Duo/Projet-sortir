@@ -21,6 +21,10 @@ class SortieSearchForm extends AbstractType
                'class'=>Campus::class,
                'expanded'=>true,
                'multiple'=>true,
+               'label_attr' => [
+                   'class' => 'checkbox-switch',
+               ],
+
            ])
 //           ->add('thematiques', EntityType::class, [
 //                'label'=>false,
