@@ -3,7 +3,9 @@
     <div class="col-md-3">
         <div class="sortie-filtre">
             {{ form_start(sortieChoixForm) }}
-            {{form_row(sortieChoixForm)}}
+            {{form_row(sortieChoixForm.campus)}}
+            {{form_row(sortieChoixForm.contient)}}
+            {{form_row(sortieChoixForm.themes)}}
             <button type="submit" class="btn btn-lg btn-warning">Filtrer</button>
             {{ form_end(sortieChoixForm) }}
         </div>

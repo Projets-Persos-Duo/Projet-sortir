@@ -128,5 +128,13 @@ class SortieRepository extends ServiceEntityRepository
 
         return $sorties->getResult();
     }
+    /**
+     * Retourne des sorties en fonction de criteres de recherche
+     * @return Sortie[]
+     */
+    public function findSearch():array
+    {
+    }
+
 
 }

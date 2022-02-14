@@ -5,7 +5,7 @@ namespace App\Controller;
 use App\Data\SearchData;
 use App\Entity\Sortie;
 use App\Form\AnnulationSortieFormType;
-use App\Form\SortieSearchForm;
+use App\Form\SortieSearchType;
 use App\Entity\User;
 use App\Form\DesinscriptionSortieFormType;
 use App\Form\InscriptionSortieFormType;
@@ -35,7 +35,7 @@ class SortiesController extends AbstractController
     {
 
         $data= new SearchData();
-        $sortieChoixForm = $this->createForm(SortieSearchForm::class, $data);
+        $sortieChoixForm = $this->createForm(SortieSearchType::class, $data);
         $sortieChoixForm->handleRequest($request);
         $sorties = $sortieRepository->findAll();
 

@@ -22,7 +22,7 @@ class Thematiques
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $Theme;
+    private $theme;
 
     /**
      * @ORM\OneToMany(targetEntity=Sortie::class, mappedBy="theme", orphanRemoval=true)
@@ -36,7 +36,7 @@ class Thematiques
 
     public function __toString()
     {
-        return $this->Theme;
+        return $this->theme;
     }
 
     public function getId(): ?int
@@ -46,12 +46,12 @@ class Thematiques
 
     public function getTheme(): ?string
     {
-        return $this->Theme;
+        return $this->theme;
     }
 
-    public function setTheme(string $Theme): self
+    public function setTheme(string $theme): self
     {
-        $this->Theme = $Theme;
+        $this->theme = $theme;
 
         return $this;
     }
@@ -64,7 +64,7 @@ class Thematiques
         return $this->sorties;
     }
 
-    public function addSorty(Sortie $sorty): self
+    public function addSortie(Sortie $sorty): self
     {
         if (!$this->sorties->contains($sorty)) {
             $this->sorties[] = $sorty;
@@ -74,7 +74,7 @@ class Thematiques
         return $this;
     }
 
-    public function removeSorty(Sortie $sorty): self
+    public function removeSortie(Sortie $sorty): self
     {
         if ($this->sorties->removeElement($sorty)) {
             // set the owning side to null (unless already changed)
