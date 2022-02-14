@@ -7,7 +7,7 @@
 
 
 
-    <h1>Toutes les sorties proposées sont ici !</h1>
+    <h1>{{ entete|default('Toutes les sorties proposées sont ici !') }}</h1>
 
     {% include 'sorties/_liste_sorties.html.twig' %}
 

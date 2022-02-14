@@ -90,9 +90,21 @@ class SortiesController extends AbstractController
     {
         $sorties=$sortieRepository->findAll();
 
+        return $this->render('sorties/list.html.twig', [
+            'sorties' => $sorties,
+        ]);
+    }
+
+    /**
+     * @Route("/liste-archivees", name="list_archivees")
+     */
+    public function listeSortiesArchivees(SortieRepository $sortieRepository): Response
+    {
+        $sorties=$sortieRepository->findArchivees();
 
         return $this->render('sorties/list.html.twig', [
             'sorties' => $sorties,
+            'entete' => 'Les archives'
         ]);
     }
 
