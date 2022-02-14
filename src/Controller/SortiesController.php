@@ -64,15 +64,7 @@ class SortiesController extends AbstractController
     public function listeSelectSorties(SortieRepository $sortieRepository, Request $request): Response
     {
         //TODO / FINIR CETTE FONCTION QUI LISTE LES SORTIES SELON LEUR SELECTION
-//findby??
-
-//$request->get('');
-
-//        $sortie=$sortieRepository->findBy(
-//            ['sortie' => '$nom'],
-//            ['nom' => 'desc'],
-//           30,
-//           0);
+        // plus necessaire vu que MainController s'en occupe?
         $sorties=new Sortie();
 //        dump($sorties);
 
@@ -221,7 +213,7 @@ class SortiesController extends AbstractController
             throw $this->createAccessDeniedException('Non autorisé');
         }
 
-        if($sortie->getDateCloture() > new \DateTime('now')) {
+        if($sortie->getDateCloture() < new \DateTime('now')) {
             $this->addFlash(
                 'danger',
                 'La sortie ne peut plus etre modifiée après la date de cloture !'

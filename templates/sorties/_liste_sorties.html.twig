@@ -8,11 +8,13 @@
                 href="{{ path('sorties_detail', {id:sortie.id}) }}"
                 title="Détails de la sortie">{{ sortie.nom }} ({{ sortie.dateDebut|date("d/m/Y") }})
         </a>
-        {% if app.user.peutRejoindre(sortie) %}
-            - <a href="{{ path('main_home', {'rejoindre': sortie.id}) }}">Rejoindre </a>
-        {% endif %}
-        {% if app.user.peutQuitter(sortie) %}
-            - <a href="{{ path('main_home', {'quitter': sortie.id}) }}">Quitter </a>
+        {% if app.user %}
+            {% if app.user.peutRejoindre(sortie) %}
+                - <a href="{{ path('main_home', {'rejoindre': sortie.id}) }}">Rejoindre </a>
+            {% endif %}
+            {% if app.user.peutQuitter(sortie) %}
+                - <a href="{{ path('main_home', {'quitter': sortie.id}) }}">Quitter </a>
+            {% endif %}
         {% endif %}
         - Organisé par :
 
