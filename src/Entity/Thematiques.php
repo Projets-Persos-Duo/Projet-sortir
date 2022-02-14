@@ -34,6 +34,11 @@ class Thematiques
         $this->sorties = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->Theme;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -79,10 +84,5 @@ class Thematiques
         }
 
         return $this;
-    }
-
-    public function __toString()
-    {
-        return $this->Theme;
     }
 }
