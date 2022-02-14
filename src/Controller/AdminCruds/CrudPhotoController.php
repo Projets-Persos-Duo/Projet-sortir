@@ -42,7 +42,7 @@ class CrudPhotoController extends AbstractController
             return $this->redirectToRoute('crud_photo_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('crud_photo/new.html.twig', [
+        return $this->renderForm('admin/crud_photo/new.html.twig', [
             'photo' => $photo,
             'form' => $form,
         ]);
@@ -72,7 +72,7 @@ class CrudPhotoController extends AbstractController
             return $this->redirectToRoute('crud_photo_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('crud_photo/edit.html.twig', [
+        return $this->renderForm('admin/crud_photo/edit.html.twig', [
             'photo' => $photo,
             'form' => $form,
         ]);

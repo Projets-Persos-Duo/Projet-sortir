@@ -42,7 +42,7 @@ class CrudLieuController extends AbstractController
             return $this->redirectToRoute('crud_lieu_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('crud_lieu/new.html.twig', [
+        return $this->renderForm('admin/crud_lieu/new.html.twig', [
             'lieu' => $lieu,
             'form' => $form,
         ]);
@@ -72,7 +72,7 @@ class CrudLieuController extends AbstractController
             return $this->redirectToRoute('crud_lieu_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('crud_lieu/edit.html.twig', [
+        return $this->renderForm('admin/crud_lieu/edit.html.twig', [
             'lieu' => $lieu,
             'form' => $form,
         ]);

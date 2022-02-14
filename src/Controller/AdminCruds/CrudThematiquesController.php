@@ -42,7 +42,7 @@ class CrudThematiquesController extends AbstractController
             return $this->redirectToRoute('crud_thematiques_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('crud_thematiques/new.html.twig', [
+        return $this->renderForm('admin/crud_thematiques/new.html.twig', [
             'thematique' => $thematique,
             'form' => $form,
         ]);
@@ -72,7 +72,7 @@ class CrudThematiquesController extends AbstractController
             return $this->redirectToRoute('crud_thematiques_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('crud_thematiques/edit.html.twig', [
+        return $this->renderForm('admin/crud_thematiques/edit.html.twig', [
             'thematique' => $thematique,
             'form' => $form,
         ]);

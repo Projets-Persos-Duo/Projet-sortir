@@ -42,7 +42,7 @@ class CrudVilleController extends AbstractController
             return $this->redirectToRoute('crud_ville_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('crud_ville/new.html.twig', [
+        return $this->renderForm('admin/crud_ville/new.html.twig', [
             'ville' => $ville,
             'form' => $form,
         ]);
@@ -72,7 +72,7 @@ class CrudVilleController extends AbstractController
             return $this->redirectToRoute('crud_ville_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('crud_ville/edit.html.twig', [
+        return $this->renderForm('admin/crud_ville/edit.html.twig', [
             'ville' => $ville,
             'form' => $form,
         ]);

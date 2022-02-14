@@ -42,7 +42,7 @@ class CrudCampusController extends AbstractController
             return $this->redirectToRoute('crud_campus_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('crud_campus/new.html.twig', [
+        return $this->renderForm('admin/crud_campus/new.html.twig', [
             'campus' => $campus,
             'form' => $form,
         ]);
@@ -72,7 +72,7 @@ class CrudCampusController extends AbstractController
             return $this->redirectToRoute('crud_campus_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('crud_campus/edit.html.twig', [
+        return $this->renderForm('admin/crud_campus/edit.html.twig', [
             'campus' => $campus,
             'form' => $form,
         ]);

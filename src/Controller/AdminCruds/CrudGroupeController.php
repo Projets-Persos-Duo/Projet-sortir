@@ -42,7 +42,7 @@ class CrudGroupeController extends AbstractController
             return $this->redirectToRoute('crud_groupe_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('crud_groupe/new.html.twig', [
+        return $this->renderForm('admin/crud_groupe/new.html.twig', [
             'groupe' => $groupe,
             'form' => $form,
         ]);
@@ -72,7 +72,7 @@ class CrudGroupeController extends AbstractController
             return $this->redirectToRoute('crud_groupe_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('crud_groupe/edit.html.twig', [
+        return $this->renderForm('admin/crud_groupe/edit.html.twig', [
             'groupe' => $groupe,
             'form' => $form,
         ]);

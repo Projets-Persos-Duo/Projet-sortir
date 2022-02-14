@@ -42,7 +42,7 @@ class CrudSortieController extends AbstractController
             return $this->redirectToRoute('crud_sortie_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('crud_sortie/new.html.twig', [
+        return $this->renderForm('admin/crud_sortie/new.html.twig', [
             'sortie' => $sortie,
             'form' => $form,
         ]);
@@ -72,7 +72,7 @@ class CrudSortieController extends AbstractController
             return $this->redirectToRoute('crud_sortie_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('crud_sortie/edit.html.twig', [
+        return $this->renderForm('admin/crud_sortie/edit.html.twig', [
             'sortie' => $sortie,
             'form' => $form,
         ]);
