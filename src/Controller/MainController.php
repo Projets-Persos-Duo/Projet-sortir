@@ -26,7 +26,6 @@ class MainController extends AbstractController
         $sortieChoixForm->handleRequest($request);
 
         $sorties = $sortieRepository->findNonArchivees();
-        dump($sorties);
 
         if ($sortieChoixForm->isSubmitted() &&  $sortieChoixForm->isValid()) {
             $sorties = $sortieRepository->findSearch($data, $this->getUser());

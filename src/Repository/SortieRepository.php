@@ -58,7 +58,6 @@ class SortieRepository extends ServiceEntityRepository
      */
     public function findSearch(SearchSortiesData $data, ?UserInterface $moi):array
     {
-        dump($data);
         $queryBuilder = $this
             ->createQueryBuilder('sortie');
 
