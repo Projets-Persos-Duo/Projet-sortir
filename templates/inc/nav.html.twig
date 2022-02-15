@@ -1,7 +1,7 @@
 <nav class="navigation">
     <ul>
-        <li><a href="{{ path('main_home') }}" title="Accueil">Accueil</a></li>
-        <li><a href="{{ path('sorties_findSelect') }}" title="Liste des sorties">Sorties</a></li>
+        <li><a href="{{ path('main_home') }}" title="Nos sorties">Accueil</a></li>
+{#        <li><a href="{{ path('sorties_list') }}" title="Liste des sorties">Sorties</a></li>#}
 
         {%  if app.user %}
         <li><a href="{{ path('user_show', {'id': app.user.id}) }}" title="Profil">Profil de {{ app.user.userIdentifier }}</a></li>

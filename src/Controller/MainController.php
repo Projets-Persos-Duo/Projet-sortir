@@ -6,7 +6,7 @@ use App\Data\SearchSortiesData;
 use App\Form\SortieSearchType;
 use App\Repository\SortieRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use phpDocumentor\Reflection\Types\This;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,7 +19,10 @@ class MainController extends AbstractController
      */
 
 
-    public function home(Request $request, SortieRepository $sortieRepository, EntityManagerInterface $entityManager)
+    public function home(Request $request,
+                         SortieRepository $sortieRepository,
+                         EntityManagerInterface $entityManager,
+                         PaginatorInterface $paginator)
     {
         $data= new SearchSortiesData();
         $sortieChoixForm = $this->createForm(SortieSearchType::class, $data);
@@ -57,9 +60,15 @@ class MainController extends AbstractController
         }
 
 
-        return $this->render (
+        $sortiePaginator=$paginator->paginate(
+            $sorties, //on passe les données
+            $request->query->getInt('page', 1), //numéro page en cours - 1 par défault
+            6 //nombre d'éléments par page
+        );
+
+             return $this->render (
             '/main/home.html.twig', [
-                'sorties' => $sorties,
+                'sorties' => $sortiePaginator,
                 'sortieChoixForm' => $sortieChoixForm->createView(),
 
             ]
