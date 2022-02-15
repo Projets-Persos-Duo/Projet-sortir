@@ -6,7 +6,10 @@ use App\Entity\User;
 use App\Form\CRUDS_Admin\UserCrudType;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Csv;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -20,8 +23,31 @@ class CrudUserController extends AbstractController
     /**
      * @Route("/", name="crud_user_index", methods={"GET"})
      */
-    public function index(UserRepository $userRepository): Response
+    public function index(Request $request, UserRepository $userRepository): Response
     {
+        if(!empty($request->get('exporter'))) {
+            $users = $userRepository->findAll();
+            $spreadsheet = new Spreadsheet();
+            $sheet = $spreadsheet->getActiveSheet();
+            $row = 1;
+            foreach ($users as $user) {
+                $sheet->setCellValueByColumnAndRow(1, $row, $user->getUserIdentifier());
+                $sheet->setCellValueByColumnAndRow(2, $row, json_encode($user->getRoles()));
+                $sheet->setCellValueByColumnAndRow(3, $row, $user->getPassword());
+                $sheet->setCellValueByColumnAndRow(4, $row, $user->getEmail());
+                $sheet->setCellValueByColumnAndRow(5, $row, $user->getFamilyName());
+                $sheet->setCellValueByColumnAndRow(6, $row, $user->getFirstName());
+                $sheet->setCellValueByColumnAndRow(7, $row, $user->getTelephone());
+                $sheet->setCellValueByColumnAndRow(8, $row, $user->getIsActive());
+                $row++;
+            }
+
+            $name = \tempnam(sys_get_temp_dir(), 'csv');
+            $file = fopen($name, 'w+b');
+            $writer = new Csv($spreadsheet);
+            $writer->save($file);
+            return $this->file($name, 'users_export.csv');
+        }
         return $this->render('admin/crud_user/index.html.twig', [
             'users' => $userRepository->findAll(),
         ]);
