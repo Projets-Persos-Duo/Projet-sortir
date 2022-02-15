@@ -220,7 +220,7 @@ class AppFixtures extends Fixture
         $admin->setUsername('admin');
         $password = $this->hasher->hashPassword($admin, '123123');
         $admin->setPassword($password);
-        $admin->setRoles(['ROLE_ADMIN', 'ROLE_USER']);
+        $admin->setRoles(['ROLE_ADMIN']);
         $admin->setIsAdmin(true);
         $admin->setIsActive(true);
         $admin->setCampus($campusEnLigne);
@@ -228,7 +228,6 @@ class AppFixtures extends Fixture
 
         $toto = new User();
         $toto->setUsername('toto');
-        $toto->setRoles(['ROLE_USER']);
         $password = $this->hasher->hashPassword($toto, '123123');
         $toto->setPassword($password);
         $toto->setIsAdmin(false);
@@ -238,7 +237,6 @@ class AppFixtures extends Fixture
 
         $sego = new User();
         $sego->setUsername('Sego');
-        $sego->setRoles(['ROLE_USER']);
         $password = $this->hasher->hashPassword($sego, '123123');
         $sego->setPassword($password);
         $sego->setIsAdmin(false);
@@ -248,7 +246,6 @@ class AppFixtures extends Fixture
 
         $fred = new User();
         $fred->setUsername('Fred');
-        $fred->setRoles(['ROLE_USER']);
         $password = $this->hasher->hashPassword($fred, '123123');
         $fred->setPassword($password);
         $fred->setIsAdmin(false);
@@ -258,7 +255,6 @@ class AppFixtures extends Fixture
 
         $ivo = new User();
         $ivo->setUsername('Ivo');
-        $ivo->setRoles(['ROLE_USER']);
         $password = $this->hasher->hashPassword($ivo, '123123');
         $ivo->setPassword($password);
         $ivo->setIsAdmin(false);
@@ -268,7 +264,6 @@ class AppFixtures extends Fixture
 
         $lulu = new User();
         $lulu->setUsername('Lulu');
-        $lulu->setRoles(['ROLE_USER']);
         $password = $this->hasher->hashPassword($lulu, '123123');
         $lulu->setPassword($password);
         $lulu->setIsAdmin(false);
