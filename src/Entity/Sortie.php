@@ -118,6 +118,11 @@ class Sortie
      */
     private ?Lieu $lieuRDV;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $isCancelled;
+
     public function __construct()
     {
         $this->participants = new ArrayCollection();
@@ -370,6 +375,18 @@ class Sortie
     public function removeParticipant(User $participant): self
     {
         $this->participants->removeElement($participant);
+
+        return $this;
+    }
+
+    public function getIsCancelled(): ?bool
+    {
+        return $this->isCancelled;
+    }
+
+    public function setIsCancelled(bool $isCancelled): self
+    {
+        $this->isCancelled = $isCancelled;
 
         return $this;
     }

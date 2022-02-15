@@ -261,6 +261,7 @@ class SortiesController extends AbstractController
 
         if ($annulationSortieForm->isSubmitted() && $annulationSortieForm->isValid() && $sortie->getDateDebut() > new \DateTime('now'))
         {
+            $sortie->setIsCancelled(true);
             $entityManager->persist($sortie);
             $entityManager->flush();
 
