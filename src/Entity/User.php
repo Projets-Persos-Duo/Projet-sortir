@@ -66,7 +66,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?bool $isActive;
 
     /**
-     * @ORM\OneToMany(targetEntity=Photo::class, mappedBy="user", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Photo::class, mappedBy="user", orphanRemoval=true, cascade={"persist"})
      */
     private $photos;
 

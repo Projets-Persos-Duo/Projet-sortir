@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Photo;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
@@ -39,6 +40,21 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            //Gestion upload images
+            $images = $form->get('images')->getData();
+            foreach($images as $image){
+                $fichier = md5(uniqid() . '.' . $image->guessExtension());
+                $image->move(
+                    $this->getParameter('images_directory'),
+                    $fichier
+                );
+                $photo = new Photo();
+                $photo->setName($fichier);
+                $user->addPhoto($photo);
+
+            }
+
             $entityManager->persist($user);
             $entityManager->flush();
 

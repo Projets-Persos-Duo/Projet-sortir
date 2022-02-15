@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
@@ -50,6 +51,12 @@ class UserType extends AbstractType
                 'mapped' => false,
                 'required' => false,
                 'type' => PasswordType::class
+            ])
+            ->add('images', FileType::class, [
+                'label' => 'Ajouter une photo de profil',
+                'multiple' => true,
+                'mapped' => false,
+                'required'=> false
             ])
 //            ->add('groupes')
 //            ->add('sortiesParticipees')

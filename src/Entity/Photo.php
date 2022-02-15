@@ -20,7 +20,7 @@ class Photo
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private ?string $chemin_dd;
+    private ?string $name;
 
     /**
      * @ORM\Column(type="boolean")
@@ -38,14 +38,14 @@ class Photo
         return $this->id;
     }
 
-    public function getCheminDd(): ?string
+    public function getName(): ?string
     {
-        return $this->chemin_dd;
+        return $this->name;
     }
 
-    public function setCheminDd(string $chemin_dd): self
+    public function setName(string $name): self
     {
-        $this->chemin_dd = $chemin_dd;
+        $this->name = $name;
 
         return $this;
     }
