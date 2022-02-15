@@ -6,6 +6,11 @@
 
 
             <article class="sorties-liste">
+                {% if sortie.photos.count %}
+                    <div>
+                <img src="{{ asset(photos_path ~ sortie.photos.get(0).chemindd ) }} " alt="photo de la sortie" height="50px"/>
+                    </div>
+                {% endif %}
                 <a
                         href="{{ path('sorties_detail', {id:sortie.id}) }}"
                         title="Détails de la sortie">{{ sortie.nom }} ({{ sortie.dateDebut|date("d/m/Y") }})
