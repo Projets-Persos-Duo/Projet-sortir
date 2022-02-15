@@ -3,7 +3,6 @@
 namespace App\Controller\AdminCruds;
 
 use App\Entity\User;
-use App\Form\CRUDS_Admin\SortieCrudType;
 use App\Form\CRUDS_Admin\UserCrudType;
 use App\Form\UploadCsvType;
 use App\Repository\CampusRepository;
@@ -12,7 +11,6 @@ use Doctrine\ORM\EntityManagerInterface;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Csv;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -81,7 +79,7 @@ class CrudUserController extends AbstractController
                 $campus_name= $sheet->getCellByColumnAndRow(9, $row)->getValue();
 
                 if ($userRepository->findOneBy(['username' => $idtf])) {
-                    $this->addFlash('warning', "L'utilisdateur $idtf existe deja, ignoré.");
+                    $this->addFlash('warning', "L'utilisateur $idtf existe deja, ignoré.");
                     continue;
                 }
                 $user = new User();
@@ -98,6 +96,7 @@ class CrudUserController extends AbstractController
                 $user->setTelephone($tel);
                 $user->setIsActive($is_active);
                 $user->setCampus($campusRepository->findOneBy(['nom' => $campus_name]));
+
                 $entityManager->persist($user);
                 $this->addFlash('success', "Utilisateur $idtf ajouté !");
             }
@@ -154,6 +153,11 @@ class CrudUserController extends AbstractController
     public function edit(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(UserCrudType::class, $user);
+        dump($user);
+        if(empty($request->get('password'))) {
+            $request->request->set('password', $user->getPassword());
+        }
+        dump($request);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

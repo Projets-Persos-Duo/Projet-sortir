@@ -21,8 +21,11 @@ class UserCrudType extends AbstractType
         'label' => 'Pseudo'])
            // ->add('roles')
             ->add('password', PasswordType::class, [
-               'label' => 'Mot de passe'])
-            ->add('email', EmailType::class)
+                'required' => false,
+                'label' => 'Mot de passe'])
+            ->add('email', EmailType::class, [
+                'required' => false
+            ])
             ->add('familyName',TextType::class, [
                 'required' => false,
                 'label' => 'Nom de famille'])
@@ -50,5 +53,10 @@ class UserCrudType extends AbstractType
         $resolver->setDefaults([
             'data_class' => User::class,
         ]);
+    }
+
+    public function getBlockPrefix()
+    {
+        return '';
     }
 }
