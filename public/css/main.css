@@ -70,6 +70,7 @@ footer {
 h1 {
     color: #B0413E;
     text-align: center;
+}
 
 
 .libelle-sortie {
@@ -119,5 +120,13 @@ label, legend {
     justify-content: center;
     margin: 20px;
 
+}
+
+.phrases_intro {
+     text-align: center;
+    font-size: 20px;
+    background-color: #6a1a21;
+    padding: 5px;
+    border-radius: 30px;
 }
 
