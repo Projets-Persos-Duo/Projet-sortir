@@ -54,9 +54,7 @@ class UserController extends AbstractController
 
                 $photo = new Photo();
                 $photo->setChemindd($fileName);
-                $photo->setIsProfilePicture(1);
-                $entityManager->persist($photo);
-                $user->addPhoto($photo);
+                $user->setNewProfilePicture($photo);
             }
 
             $entityManager->persist($user);
@@ -127,10 +125,7 @@ class UserController extends AbstractController
                 $fileName = $fileUploader->upload($image);
                 $photo = new Photo();
                 $photo->setChemindd($fileName);
-                $photo->setIsProfilePicture(1);
-                $entityManager->persist($photo);
-                $user->addPhoto($photo);
-
+                $user->setNewProfilePicture($photo);
             }
 
             $entityManager->persist($user);

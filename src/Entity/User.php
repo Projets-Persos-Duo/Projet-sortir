@@ -150,6 +150,23 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return null;
     }
 
+    /**
+     * Change la photo de profile
+     * @param Photo $photo
+     * @return $this
+     */
+    public function setNewProfilePicture(Photo $photo): self
+    {
+        if(!empty($courant = $this->getProfilePicture())) {
+            $courant->setIsProfilePicture(false);
+        }
+
+        $this->addPhoto($photo);
+        $photo->setIsProfilePicture(true);
+
+        return $this;
+    }
+
 
     public function getId(): ?int
     {
