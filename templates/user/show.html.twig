@@ -42,6 +42,23 @@
             </tr>
         </tbody>
     </table>
+    <h2>Sorties participées</h2>
+    <table class="table table-dark">
+        <tr>
+            <th>Nom</th>
+            <th>Status</th>
+        </tr>
+        {% for sortie in user.sortiesParticipees %}
+        <tr>
+            <td>
+                {{ sortie.nom }}
+            </td>
+            <td>
+                status
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
     <p>
     <a href="{{ path('user_index') }}" class="btn btn-success">Retour</a>
     </p>
