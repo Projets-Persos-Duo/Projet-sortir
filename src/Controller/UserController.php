@@ -36,7 +36,7 @@ class UserController extends AbstractController
     /**
      * @Route("/new", name="user_new", methods={"GET", "POST"})
      */
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, FileUploader $fileUploader): Response
     {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
@@ -48,19 +48,12 @@ class UserController extends AbstractController
             ///** @var UploadedFile $image */
             $image = $form->get('images')->getData();
 
-            if ($image){
-                $name = md5(uniqid() . '.' . $image->guessExtension());
-                try {
-                    $image->move(
-                        $this->getParameter('images_directory'),
-                        $name
-                    );
-                } catch (FileException $fileException){
-                    dump('transfer error');
-                };
+            if(!empty($image))
+            {
+                $fileName = $fileUploader->upload($image);
 
                 $photo = new Photo();
-                $photo->setChemindd($name);
+                $photo->setChemindd($fileName);
                 $photo->setIsProfilePicture(1);
                 $entityManager->persist($photo);
                 $user->addPhoto($photo);
