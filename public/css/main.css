@@ -5,17 +5,20 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-
-
 }
+
 .navigation {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: space-around;
-
+    justify-content: center;
 
 }
+
+.logoENI{
+    height: 80px;
+}
+
 
 .container {
     max-width: 1000px;
