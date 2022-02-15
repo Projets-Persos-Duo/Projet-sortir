@@ -5,6 +5,7 @@ namespace App\DataFixtures;
 use App\Entity\Campus;
 use App\Entity\Groupe;
 use App\Entity\Lieu;
+use App\Entity\Photo;
 use App\Entity\Sortie;
 use App\Entity\Thematiques;
 use App\Entity\User;
@@ -25,6 +26,15 @@ class AppFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
+        $dir_images = __DIR__. '/../../public/img/img_sorties';
+        $dir_upload= __DIR__. '/../../public/uploads';
+        copy($dir_images.'/cinema1.gif', $dir_upload.'/cinema1.gif');
+        copy($dir_images.'/concert1.gif', $dir_upload.'/concert1.gif');
+        copy($dir_images.'/piscine1.gif', $dir_upload.'/piscine1.gif');
+        copy($dir_images.'/rando_mer1.gif', $dir_upload.'/rando_mer1.gif');
+        copy($dir_images.'/Restaurant1.gif', $dir_upload.'/Restaurant1.gif');
+        copy($dir_images.'/theatre1.gif', $dir_upload.'/theatre1.gif');
+
         //Thematique Fixtures
         $cinema = new Thematiques();
         $cinema->setTheme('Cinéma');
@@ -277,6 +287,38 @@ class AppFixtures extends Fixture
         $groupe1->setProprietaire($toto);
         $manager->persist($groupe1);
 
+        //Photos ficture
+        $photoPiscine = new Photo();
+        $photoPiscine->setChemindd('piscine1.gif');
+        $photoPiscine->setUser($toto);
+        $photoPiscine->setIsProfilePicture(false);
+        $photoCinema = new Photo();
+        $photoCinema->setChemindd('cinema1.gif');
+        $photoCinema->setUser($toto);
+        $photoCinema->setIsProfilePicture(false);
+        $photoConcert = new Photo();
+        $photoConcert->setChemindd('concert1.gif');
+        $photoConcert->setUser($toto);
+        $photoConcert->setIsProfilePicture(false);
+        $photoRando = new Photo();
+        $photoRando->setChemindd('rando_mer1.gif');
+        $photoRando->setUser($toto);
+        $photoRando->setIsProfilePicture(false);
+        $photoResto = new Photo();
+        $photoResto->setChemindd('Restaurant1.gif');
+        $photoResto->setUser($toto);
+        $photoResto->setIsProfilePicture(false);
+        $photoTheatre = new Photo();
+        $photoTheatre->setChemindd('theatre1.gif');
+        $photoTheatre->setUser($toto);
+        $photoTheatre->setIsProfilePicture(false);
+
+        $manager->persist($photoPiscine);
+        $manager->persist($photoCinema);
+        $manager->persist($photoConcert);
+        $manager->persist($photoRando);
+        $manager->persist($photoResto);
+        $manager->persist($photoTheatre);
 
         //Sortie Fixtures
         $sortieEnCours = new Sortie();
@@ -296,6 +338,7 @@ class AppFixtures extends Fixture
         $sortieEnCours->setOrganisateur($lulu);
         $sortieEnCours->setLieu($piscine1);
         $sortieEnCours->addParticipant($toto);
+        $sortieEnCours->addPhoto($photoPiscine);
         $manager->persist($sortieEnCours);
 
         $sortieEnCours1 = new Sortie();
@@ -318,6 +361,7 @@ class AppFixtures extends Fixture
         $sortieEnCours1->addParticipant($lulu);
         $sortieEnCours1->addParticipant($sego);
         $sortieEnCours1->addParticipant($fred);
+        $sortieEnCours1->addPhoto($photoRando);
         $manager->persist($sortieEnCours1);
 
         $sortieEnCours2 = new Sortie();
@@ -356,6 +400,7 @@ class AppFixtures extends Fixture
         $sortieEnCours3->setOrganisateur($sego);
         $sortieEnCours3->setLieu($piscine1);
         $sortieEnCours3->addParticipant($toto);
+        $sortieEnCours3->addPhoto($photoPiscine);
         $manager->persist($sortieEnCours3);
 
         $sortieEnCours4 = new Sortie();
@@ -375,6 +420,7 @@ class AppFixtures extends Fixture
         $sortieEnCours4->setOrganisateur($sego);
         $sortieEnCours4->setLieu($piscine1);
         $sortieEnCours4->addParticipant($sego);
+        $sortieEnCours4->addPhoto($photoPiscine);
         $manager->persist($sortieEnCours4);
 
         $sortieEnCours5 = new Sortie();
@@ -413,6 +459,7 @@ class AppFixtures extends Fixture
         $sortieEnCours6->setOrganisateur($fred);
         $sortieEnCours6->setLieu($theatre1);
         $sortieEnCours6->addParticipant($toto);
+        $sortieEnCours6->addPhoto($photoTheatre);
         $manager->persist($sortieEnCours6);
 
         $sortieEnCours7 = new Sortie();
@@ -432,6 +479,7 @@ class AppFixtures extends Fixture
         $sortieEnCours7->setOrganisateur($toto);
         $sortieEnCours7->setLieu($cinema1);
         $sortieEnCours7->addParticipant($toto);
+        $sortieEnCours7->addPhoto($photoCinema);
         $manager->persist($sortieEnCours7);
 
         $sortieEnCours8 = new Sortie();
