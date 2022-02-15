@@ -9,6 +9,8 @@ use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormError;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -42,15 +44,25 @@ class UserController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             //Gestion upload images
-            $images = $form->get('images')->getData();
-            foreach($images as $image){
-                $fichier = md5(uniqid() . '.' . $image->guessExtension());
-                $image->move(
+            ///** @var UploadedFile $image */
+            $image = $form->get('images')->getData();
+
+            if ($image){
+                $name = md5(uniqid() . '.' . $image->guessExtension());
+                try {
+                    $image->move(
                     $this->getParameter('images_directory'),
-                    $fichier
+                    $name
                 );
+                } catch (FileException $fileException){
+                    dump('transfer error');
+                };
+
                 $photo = new Photo();
-                $photo->setName($fichier);
+                $photo->setName($name);
+                $photo->setIsProfilePicture(1);
+                $entityManager->persist($photo);
+                $entityManager->flush();
                 $user->addPhoto($photo);
 
             }
