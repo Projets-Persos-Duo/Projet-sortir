@@ -6,6 +6,7 @@ use App\Entity\Photo;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
+use App\Services\FileUploader;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormError;
@@ -51,20 +52,18 @@ class UserController extends AbstractController
                 $name = md5(uniqid() . '.' . $image->guessExtension());
                 try {
                     $image->move(
-                    $this->getParameter('images_directory'),
-                    $name
-                );
+                        $this->getParameter('images_directory'),
+                        $name
+                    );
                 } catch (FileException $fileException){
                     dump('transfer error');
                 };
 
                 $photo = new Photo();
-                $photo->setName($name);
+                $photo->setChemindd($name);
                 $photo->setIsProfilePicture(1);
                 $entityManager->persist($photo);
-                $entityManager->flush();
                 $user->addPhoto($photo);
-
             }
 
             $entityManager->persist($user);
@@ -96,7 +95,8 @@ class UserController extends AbstractController
                             Request $request,
                             User $user,
                             EntityManagerInterface $entityManager,
-                            UserPasswordHasherInterface $userPasswordHasher
+                            UserPasswordHasherInterface $userPasswordHasher,
+                            FileUploader $fileUploader
                         ): Response
     {
         $form = $this->createForm(UserType::class, $user);
@@ -126,6 +126,18 @@ class UserController extends AbstractController
                     $form->addError(new FormError('Mot de passe invalide !'));
                     goto fail;
                 }
+            }
+
+            $image = $form->get('images')->getData();
+            if(!empty($image))
+            {
+                $fileName = $fileUploader->upload($image);
+                $photo = new Photo();
+                $photo->setChemindd($fileName);
+                $photo->setIsProfilePicture(1);
+                $entityManager->persist($photo);
+                $user->addPhoto($photo);
+
             }
 
             $entityManager->persist($user);

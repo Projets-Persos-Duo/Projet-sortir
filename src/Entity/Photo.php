@@ -18,9 +18,10 @@ class Photo
     private $id;
 
     /**
+     * Chemin sur disque dur
      * @ORM\Column(type="string", length=255)
      */
-    private ?string $name;
+    private ?string $chemin_dd;
 
     /**
      * @ORM\Column(type="boolean")
@@ -38,14 +39,14 @@ class Photo
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getChemindd(): ?string
     {
-        return $this->name;
+        return $this->chemin_dd;
     }
 
-    public function setName(string $name): self
+    public function setChemindd(string $chemin_dd): self
     {
-        $this->name = $name;
+        $this->chemin_dd = $chemin_dd;
 
         return $this;
     }
