@@ -35,6 +35,10 @@ class AppFixtures extends Fixture
         @copy($dir_images.'/rando_mer1.gif', $dir_upload.'/rando_mer1.gif');
         @copy($dir_images.'/Restaurant1.gif', $dir_upload.'/Restaurant1.gif');
         @copy($dir_images.'/theatre1.gif', $dir_upload.'/theatre1.gif');
+        @copy($dir_images.'/conference.jpg', $dir_upload.'/conference.jpg');
+        @copy($dir_images.'/prehistoire.jpg', $dir_upload.'/prehistoire.jpg');
+        @copy($dir_images.'/Chateau.jpg', $dir_upload.'/Chateau.jpg');
+
 
         //Thematique Fixtures
         $cinema = new Thematiques();
@@ -313,6 +317,19 @@ class AppFixtures extends Fixture
         $photoTheatre->setChemindd('theatre1.gif');
         $photoTheatre->setUser($toto);
         $photoTheatre->setIsProfilePicture(false);
+        $photoPrehistoire = new Photo();
+        $photoPrehistoire->setChemindd('prehistoire.jpg');
+        $photoPrehistoire->setUser($toto);
+        $photoPrehistoire->setIsProfilePicture(false);
+        $photoConf = new Photo();
+        $photoConf ->setChemindd('conference.jpg');
+        $photoConf ->setUser($toto);
+        $photoConf ->setIsProfilePicture(false);
+        $photoChateau = new Photo();
+        $photoChateau ->setChemindd('Chateau.jpg');
+        $photoChateau ->setUser($toto);
+        $photoChateau ->setIsProfilePicture(false);
+
 
         $manager->persist($photoPiscine);
         $manager->persist($photoCinema);
@@ -320,6 +337,10 @@ class AppFixtures extends Fixture
         $manager->persist($photoRando);
         $manager->persist($photoResto);
         $manager->persist($photoTheatre);
+        $manager->persist($photoPrehistoire);
+        $manager->persist($photoConf);
+        $manager->persist($photoChateau);
+
 
         //Sortie Fixtures
         $sortieEnCours = new Sortie();
@@ -382,6 +403,7 @@ class AppFixtures extends Fixture
         $sortieEnCours2->setOrganisateur($toto);
         $sortieEnCours2->setLieu($expo1);
         $sortieEnCours2->addParticipant($toto);
+        $sortieEnCours2->addPhoto($photoPrehistoire);
         $manager->persist($sortieEnCours2);
 
         $sortieEnCours3 = new Sortie();
@@ -441,6 +463,7 @@ class AppFixtures extends Fixture
         $sortieEnCours5->setOrganisateur($sego);
         $sortieEnCours5->setLieu($piscine1);
         $sortieEnCours5->addParticipant($lulu);
+        $sortieEnCours5->addPhoto($photoPiscine);
         $manager->persist($sortieEnCours5);
 
         $sortieEnCours6 = new Sortie();
@@ -499,6 +522,7 @@ class AppFixtures extends Fixture
         $sortieEnCours8->setOrganisateur($lulu);
         $sortieEnCours8->setLieu($theatre1);
         $sortieEnCours8->addParticipant($toto);
+        $sortieEnCours8->addPhoto($photoConf);
         $manager->persist($sortieEnCours8);
 
         $sortieEnCours9 = new Sortie();
@@ -518,6 +542,7 @@ class AppFixtures extends Fixture
         $sortieEnCours9->setOrganisateur($toto);
         $sortieEnCours9->setLieu($cinema2);
         $sortieEnCours9->addParticipant($toto);
+        $sortieEnCours9->addPhoto($photoResto);
         $manager->persist($sortieEnCours9);
 
         $sortieAnnulee = new Sortie();
@@ -537,6 +562,7 @@ class AppFixtures extends Fixture
         $sortieAnnulee->setCampus($campusNiort);
         $sortieAnnulee->setOrganisateur($sego);
         $sortieAnnulee->setLieu($cinema1);
+        $sortieAnnulee->addPhoto($photoCinema);
         $manager->persist($sortieAnnulee);
 
         $sortieCloturee = new Sortie();
@@ -559,6 +585,7 @@ class AppFixtures extends Fixture
         $sortieCloturee->addParticipant($ivo);
         $sortieCloturee->addParticipant($fred);
         $sortieCloturee->addParticipant($sego);
+        $sortieCloturee->addPhoto($photoConcert);
         $manager->persist($sortieCloturee);
 
         $sortieArchivee = new Sortie();
@@ -577,6 +604,7 @@ class AppFixtures extends Fixture
         $sortieArchivee->setCampus($campusQuimper);
         $sortieArchivee->setOrganisateur($fred);
         $sortieArchivee->setLieu($parc1);
+        $sortieArchivee->addPhoto($photoChateau);
         $manager->persist($sortieArchivee);
 
 

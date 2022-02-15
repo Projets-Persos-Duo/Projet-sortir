@@ -35,9 +35,14 @@ body {
 }
 
 .pagination{
-margin-top: 50px;
+    margin-top: 50px;
     display: flex;
     justify-content: center;
+}
+
+.liste-sorties {
+     text-align: center;
+
 }
 
 div {
@@ -111,8 +116,16 @@ h1 {
     position: absolute;
     display: flex;
     flex-direction: column;
-
 }
+
+.row{
+    padding-top: 30px;
+}
+
+.image-sorties {
+    width:auto;
+}
+
 .flash {
     padding: 20px;
     font-weight: bold;
@@ -134,7 +147,6 @@ label, legend {
     flex-direction: row;
     justify-content: center;
     margin: 20px;
-
 }
 
 .phrases_intro {

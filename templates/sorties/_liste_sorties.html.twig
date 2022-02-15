@@ -2,10 +2,10 @@
 
 <section class="container">
     <section class="grid">
-            {% for sortie  in sorties %}
+          {% for sortie  in sorties %}
 
 
-            <article class="sorties-liste">
+             <article class="sorties-liste">
                 {% if sortie.photos.count %}
                     <div>
                 <img src="{{ asset(photos_path ~ sortie.photos.get(0).chemindd ) }} " alt="photo de la sortie" height="50px"/>
@@ -39,9 +39,9 @@
                     ''
                 ) }}
 
-            </article>
+             </article>
 
-         {% endfor %}
+          {% endfor %}
     </section>
 </section>
            <div class="pagination">
