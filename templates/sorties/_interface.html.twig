@@ -26,9 +26,9 @@
             {% include 'sorties/_liste_sorties.html.twig' %}
 
             {# TODO/ Paginator: problème avec sortie car tableau #}
-             <div class=""d-flex justify-content-center">
-                   {% do sorties.setPageRange(2) %}
-                   {{ knp_pagination_render(sorties, '/pagination.html.twig') }}
+             <div class="d-flex justify-content-center">
+{#                   {% do sorties.setPageRange(2) %}#}
+{#                   {{ knp_pagination_render(sorties, '/pagination.html.twig') }}#}
              </div>
 
             <li><a href="{{ path('sorties_list') }}" title="Liste des sorties">En cliquant ici vous trouverez l'ensemble des sorties! </a></li>
