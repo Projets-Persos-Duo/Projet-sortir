@@ -56,11 +56,9 @@ class RegistrationFormType extends AbstractType
                 'multiple' => false,
                 'mapped' => false,
                 'required'=> false,
-                'constraints' => [ new Image( ['mimeTypesMessage' => 'Image format not allowed !'])
+                'constraints' => [ new Image( ['mimeTypesMessage' => 'Seul images sont autorisées !'])
                 ]
-            ])
-            ;
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

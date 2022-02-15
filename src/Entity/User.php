@@ -135,6 +135,20 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return false;
     }
 
+    /**
+     * Retourne la photo de profil si il y'en a une
+     * @return Photo|null
+     */
+    public function getProfilePicture(): ?Photo
+    {
+        foreach ($this->photos as $photo) {
+            if($photo->getIsProfilePicture()) {
+                return $photo;
+            }
+        }
+
+        return null;
+    }
 
 
     public function getId(): ?int

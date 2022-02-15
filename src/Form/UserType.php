@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Image;
 
 class UserType extends AbstractType
 {
@@ -56,8 +57,10 @@ class UserType extends AbstractType
                 'label' => 'Ajouter une photo de profil',
                 'multiple' => false,
                 'mapped' => false,
-                'required'=> false
-            ])
+                'required'=> false,
+                'constraints' => [ new Image( ['mimeTypesMessage' => 'Seul images sont autorisées !'])],
+
+                ])
 //            ->add('groupes')
 //            ->add('sortiesParticipees')
 //            ->add('groupesGeres')
