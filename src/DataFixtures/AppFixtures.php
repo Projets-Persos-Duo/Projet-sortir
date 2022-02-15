@@ -28,12 +28,13 @@ class AppFixtures extends Fixture
     {
         $dir_images = __DIR__. '/../../public/img/img_sorties';
         $dir_upload= __DIR__. '/../../public/uploads';
-        copy($dir_images.'/cinema1.gif', $dir_upload.'/cinema1.gif');
-        copy($dir_images.'/concert1.gif', $dir_upload.'/concert1.gif');
-        copy($dir_images.'/piscine1.gif', $dir_upload.'/piscine1.gif');
-        copy($dir_images.'/rando_mer1.gif', $dir_upload.'/rando_mer1.gif');
-        copy($dir_images.'/Restaurant1.gif', $dir_upload.'/Restaurant1.gif');
-        copy($dir_images.'/theatre1.gif', $dir_upload.'/theatre1.gif');
+        @mkdir($dir_upload,);
+        @copy($dir_images.'/cinema1.gif', $dir_upload.'/cinema1.gif');
+        @copy($dir_images.'/concert1.gif', $dir_upload.'/concert1.gif');
+        @copy($dir_images.'/piscine1.gif', $dir_upload.'/piscine1.gif');
+        @copy($dir_images.'/rando_mer1.gif', $dir_upload.'/rando_mer1.gif');
+        @copy($dir_images.'/Restaurant1.gif', $dir_upload.'/Restaurant1.gif');
+        @copy($dir_images.'/theatre1.gif', $dir_upload.'/theatre1.gif');
 
         //Thematique Fixtures
         $cinema = new Thematiques();
