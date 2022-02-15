@@ -119,6 +119,8 @@ class SortieRepository extends ServiceEntityRepository
                 ->setParameter('ajd', new \DateTime("now"));
         }
 
+        $queryBuilder = $this->exclureSortiesAnnulees($queryBuilder);
+
         $queryBuilder->setMaxResults(10);
         $query=$queryBuilder->getQuery();
 
@@ -133,6 +135,12 @@ class SortieRepository extends ServiceEntityRepository
         );
 
         return $queryBuilder;
+    }
+
+    private function exclureSortiesAnnulees(QueryBuilder $queryBuilder): QueryBuilder
+    {
+
+        return $queryBuilder->andWhere('sortie.isCancelled IS NOT NULL');
     }
 
     //Pour trier les sorties par dates asc, pour afficher d'abord les plus proches

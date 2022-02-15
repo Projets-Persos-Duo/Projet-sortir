@@ -118,10 +118,6 @@ class Sortie
      */
     private ?Lieu $lieuRDV;
 
-    /**
-     * @ORM\Column(type="boolean", nullable=true)
-     */
-    private $isCancelled;
 
     public function __construct()
     {
@@ -381,13 +377,7 @@ class Sortie
 
     public function getIsCancelled(): ?bool
     {
-        return $this->isCancelled;
+        return $this->raison_annulation != null;
     }
 
-    public function setIsCancelled(bool $isCancelled): self
-    {
-        $this->isCancelled = $isCancelled;
-
-        return $this;
-    }
 }
