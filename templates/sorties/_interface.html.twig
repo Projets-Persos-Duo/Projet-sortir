@@ -3,6 +3,7 @@
     <div class="col-md-3">
         <div class="sortie-filtre">
             {{ form_start(sortieChoixForm) }}
+            {{ form_row(sortieChoixForm.photos) }}
             {{form_row(sortieChoixForm.campus)}}
             {{form_row(sortieChoixForm.contient)}}
             {{form_row(sortieChoixForm.themes)}}
@@ -13,6 +14,7 @@
             {{form_row(sortieChoixForm.ouJeSuisPasInscrit)}}
             {{form_row(sortieChoixForm.sortiesPassees)}}
             <button type="submit" class="btn btn-lg btn-warning">Filtrer</button>
+            {{ form_rest(sortieChoixForm) }}
             {{ form_end(sortieChoixForm) }}
         </div>
     </div>

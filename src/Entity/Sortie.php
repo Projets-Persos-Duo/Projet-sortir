@@ -118,10 +118,16 @@ class Sortie
      */
     private ?Lieu $lieuRDV;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Photo::class, inversedBy="sorties")
+     */
+    private $photos;
+
 
     public function __construct()
     {
         $this->participants = new ArrayCollection();
+        $this->photos = new ArrayCollection();
     }
 
     public function __toString()
@@ -392,6 +398,30 @@ class Sortie
     public function getIsCancelled(): ?bool
     {
         return $this->raison_annulation != null;
+    }
+
+    /**
+     * @return Collection|Photo[]
+     */
+    public function getPhotos(): Collection
+    {
+        return $this->photos;
+    }
+
+    public function addPhoto(Photo $photo): self
+    {
+        if (!$this->photos->contains($photo)) {
+            $this->photos[] = $photo;
+        }
+
+        return $this;
+    }
+
+    public function removePhoto(Photo $photo): self
+    {
+        $this->photos->removeElement($photo);
+
+        return $this;
     }
 
 }

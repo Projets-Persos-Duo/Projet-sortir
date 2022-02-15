@@ -1,6 +1,10 @@
 {% import 'macros.html.twig' as macros %}
 <h2 class="libelle-sortie">{{ sortie.nom }}</h2>
 
+{% for photo in sortie.photos %}
+<img src="{{ asset(photos_path ~ photo.chemindd) }}" alt="photo de la sprtie"/>
+{% endfor %}
+
 <div>Date : le {{ sortie.dateDebut|date("d/m/Y")}}, de {{ sortie.heureDebut|date('H:i') }} à {{ sortie.heureFin|date('H:i') }}</div>
 <div>Campus : {{ sortie.campus.nom }}</div>
 <div>Thématique : {{ sortie.theme.theme }}</div>

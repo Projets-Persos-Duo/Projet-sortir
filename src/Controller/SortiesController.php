@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Data\SearchSortiesData;
+use App\Entity\Photo;
 use App\Entity\Sortie;
 use App\Form\AnnulationSortieFormType;
 use App\Form\SortieSearchType;
@@ -12,6 +13,8 @@ use App\Form\InscriptionSortieFormType;
 use App\Form\SortieType;
 use App\Repository\SortieRepository;
 use App\Repository\UserRepository;
+use App\Services\FileUploader;
+use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 
 use Knp\Component\Pager\PaginatorInterface;
@@ -178,9 +181,9 @@ class SortiesController extends AbstractController
             if ($sortieForm->isSubmitted() && $sortieForm->isValid()){
 
                 $sortie->setOrganisateur($user);
-                $sortie->setHeureCloture(new \DateTime('23:59:59'));
-                $sortie->setDateAnnonce(new \DateTime());
-                $sortie->setHeureAnnonce(new \DateTime());
+                $sortie->setHeureCloture(new DateTime('23:59:59'));
+                $sortie->setDateAnnonce(new DateTime());
+                $sortie->setHeureAnnonce(new DateTime());
 
                 $entityManager->persist($sortie);
                 $entityManager->flush();
@@ -201,19 +204,40 @@ class SortiesController extends AbstractController
         int $id,
         Request $request,
         EntityManagerInterface $entityManager,
+        FileUploader $fileUploader,
         SortieRepository $sortieRepository
     ): Response
     {
         $sortie = $sortieRepository->find($id);
         $form = $this->createForm(SortieType::class, $sortie);
+        dump($sortie, $form);
 
         $form->handleRequest($request);
+
+        $im = $form->get('photos');
+        $image = $form->get('photos')->getData();
+        if(!empty($image)) {
+            $fileName = $fileUploader->upload($image);
+            $photo = new Photo();
+            $photo->setChemindd($fileName);
+            $photo->addSorty($sortie);
+            $photo->setIsProfilePicture(false);
+            $photo->setUser($this->getUser());
+            $entityManager->persist($photo);
+//            $entityManager->persist($sortie);
+//            $entityManager->flush();
+//            $request->request->set('photos', null);
+//            dd($photo, $sortie, $form);
+        }
+
+
+
 
         if($this->getUser()->getId() != $sortie->getOrganisateur()->getId()) {
             throw $this->createAccessDeniedException('Non autorisé');
         }
 
-        if($sortie->getDateCloture() < new \DateTime('now')) {
+        if($sortie->getDateCloture() < new DateTime('now')) {
             $this->addFlash(
                 'danger',
                 'La sortie ne peut plus etre modifiée après la date de cloture !'
@@ -259,7 +283,7 @@ class SortiesController extends AbstractController
         $annulationSortieForm = $this->createForm(AnnulationSortieFormType::class, $sortie);
         $annulationSortieForm->handleRequest($request);
 
-        if ($annulationSortieForm->isSubmitted() && $annulationSortieForm->isValid() && $sortie->getDateDebut() > new \DateTime('now'))
+        if ($annulationSortieForm->isSubmitted() && $annulationSortieForm->isValid() && $sortie->getDateDebut() > new DateTime('now'))
         {
             $sortie->setIsCancelled(true);
             $entityManager->persist($sortie);

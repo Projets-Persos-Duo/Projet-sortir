@@ -9,6 +9,7 @@ use App\Entity\Thematiques;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -23,6 +24,13 @@ class SortieType extends AbstractType
         $builder
             ->add('nom', TextType::class, [
                     'label'=>'Nom de la sortie :',
+                ]
+            )
+            ->add('photos', FileType::class, [
+                    'label'=>'Photos de la sortie :',
+                    'multiple' => false,
+                    'required' => false,
+                    'mapped' => false,
                 ]
             )
             ->add('theme', EntityType::class, [
@@ -91,4 +99,9 @@ class SortieType extends AbstractType
             'data_class' => Sortie::class,
         ]);
     }
+
+//    public function getBlockPrefix(): string
+//    {
+//        return '';
+//    }
 }

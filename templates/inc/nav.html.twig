@@ -31,6 +31,8 @@
                         </a>
                         {% if app.user.isAdmin %}
                             ⚔
+                        {% else %}
+                            👤
                         {% endif %}
                     </li>
                     <li class="nav-item"><a href="{{ path('app_logout') }}" title="Se déconnecter">Se déconnecter</a> </li>
