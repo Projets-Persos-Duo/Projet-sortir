@@ -27,6 +27,18 @@ body {
 
 }
 
+.grid{
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 50px;
+}
+
+.pagination{
+margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
 
 div {
     color: #DDDDDD;
