@@ -1,36 +1,36 @@
 <nav class="navigation navbar navbar-expand-md  navbar-dark bg-dark">
-    <button class="navbar-toggler" type="button"
-            data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-            aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="header-logo navbar-brand" href="{{ path('main_home') }}" title="Accueil">
+            <img src="{{ asset('img/logo_ENI_global.svg') }}" alt="logo ENI">
+            <h1 class="d-md-none"><a href="{{ path('main_home') }}">On va sortir</a></h1>
+        </a>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <h1 class="header-logo navbar-brand">
-            <a class="" href="#" title="Accueil">
-                <img src="{{ asset('img/logo_ENI_global.svg') }}" alt="logo ENI">
-            </a>
-            <a href="{{ path('main_home') }}">On va sortir</a>
-        </h1>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav " >
+                {#        <li><a href="{{ path('sorties_findSelect') }}" title="Liste des sorties">Sorties</a></li>#}
 
-        <ul class="navbar-nav " >
-            {#        <li><a href="{{ path('sorties_findSelect') }}" title="Liste des sorties">Sorties</a></li>#}
+                {%  if app.user %}
+                    <li class="nav-item"><a href="{{ path('user_show', {'id': app.user.id}) }}" title="Profil">Profil de {{ app.user.userIdentifier }}</a></li>
+                    <li class="nav-item"><a href="{{ path('app_logout') }}" title="Se déconnecter">Se déconnecter</a> </li>
+                    <li class="nav-item"><a href="{{ path('sorties_create') }}" title="Proposer une sortie">Ajout sortie</a></li>
+                    <li class="nav-item"><a href="{{ path('lieu_index') }}">Gerer lieux</a></li>
 
-            {%  if app.user %}
-                <li class="nav-item"><a href="{{ path('user_show', {'id': app.user.id}) }}" title="Profil">Profil de {{ app.user.userIdentifier }}</a></li>
-                <li class="nav-item"><a href="{{ path('app_logout') }}" title="Se déconnecter">Se déconnecter</a> </li>
-                <li class="nav-item"><a href="{{ path('sorties_create') }}" title="Proposer une sortie">Ajout sortie</a></li>
-                <li class="nav-item"><a href="{{ path('lieu_index') }}">Gerer lieux</a></li>
+                    {% if is_granted("ROLE_ADMIN") %}
+                        <li class="nav-item"><a href="{{ path('admin_dashboard') }}" title="Admin Dashboard">Admin</a> </li>
+                    {% endif %}
 
-                {% if is_granted("ROLE_ADMIN") %}
-                    <li class="nav-item"><a href="{{ path('admin_dashboard') }}" title="Admin Dashboard">Admin</a> </li>
+                {% else %}
+                    <li class="nav-item"><a href="{{ path('app_login') }}" title="Se connecter">Se connecter</a> </li>
+                    <li class="nav-item"><a href="{{ path('app_register') }}" title="S'inscrire'">S'inscrire</a> </li>
                 {% endif %}
+            </ul>
+        </div>
 
-            {% else %}
-                <li class="nav-item"><a href="{{ path('app_login') }}" title="Se connecter">Se connecter</a> </li>
-                <li class="nav-item"><a href="{{ path('app_register') }}" title="S'inscrire'">S'inscrire</a> </li>
-            {% endif %}
-        </ul>
     </div>
 
 </nav>
