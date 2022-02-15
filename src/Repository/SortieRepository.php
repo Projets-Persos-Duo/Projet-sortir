@@ -30,7 +30,7 @@ class SortieRepository extends ServiceEntityRepository
     {
         $sorties = parent::findAll();
         $sorties = array_filter($sorties, function (Sortie $sortie) {
-            return $sortie->getDateFin() > new \DateTime('-1 month');
+            return $sortie->getDateFin() > new \DateTime('-1 month') && empty($sortie->getRaisonAnnulation());
         });
 
         return $sorties;
@@ -140,7 +140,7 @@ class SortieRepository extends ServiceEntityRepository
     private function exclureSortiesAnnulees(QueryBuilder $queryBuilder): QueryBuilder
     {
 
-        return $queryBuilder->andWhere('sortie.isCancelled IS NOT NULL');
+        return $queryBuilder->andWhere('sortie.raison_annulation IS NOT NULL');
     }
 
     //Pour trier les sorties par dates asc, pour afficher d'abord les plus proches
