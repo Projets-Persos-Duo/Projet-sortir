@@ -31,13 +31,13 @@ class SortieSearchType extends AbstractType
                ],
 
            ])
-           ->add('photos', FileType::class, [
-                   'label'=>'Photos de la sortie :',
-                   'multiple' => false,
-                   'required' => false,
-                   'mapped' => false,
-               ]
-           )
+//           ->add('photos', FileType::class, [
+//                   'label'=>'Photos de la sortie :',
+//                   'multiple' => false,
+//                   'required' => false,
+//                   'mapped' => false,
+//               ]
+//           )
            ->add('contient', SearchType::class, [
                'label' => false,
                'required' => false,
