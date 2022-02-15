@@ -111,8 +111,9 @@ class UserController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $oldMDP = $form->get('oldMDP')->getData();
+            $newMDP = $form->get('newMDP')->getData();
 
-            if($oldMDP) {
+            if(!empty($oldMDP) && !empty($newMDP)) {
                 $valid = $userPasswordHasher->isPasswordValid($user, $oldMDP);
                 if ($valid) {
                     $user->setPassword(
