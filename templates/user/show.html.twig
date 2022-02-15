@@ -51,10 +51,21 @@
         {% for sortie in user.sortiesParticipees %}
         <tr>
             <td>
-                {{ sortie.nom }}
+                <a href="{{ path('sorties_detail', {'id': sortie.id}) }}"> {{ sortie.nom }}</a>
             </td>
             <td>
-                status
+                {% if sortie.estAVenir %}
+                - Est à venir
+                {% endif %}
+                {% if sortie.estEnCours %}
+                - En cours
+                {% endif %}
+                {% if sortie.estFinie %}
+                - Finie
+                {% endif %}
+                {% if sortie.isCancelled %}
+                - Annulée
+                {% endif %}
             </td>
         </tr>
         {% endfor %}

@@ -129,6 +129,20 @@ class Sortie
         return $this->nom;
     }
 
+    public function estAVenir()
+    {
+        return $this->date_debut > new \DateTime('now');
+    }
+
+    public function estEnCours()
+    {
+        return $this->date_debut <= new \DateTime('now') && $this->date_fin > new \DateTime('now');
+    }
+
+    public function estFinie()
+    {
+        return $this->date_fin < new \DateTime('now');
+    }
 
     public function getId(): ?int
     {
