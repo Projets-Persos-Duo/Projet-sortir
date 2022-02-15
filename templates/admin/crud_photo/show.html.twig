@@ -4,6 +4,10 @@
 
 {% block body %}
     <h1>Photo - détails</h1>
+    {% if photo.chemindd is defined %}
+        <img src="{{ asset(photos_path ~ photo.chemindd) }}"  alt="photo" />
+    {% endif %}
+
 
     <table class="table table-dark">
         <tbody>

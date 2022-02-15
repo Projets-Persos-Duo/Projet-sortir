@@ -10,7 +10,7 @@
         {%  endif %}
     </h1>
 
-    {% if user.profilePicture is defined %}
+    {% if user.profilePicture is defined and user.profilePicture is not null %}
     <img src="{{ asset(photos_path ~ user.profilePicture.chemindd) }}"  alt="photo de profil" />
     {% endif %}
 

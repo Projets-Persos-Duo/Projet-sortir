@@ -9,6 +9,7 @@
         <thead>
             <tr>
                 <th>Id</th>
+                <th>Apercu</th>
                 <th>Chemin_dd</th>
                 <th>IsProfilePicture</th>
                 <th>actions</th>
@@ -18,6 +19,7 @@
         {% for photo in photos %}
             <tr>
                 <td>{{ photo.id }}</td>
+                <td><img src="{{ asset(photos_path ~ photo.chemindd) }}"  alt="photo" width="20" height="20"/></td>
                 <td>{{ photo.cheminDd }}</td>
                 <td>{{ photo.isProfilePicture ? 'Yes' : 'No' }}</td>
                 <td>
