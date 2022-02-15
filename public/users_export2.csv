@@ -1,0 +1,7 @@
+"admin","[""ROLE_ADMIN"",""ROLE_USER""]","$2y$13$dI/F6YoIM1GApNSiiyl8UOJPYPo4xWF0YXzlbw9cwxxPytubhecfS","","","","","TRUE","Campus en ligne"
+"toto","[""ROLE_USER""]","$2y$13$Oy7fchnyUCrD1WRN17X9culqZuvXOLoosHMn.hugRzFUh6v4QkqV2","","","","","TRUE","Campus en ligne"
+"Sego","[""ROLE_USER""]","$2y$13$Hv06KZ6vA5B6mhU8Cngr/equVemNaxX3II77t.ImthOdJpOBr1cxq","","","","","TRUE","Campus de Niort"
+"Fred","[""ROLE_USER""]","$2y$13$wmaaK9FtXHudrw8tkiZbHOTqN6yPfVGkZZbC7hZaRdD5UjXFXHsCi","","","","","TRUE","Campus de Quimper"
+"Ivo","[""ROLE_USER""]","$2y$13$3z.1qC.HYwypT67y93YypOyJScKdFN7JCYTuK0cjzrWbdNHbQEpO2","","","","","TRUE","Campus de Nantes"
+"Lulu","[""ROLE_USER""]","$2y$13$BEPznM4w4Z3DY2egO7KQYeQox3C12s.iJn8HTWZleh6Xa.h2DEJu.","","","","","TRUE","Campus de Nantes"
+"test", "[""ROLE_USER""]", "123", "toto@toto.com", "francois", "pignon", "01010101", "TRUE", "Campus de Nantes"
