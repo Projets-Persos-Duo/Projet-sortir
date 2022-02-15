@@ -46,6 +46,16 @@ class MainController extends AbstractController
             $entityManager->flush();
         }
 
+        if (!empty($sortie = $sortieRepository->find((int)$request->get('annuler'))) && $this->getUser()
+        && $this->getUser()->getUserIdentifier() == $sortie->getOrganisateur()->getUserIdentifier()) {
+            $sortie->setRaisonAnnulation('automatiquement annulé depuis la liste');
+            $entityManager->persist($sortie);
+            $entityManager->persist($this->getUser());
+            $entityManager->flush();
+            $this->addFlash('success', 'La sortie a bien été annulée');
+            $sorties = $sortieRepository->findNonArchivees();
+        }
+
 
         return $this->render (
             '/main/home.html.twig', [

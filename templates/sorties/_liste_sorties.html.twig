@@ -9,6 +9,9 @@
                 title="Détails de la sortie">{{ sortie.nom }} ({{ sortie.dateDebut|date("d/m/Y") }})
         </a>
         {% if app.user %}
+            {% if app.user == sortie.organisateur %}
+                - <a href="{{ path('main_home', {'annuler': sortie.id}) }}">Annuler </a>
+            {% endif %}
             {% if app.user.peutRejoindre(sortie) %}
                 - <a href="{{ path('main_home', {'rejoindre': sortie.id}) }}">Rejoindre </a>
             {% endif %}
