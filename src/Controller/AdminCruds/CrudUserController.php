@@ -9,6 +9,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -29,13 +30,18 @@ class CrudUserController extends AbstractController
     /**
      * @Route("/new", name="crud_user_new", methods={"GET", "POST"})
      */
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request,
+                        UserPasswordHasherInterface $userPasswordHasher,
+                        EntityManagerInterface $entityManager): Response
     {
         $user = new User();
         $form = $this->createForm(UserCrudType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $password_en_clair = $user->getPassword();
+            $password_chiffre = $userPasswordHasher->hashPassword($user, $password_en_clair);
+            $user->setPassword($password_chiffre);
             $entityManager->persist($user);
             $entityManager->flush();
 
