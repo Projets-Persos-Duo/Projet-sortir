@@ -139,7 +139,7 @@ class SortieRepository extends ServiceEntityRepository
     private function exclureSortiesAnnulees(QueryBuilder $queryBuilder): QueryBuilder
     {
 
-        return $queryBuilder->andWhere('sortie.raison_annulation IS NOT NULL');
+        return $queryBuilder->andWhere('sortie.raison_annulation IS NULL');
     }
 
     //Pour trier les sorties par dates asc, pour afficher d'abord les plus proches
