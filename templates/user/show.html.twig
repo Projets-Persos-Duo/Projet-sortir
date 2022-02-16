@@ -85,6 +85,7 @@
         {% endfor %}
     </table>
 
+    {% if user == app.user %}
     <h2>Groupes gérés</h2>
     <table class="table table-dark">
         <tr>
@@ -102,6 +103,7 @@
         </tr>
         {% endfor %}
     </table>
+
     <a href="{{ path('groupe_new') }}" class="btn btn-primary">Ajouter un groupe</a>
 
     <h2>Groupes appartenus</h2>
@@ -130,6 +132,7 @@
             </tr>
         {% endfor %}
     </table>
+    {% endif %}
 
     <p>
     <a href="{{ path('user_index') }}" class="btn btn-success">Retour</a>
