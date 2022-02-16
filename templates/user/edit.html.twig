@@ -9,14 +9,13 @@
     <p>
     {{ include('user/_form.html.twig', {'button_label': 'Enregistrer'}) }}
     </p>
-
     <div class="modif-user">
-     <p>
+        <p>
     <a href="{{ path('user_index') }}" class="btn btn-success">Retour</a>
-    </p>
-     <p>
+        </p>
+        <p>
       {{ include('user/_delete_form.html.twig') }}
-     </p>
+        </p>
     </div>
 
 </section>
