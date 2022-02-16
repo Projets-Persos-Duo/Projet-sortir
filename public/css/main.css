@@ -126,6 +126,15 @@ h1 {
     width:auto;
 }
 
+.photo-profil{
+    width: 100px;
+    display: block;
+    margin:0px auto;
+
+}
+
+
+
 .flash {
     padding: 20px;
     font-weight: bold;

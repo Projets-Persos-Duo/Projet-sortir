@@ -11,7 +11,7 @@
     </h1>
 
     {% if user.profilePicture is defined and user.profilePicture is not null %}
-    <img src="{{ asset(photos_path ~ user.profilePicture.chemindd) }}"  alt="photo de profil" />
+    <img class="photo-profil" src="{{ asset(photos_path ~ user.profilePicture.chemindd) }}"  alt="photo de profil" />
     {% endif %}
 
     <table class="table table-dark">
