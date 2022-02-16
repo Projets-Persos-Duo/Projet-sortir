@@ -95,9 +95,9 @@
                 Membres
             </th>
         </tr>
-        {% for groupe in user.groupes %}
+        {% for groupe in user.groupesGeres %}
         <tr>
-            <td>{{ groupe }}</td>
+            <td><a href="{{ path('groupe_show', {'id': groupe.id}) }}"> {{ groupe }}</a></td>
             <td>{{ macros.liste_utilisateurs(groupe.membres) }}</td>
         </tr>
         {% endfor %}

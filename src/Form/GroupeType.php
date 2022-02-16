@@ -17,14 +17,9 @@ class GroupeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-//            ->add('nomGroupe', TextType::class, ['label'=>'Nom du groupe :','mapped'=>false])
-//            ->add('proprietaire', TextType::class, ['label'=>'Nom du propriétaire :'])
-            ->add('membres', CollectionType::class, [
-                'label'=>'Liste des membres :',
-                'allow_add'=>true,
-                'prototype'=>true,
-//                'allow_delete'=>true,
-                'entry_type'=>UserType::class
+            ->add('membres', EntityType::class, [
+                'class' => User::class,
+                'multiple' => true
             ])
 
         ;

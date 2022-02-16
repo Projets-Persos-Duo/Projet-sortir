@@ -1,14 +1,17 @@
 {% extends 'base.html.twig' %}
+{% import 'macros.html.twig' as macros %}
 
 {% block title %}Groupe index{% endblock %}
 
 {% block body %}
-    <h1>Groupe index</h1>
+    <h1>Tous les groupes</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
+                <th>Nom</th>
+                <th>Membres</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -16,18 +19,20 @@
         {% for groupe in groupes %}
             <tr>
                 <td>{{ groupe.id }}</td>
+                <td>{{ groupe }}</td>
+                <td>{{ macros.liste_utilisateurs(groupe.membres) }}</td>
                 <td>
-                    <a href="{{ path('groupe_show', {'id': groupe.id}) }}">show</a>
-                    <a href="{{ path('groupe_edit', {'id': groupe.id}) }}">edit</a>
+                    <a href="{{ path('groupe_show', {'id': groupe.id}) }}">Affcher</a>
+                    <a href="{{ path('groupe_edit', {'id': groupe.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="2">no records found</td>
+                <td colspan="2">Aucun groupe trouvé</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('groupe_new') }}">Create new</a>
+    <a href="{{ path('groupe_new') }}">Creer nouveau groupe</a>
 {% endblock %}

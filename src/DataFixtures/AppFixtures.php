@@ -290,6 +290,7 @@ class AppFixtures extends Fixture
         //Groupe Fixtures
         $groupe1 = new Groupe();
         $groupe1->setProprietaire($toto);
+        $groupe1->addMembre($toto);
         $manager->persist($groupe1);
 
         //Photos ficture
