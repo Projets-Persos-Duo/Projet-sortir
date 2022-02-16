@@ -179,7 +179,7 @@ class SortiesController extends AbstractController
 
 //            $this->addFlash('success', "Cet utilisateur a été désinscrit de ses sorties");
 //            return $this->redirectToRoute('crud_user_index',[]);
-        }
+//        }
 
 
         return $this->render('sorties/detail.html.twig', [
