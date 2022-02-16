@@ -24,11 +24,11 @@
                     {% if app.user == sortie.organisateur %}
                         - <a href="{{ path('main_home', {'annuler': sortie.id}) }}">Annuler </a>
                     {% endif %}
-                    {% if app.user.peutRejoindre(sortie) %}
-                        - <a href="{{ path('main_home', {'rejoindre': sortie.id}) }}">Rejoindre </a>
+                    {% if app.user.peutRejoindre(sortie) and app.user != sortie.organisateur %}
+                        - <a href="{{ path('main_home', {'rejoindre': sortie.id}) }}">S'inscrire </a>
                     {% endif %}
-                    {% if app.user.peutQuitter(sortie) %}
-                        - <a href="{{ path('main_home', {'quitter': sortie.id}) }}">Quitter </a>
+                    {% if app.user.peutQuitter(sortie) and app.user != sortie.organisateur %}
+                        - <a href="{{ path('main_home', {'quitter': sortie.id}) }}">Se désinscrire</a>
                     {% endif %}
                 {% endif %}
                 - Organisé par :
