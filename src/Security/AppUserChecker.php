@@ -21,7 +21,7 @@ class AppUserChecker implements UserCheckerInterface
         }
 
         if(empty($user->getIsActive())) {
-            $ex = new CompteSuspenduException();
+            $ex = new CompteSuspenduException('Ce compte est desactivé !');
             $ex->setUser($user);
 
             throw $ex;

@@ -153,11 +153,6 @@ class CrudUserController extends AbstractController
     public function edit(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(UserCrudType::class, $user);
-//        dump($user);
-//        if(empty($request->get('password'))) {
-//            $request->request->set('password', $user->getPassword());
-//        }
-//        dump($request);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

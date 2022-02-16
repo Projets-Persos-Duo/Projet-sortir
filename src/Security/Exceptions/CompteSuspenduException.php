@@ -7,7 +7,7 @@ class CompteSuspenduException extends \Symfony\Component\Security\Core\Exception
     /**
      * {@inheritdoc}
      */
-    public function getMessageKey()
+    public function getMessageKey(): string
     {
         return 'Ce compte est désactivé.';
     }

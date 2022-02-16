@@ -286,6 +286,15 @@ class AppFixtures extends Fixture
         $lulu->setCampus($campusNantes);
         $manager->persist($lulu);
 
+        $denis = new User();
+        $denis->setUsername('Denis');
+        $password = $this->hasher->hashPassword($denis, '123123');
+        $denis->setPassword($password);
+        $denis->setIsAdmin(false);
+        $denis->setIsActive(true);
+        $denis->setCampus($campusNantes);
+        $manager->persist($denis);
+
 
         //Groupe Fixtures
         $groupe1 = new Groupe();

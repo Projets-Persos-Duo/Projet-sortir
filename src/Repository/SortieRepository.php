@@ -59,7 +59,9 @@ class SortieRepository extends ServiceEntityRepository
     public function findSearch(SearchSortiesData $data, ?UserInterface $moi):array
     {
         $queryBuilder = $this
-            ->createQueryBuilder('sortie');
+            ->createQueryBuilder('sortie')
+        ->leftJoin('sortie.theme', 'theme')
+        ->select('sortie');
 
         if(!empty($data->campus)) {
             $queryBuilder
@@ -82,14 +84,14 @@ class SortieRepository extends ServiceEntityRepository
 
         if(!empty($data->entreDebut)) {
             $queryBuilder
-                ->andWhere('sortie.date_debut >= :date')
-                ->setParameter('date', $data->entreDebut);
+                ->andWhere('sortie.date_debut >= :date_deb')
+                ->setParameter('date_deb', $data->entreDebut);
         }
 
         if(!empty($data->entreFin)) {
             $queryBuilder
-                ->andWhere('sortie.date_debut <= :date')
-                ->setParameter('date', $data->entreFin);
+                ->andWhere('sortie.date_debut <= :date_fin')
+                ->setParameter('date_fin', $data->entreFin);
         }
 
         if(!empty($data->queJOrganise && $moi)) {

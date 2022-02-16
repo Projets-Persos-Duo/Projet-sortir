@@ -8,6 +8,7 @@ use App\Entity\Thematiques;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SearchType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -52,13 +53,13 @@ class SortieSearchType extends AbstractType
                 'expanded'=>true,
                 'multiple'=>true
            ])
-           ->add('entreDebut', DateTimeType::class, [
+           ->add('entreDebut', DateType::class, [
                'label' => 'Entre :',
                'required'=>false,
                'html5' => true,
                'widget' => 'single_text'
            ])
-           ->add('entreFin', DateTimeType::class, [
+           ->add('entreFin', DateType::class, [
                'label' => 'Et :',
                'required'=>false,
                'html5' => true,
