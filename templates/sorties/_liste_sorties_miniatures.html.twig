@@ -1,0 +1,33 @@
+{% import 'macros.html.twig' as macros %}
+
+<article class="sorties-liste">
+    {% if sortie.photos.count %}
+        <div>
+            <img src="{{ asset(photos_path ~ sortie.photos.get(0).chemindd ) }} "
+                 alt="photo de la sortie" height="50px"/>
+        </div>
+    {% endif %}
+    <a href="{{ path('sorties_detail', {id:sortie.id}) }}"
+       title="Détails de la sortie">{{ sortie.nom }} ({{ sortie.dateDebut|date("d/m/Y") }})
+    </a>
+    {% if app.user %}
+        {% if app.user == sortie.organisateur %}
+            - <a href="{{ path('main_home', {'annuler': sortie.id}) }}">Annuler </a>
+        {% endif %}
+        {% if app.user.peutRejoindre(sortie) and app.user != sortie.organisateur and sortie.dateCloture|date("d/m/Y")>= 'now'|date('d - m -Y') %}
+            - <a href="{{ path('main_home', {'rejoindre': sortie.id}) }}">S'inscrire </a>
+        {% endif %}
+        {% if app.user.peutQuitter(sortie) and app.user != sortie.organisateur and sortie.dateCloture|date("d/m/Y")>= 'now'|date('d - m -Y') %}
+            - <a href="{{ path('main_home', {'quitter': sortie.id}) }}">Se désinscrire</a>
+        {% endif %}
+    {% endif %}
+    - Organisé par :
+    <a href="{{ path('user_show', {'id': sortie.organisateur.id}) }}">
+        {{ sortie.organisateur.friendlyName }}
+    </a>
+    {{ macros.liste_utilisateurs(
+        sortie.participants,
+        ' - Participants: (' ~ sortie.participants.count ~ '/'~ sortie.limiteParticipants ~ ') :',
+        ''
+    ) }}
+</article>

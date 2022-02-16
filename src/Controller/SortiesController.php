@@ -109,8 +109,6 @@ class SortiesController extends AbstractController
                                         PaginatorInterface $paginator,
                                         Request $request): Response
     {
-
-
         $data=$sortieRepository->findArchivees();
 
 //paginator va nous permettre de choisir le nombre de sorties affichées par page (ici 6)
@@ -122,7 +120,7 @@ class SortiesController extends AbstractController
 
         return $this->render('sorties/list.html.twig', [
             'sorties' => $sorties,
-            'entete' => 'Les archives'
+            'entete' => 'Sorties archivées'
         ]);
     }
 
