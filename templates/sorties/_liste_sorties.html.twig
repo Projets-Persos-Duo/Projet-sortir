@@ -1,15 +1,20 @@
 {% import 'macros.html.twig' as macros %}
 
 <section class="container">
+    <div class="d-flex justify-content-end mb-2">
+        {{  knp_pagination_sortable(sorties, 'Date', 'sorties.date_debut') }}
+    </div>
+
     <section class="grid">
           {% for sortie  in sorties %}
 
 
              <article class="sorties-liste">
                 {% if sortie.photos.count %}
-                    <div>
-                <img src="{{ asset(photos_path ~ sortie.photos.get(0).chemindd ) }} " alt="photo de la sortie" height="50px"/>
-                    </div>
+                <div>
+                    <img src="{{ asset(photos_path ~ sortie.photos.get(0).chemindd ) }} "
+                     alt="photo de la sortie" height="50px"/>
+                </div>
                 {% endif %}
                 <a
                         href="{{ path('sorties_detail', {id:sortie.id}) }}"

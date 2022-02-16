@@ -120,7 +120,7 @@ class SortieRepository extends ServiceEntityRepository
 
         $queryBuilder = $this->exclureSortiesAnnulees($queryBuilder);
 
-        $queryBuilder->setMaxResults(10);
+//        $queryBuilder->setMaxResults(10);
         $query=$queryBuilder->getQuery();
         dump($data, $query, $queryBuilder);
 
