@@ -139,6 +139,7 @@ class SortiesController extends AbstractController
 
         /** @var User $user *///pour que le user soit bien un objet App/Entity/User et pas un UserInterface
         $user = $this->getUser();
+  //      $user->getIsActive();
 
         $inscriptionSortieForm = $this->createForm(InscriptionSortieFormType::class, $sortie);
         $inscriptionSortieForm->handleRequest($request);
@@ -157,7 +158,7 @@ class SortiesController extends AbstractController
             return $this->redirectToRoute('sorties_detail',['id' => $id]);
         }
 
-        if ($desinscriptionSortieForm->isSubmitted() && $desinscriptionSortieForm->isValid()){
+        if ($desinscriptionSortieForm->isSubmitted() && $desinscriptionSortieForm->isValid() ) {
             //$sortie->removeParticipant($user); je crois que removeSortiesParticipee le fait, ivo
             $user->removeSortiesParticipee($sortie);
             $entityManager->persist($user);
@@ -167,6 +168,19 @@ class SortiesController extends AbstractController
             $this->addFlash('success', "Désincription enregistrée");
             return $this->redirectToRoute('sorties_detail',['id' => $id]);
         }
+
+//TODO: enlever l'utilisateur qui a un compte désactivé
+
+//        if (empty($user->getIsActive())){
+//            $user->removeSortiesParticipee($sortie);
+//            $entityManager->persist($user);
+//            $entityManager->persist($sortie);
+//            $entityManager->flush();
+
+//            $this->addFlash('success', "Cet utilisateur a été désinscrit de ses sorties");
+//            return $this->redirectToRoute('crud_user_index',[]);
+        }
+
 
         return $this->render('sorties/detail.html.twig', [
             "sortie"=>$sortie,
