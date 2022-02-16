@@ -105,9 +105,20 @@ class SortiesController extends AbstractController
     /**
      * @Route("/liste-archivees", name="list_archivees")
      */
-    public function listeSortiesArchivees(SortieRepository $sortieRepository): Response
+    public function listeSortiesArchivees(SortieRepository $sortieRepository,
+                                        PaginatorInterface $paginator,
+                                        Request $request): Response
     {
-        $sorties=$sortieRepository->findArchivees();
+
+
+        $data=$sortieRepository->findArchivees();
+
+//paginator va nous permettre de choisir le nombre de sorties affichées par page (ici 6)
+        $sorties=$paginator->paginate(
+            $data,
+            $request->query->getInt('page', 1),
+            6
+        );
 
         return $this->render('sorties/list.html.twig', [
             'sorties' => $sorties,
