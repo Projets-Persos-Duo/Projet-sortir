@@ -20,9 +20,9 @@ class UserCrudType extends AbstractType
             ->add('username', TextType::class, [
         'label' => 'Pseudo'])
            // ->add('roles')
-            ->add('password', PasswordType::class, [
-                'required' => false,
-                'label' => 'Mot de passe'])
+//            ->add('password', PasswordType::class, [
+//                'required' => false,
+//                'label' => 'Mot de passe'])
             ->add('email', EmailType::class, [
                 'required' => false
             ])
