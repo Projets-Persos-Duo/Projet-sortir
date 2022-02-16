@@ -121,6 +121,7 @@ class SortieRepository extends ServiceEntityRepository
         }
 
         $queryBuilder = $this->exclureSortiesAnnulees($queryBuilder);
+        $queryBuilder = $this->exclureSortiesExpirees($queryBuilder);
 
 //        $queryBuilder->setMaxResults(10);
         $query=$queryBuilder->getQuery();
@@ -132,8 +133,8 @@ class SortieRepository extends ServiceEntityRepository
 
     private function exclureSortiesExpirees(QueryBuilder $queryBuilder): QueryBuilder
     {
-        $queryBuilder->andWhere('sortie.date_fin > :date')->setParameter(
-            'date', new \DateTime('-1 month')
+        $queryBuilder->andWhere('sortie.date_fin > :date_expire')->setParameter(
+            'date_expire', new \DateTime('-1 month')
         );
 
         return $queryBuilder;
