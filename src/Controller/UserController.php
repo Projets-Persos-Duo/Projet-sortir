@@ -77,7 +77,9 @@ class UserController extends AbstractController
                          GroupeRepository $groupeRepository,
                          EntityManagerInterface $entityManager): Response
     {
-        if(!empty($groupe = $groupeRepository->find($request->get('quitter_groupe')))) {
+
+        if(!empty($groupe = $request->get('quitter_groupe'))) {
+            $groupe = $groupeRepository->find($groupe);
             $user->removeGroupe($groupe);
             $this->addFlash('success', "Groupe de {$groupe->getProprietaire()} quitte !");
             $entityManager->persist($user);
