@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Photo;
 use App\Entity\User;
 use App\Form\UserType;
+use App\Repository\GroupeRepository;
 use App\Repository\UserRepository;
 use App\Services\FileUploader;
 use Doctrine\ORM\EntityManagerInterface;
@@ -72,8 +73,16 @@ class UserController extends AbstractController
     /**
      * @Route("/{id}", name="user_show", methods={"GET"})
      */
-    public function show(User $user): Response
+    public function show(User $user, Request $request,
+                         GroupeRepository $groupeRepository,
+                         EntityManagerInterface $entityManager): Response
     {
+        if(!empty($groupe = $groupeRepository->find($request->get('quitter_groupe')))) {
+            $user->removeGroupe($groupe);
+            $this->addFlash('success', "Groupe de {$groupe->getProprietaire()} quitte !");
+            $entityManager->persist($user);
+            $entityManager->flush();
+        }
         return $this->render('user/show.html.twig', [
             'user' => $user,
         ]);

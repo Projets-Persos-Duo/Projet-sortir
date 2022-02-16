@@ -113,11 +113,20 @@
             <th>
                 Membres
             </th>
+            <th>
+                Actions
+            </th>
         </tr>
         {% for groupe in user.groupes %}
             <tr>
                 <td><a href="{{ path('groupe_show', {'id': groupe.id}) }}"> {{ groupe }}</a></td>
                 <td>{{ macros.liste_utilisateurs(groupe.membres) }}</td>
+                <td>
+                    <a class="btn btn-secondary"
+                       href="{{ path('user_show', {'id': user.id, 'quitter_groupe': groupe.id}) }}">
+                        Quitter
+                    </a>
+                </td>
             </tr>
         {% endfor %}
     </table>
