@@ -195,8 +195,6 @@ class CrudUserController extends AbstractController
                                  UserRepository $userRepository): Response
     {
              $user=$userRepository->find($id);
-
-
              $user->setIsActive(false);
 
              $entityManager->flush();
