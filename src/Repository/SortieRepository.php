@@ -73,10 +73,10 @@ class SortieRepository extends ServiceEntityRepository
                 ->setParameter('q', "%$data->contient%");
         }
 
-        if(!empty($search->themes)){
+        if(!empty($data->themes)){
             $queryBuilder=$queryBuilder
                 ->andWhere('sortie.theme IN (:thematiques)')
-                ->setParameter('thematiques', $search->themes);
+                ->setParameter('thematiques', $data->themes);
 
         }
 
@@ -122,6 +122,7 @@ class SortieRepository extends ServiceEntityRepository
 
         $queryBuilder->setMaxResults(10);
         $query=$queryBuilder->getQuery();
+        dump($data, $query, $queryBuilder);
 
         return  $query->getResult();
 
