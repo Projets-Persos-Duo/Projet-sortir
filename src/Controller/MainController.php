@@ -27,35 +27,37 @@ class MainController extends AbstractController
         $sortieChoixForm = $this->createForm(SortieSearchType::class, $data);
         $sortieChoixForm->handleRequest($request);
 
-        $sorties = $sortieRepository->findNonArchivees();
+        $sorties = $sortieRepository->findSearch($data, $this->getUser());
 
-        if ($sortieChoixForm->isSubmitted() &&  $sortieChoixForm->isValid()) {
-            $sorties = $sortieRepository->findSearch($data, $this->getUser());
-
-        }
-
-        if (!empty($sortie = $sortieRepository->find((int)$request->get('rejoindre'))) && $this->getUser()) {
+        /* on traite la demande de rejoindre depuis la liste */
+        if (!empty($sortie = $sortieRepository->find((int)$request->get('rejoindre')))
+            && $this->getUser()) {
             $this->getUser()->addSortiesParticipee($sortie);
             $entityManager->persist($sortie);
             $entityManager->persist($this->getUser());
             $entityManager->flush();
         }
 
-        if (!empty($sortie = $sortieRepository->find((int)$request->get('quitter'))) && $this->getUser()) {
+        /* on traite la demande de quitter depuis la liste */
+        if (!empty($sortie = $sortieRepository->find((int)$request->get('quitter')))
+            && $this->getUser()) {
             $this->getUser()->removeSortiesParticipee($sortie);
             $entityManager->persist($sortie);
             $entityManager->persist($this->getUser());
             $entityManager->flush();
         }
 
-        if (!empty($sortie = $sortieRepository->find((int)$request->get('annuler'))) && $this->getUser()
-        && $this->getUser()->getUserIdentifier() == $sortie->getOrganisateur()->getUserIdentifier()) {
+        /* on traite la demande d'annulation depuis la liste */
+        if (!empty($sortie = $sortieRepository->find((int)$request->get('annuler')))
+            && $this->getUser()
+            && $this->getUser()->getUserIdentifier() == $sortie->getOrganisateur()->getUserIdentifier()
+        ) {
             $sortie->setRaisonAnnulation('automatiquement annulé depuis la liste');
             $entityManager->persist($sortie);
             $entityManager->persist($this->getUser());
             $entityManager->flush();
             $this->addFlash('success', 'La sortie a bien été annulée');
-            $sorties = $sortieRepository->findNonArchivees();
+            $sorties = $sortieRepository->findSearch($data, $this->getUser());
         }
 
 
