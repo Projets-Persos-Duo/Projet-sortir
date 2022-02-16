@@ -6,7 +6,7 @@
 {% block body %}
     <h1>Tous les groupes</h1>
 
-    <table class="table">
+    <table class="table table-dark">
         <thead>
             <tr>
                 <th>Id</th>
@@ -34,5 +34,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('groupe_new') }}">Creer nouveau groupe</a>
+    <a class="btn btn-success" href="{{ path('groupe_new') }}">Creer nouveau groupe</a>
 {% endblock %}
