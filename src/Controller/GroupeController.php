@@ -36,6 +36,8 @@ class GroupeController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $groupe->setProprietaire($this->getUser());
+            $groupe->addMembre($this->getUser());
             $entityManager->persist($groupe);
             $entityManager->flush();
 

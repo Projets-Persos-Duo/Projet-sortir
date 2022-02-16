@@ -20,7 +20,7 @@ class Groupe
     private $id;
 
     /**
-     * @ORM\ManyToMany(targetEntity=user::class, inversedBy="groupes")
+     * @ORM\ManyToMany(targetEntity=User::class, inversedBy="groupes")
      */
     private $membres;
 
@@ -32,10 +32,10 @@ class Groupe
     private $sorties;
 
     /**
-     * @ORM\OneToOne(targetEntity=User::class, inversedBy="groupesGeres", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="groupesGeres")
      * @ORM\JoinColumn(nullable=false)
      */
-    private ?User $proprietaire;
+    private $proprietaire;
 
 
     public function __toString()
@@ -49,20 +49,29 @@ class Groupe
         $this->sorties = new ArrayCollection();
     }
 
+    /**
+     * Affiche un nom lisible
+     * @return string
+     */
+    public function getNom(): string
+    {
+        return "Groupe de {$this->proprietaire->getUserIdentifier()}";
+    }
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
     /**
-     * @return Collection|user[]
+     * @return Collection|User[]
      */
     public function getMembres(): Collection
     {
         return $this->membres;
     }
 
-    public function addMembre(user $user): self
+    public function addMembre(User $user): self
     {
         if (!$this->membres->contains($user)) {
             $this->membres[] = $user;
@@ -71,7 +80,7 @@ class Groupe
         return $this;
     }
 
-    public function removeMembre(user $user): self
+    public function removeMembre(User $user): self
     {
         $this->membres->removeElement($user);
 
@@ -113,10 +122,11 @@ class Groupe
         return $this->proprietaire;
     }
 
-    public function setProprietaire(User $proprietaire): self
+    public function setProprietaire(?User $proprietaire): self
     {
         $this->proprietaire = $proprietaire;
 
         return $this;
     }
+
 }

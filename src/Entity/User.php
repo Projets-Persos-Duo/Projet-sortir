@@ -92,9 +92,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $sortiesParticipees;
 
     /**
-     * @ORM\OneToOne(targetEntity=Groupe::class, mappedBy="proprietaire", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity=Groupe::class, mappedBy="proprietaire")
      */
-    private ?Groupe $groupesGeres;
+    private $groupesGeres;
+
 
     public function __construct()
     {
@@ -102,6 +103,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->groupes = new ArrayCollection();
         $this->sortiesOrganisees = new ArrayCollection();
         $this->sortiesParticipees = new ArrayCollection();
+        $this->groupesGeres = new ArrayCollection();
     }
 
     public function __toString()
@@ -482,19 +484,32 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getGroupesGeres(): ?Groupe
+    /**
+     * @return Collection|Groupe[]
+     */
+    public function getGroupesGeres(): Collection
     {
         return $this->groupesGeres;
     }
 
-    public function setGroupesGeres(Groupe $groupesGeres): self
+    public function addGroupesGere(Groupe $groupesGere): self
     {
-        // set the owning side of the relation if necessary
-        if ($groupesGeres->getProprietaire() !== $this) {
-            $groupesGeres->setProprietaire($this);
+        if (!$this->groupesGeres->contains($groupesGere)) {
+            $this->groupesGeres[] = $groupesGere;
+            $groupesGere->setProprietaire($this);
         }
 
-        $this->groupesGeres = $groupesGeres;
+        return $this;
+    }
+
+    public function removeGroupesGere(Groupe $groupesGere): self
+    {
+        if ($this->groupesGeres->removeElement($groupesGere)) {
+            // set the owning side to null (unless already changed)
+            if ($groupesGere->getProprietaire() === $this) {
+                $groupesGere->setProprietaire(null);
+            }
+        }
 
         return $this;
     }
