@@ -14,7 +14,7 @@
                 <th>Ville</th>
                 <th>Latitude</th>
                 <th>Longitude</th>
-                <th>actions</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -27,13 +27,13 @@
                 <td>{{ lieu.latitude }}</td>
                 <td>{{ lieu.longitude }}</td>
                 <td>
-                    <a href="{{ path('lieu_show', {'id': lieu.id}) }}">voir</a>
-                    <a href="{{ path('lieu_edit', {'id': lieu.id}) }}">modifier</a>
+                    <a href="{{ path('lieu_show', {'id': lieu.id}) }}">Voir détails</a> /
+                    <a href="{{ path('lieu_edit', {'id': lieu.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">no records found</td>
+                <td colspan="6">Pas de lieux enregistrés</td>
             </tr>
         {% endfor %}
         </tbody>
