@@ -1,15 +1,18 @@
 {% extends 'base.html.twig' %}
+{% import 'macros.html.twig' as macros %}
 
 {% block title %}Groupe{% endblock %}
 
 {% block body %}
     <h1>Groupe</h1>
 
-    <table class="table">
+    <table class="table table-dark">
         <tbody>
             <tr>
                 <th>Id</th>
                 <td>{{ groupe.id }}</td>
+                <td>{{ groupe.proprietaire }}</td>
+                <td>{{ macros.liste_utilisateurs(groupe.membres) }}</td>
             </tr>
         </tbody>
     </table>
