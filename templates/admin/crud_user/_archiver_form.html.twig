@@ -1,0 +1,4 @@
+<form method="post" action="{{ path('crud_user_archive', {'id': user.id}) }}"
+      onsubmit="return confirm('Etes-vous sur de vouloir archiver cet utilisateur?');">
+        <button class="btn btn-danger">Archiver</button>
+</form>

@@ -53,6 +53,9 @@
     <a class="btn btn-success" href="{{ path('crud_user_index') }}">Retour</a>
     </p><p>
     <a class="btn btn-primary" href="{{ path('crud_user_edit', {'id': user.id}) }}">Modifier</a>
-    </p>
+    </p>    <p>
     {{ include('admin/crud_user/_delete_form.html.twig') }}
+</p>
+        {{ include('admin/crud_user/_archiver_form.html.twig') }}
+
 {% endblock %}

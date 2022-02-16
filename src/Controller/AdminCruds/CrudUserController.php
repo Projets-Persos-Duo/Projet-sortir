@@ -184,4 +184,32 @@ class CrudUserController extends AbstractController
 
         return $this->redirectToRoute('crud_user_index', [], Response::HTTP_SEE_OTHER);
     }
+
+
+    /**
+     * @Route("/{id}/archive", name="crud_user_archive", methods={"POST"})
+     */
+    public function archiverUser(Request $request,
+                                 Int $id,
+                                 EntityManagerInterface $entityManager,
+                                 UserRepository $userRepository): Response
+    {
+             $user=$userRepository->find($id);
+
+
+             $user->setIsActive(false);
+
+             $entityManager->flush();
+
+
+        return $this->redirectToRoute('crud_user_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+
+
+
 }
+
+
+
+
