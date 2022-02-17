@@ -2,10 +2,12 @@
 
 namespace App\Controller\AdminCruds;
 
+use App\Entity\Sortie;
 use App\Entity\User;
 use App\Form\CRUDS_Admin\UserCrudType;
 use App\Form\UploadCsvType;
 use App\Repository\CampusRepository;
+use App\Repository\SortieRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
@@ -184,16 +186,26 @@ class CrudUserController extends AbstractController
     /**
      * @Route("/{id}/archive", name="crud_user_archive", methods={"POST"})
      */
-    public function archiverUser(Request $request,
-                                 Int $id,
+    public function archiverUser(Int $id,
                                  EntityManagerInterface $entityManager,
-                                 UserRepository $userRepository): Response
+                                 UserRepository $userRepository,
+                                 SortieRepository $sortieRepository): Response
     {
              $user=$userRepository->find($id);
              $user->setIsActive(false);
 
-             $entityManager->flush();
+             $sortie=$sortieRepository->find($id);
 
+             foreach ($user->getSortiesParticipees() as $sortiesParticipees)
+
+                 if ($sortiesParticipees == $sortie){
+                     $user->removeSortiesParticipee($sortie);
+               //      $sortie->removeParticipant($user);
+            $this->addFlash('warning', "Attention cet utilisateur sera désinscrit de ses sorties");
+                 }
+             $entityManager->persist($user);
+             $entityManager->persist($sortie);
+             $entityManager->flush();
 
         return $this->redirectToRoute('crud_user_index', [], Response::HTTP_SEE_OTHER);
     }

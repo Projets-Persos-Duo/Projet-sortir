@@ -60,7 +60,6 @@ class MainController extends AbstractController
             $sorties = $sortieRepository->findSearch($data, $this->getUser());
         }
 
-
         $sortiePaginator=$paginator->paginate(
             $sorties, //on passe les données
             $request->query->getInt('page', 1), //numéro page en cours - 1 par défault

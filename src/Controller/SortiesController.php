@@ -47,7 +47,6 @@ class SortiesController extends AbstractController
         if ($sortieChoixForm->isSubmitted() &&  $sortieChoixForm->isValid()) {
             $sorties = $sortieRepository->findSearchCampus($data);
 
-
             return $this->redirectToRoute('sorties_select', ['sorties'=>$sorties]);
 
         }
@@ -74,8 +73,6 @@ class SortiesController extends AbstractController
             'sorties' => $sorties,
         ]);
     }
-
-
 
     /**
      * @Route("/list", name="list")
