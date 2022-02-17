@@ -22,7 +22,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @Route("/sorties", name="sorties_")
@@ -88,7 +87,8 @@ class SortiesController extends AbstractController
     {
 
             $data=$sortieRepository->findAll();
-
+            //paginator va nous permettre de choisir le nombre
+            // de sorties affichées par page (ici 6)
             $sorties = $paginator->paginate(
                 $data,
                 $request->query->getInt('page', 1),
@@ -109,6 +109,8 @@ class SortiesController extends AbstractController
     {
         $data=$sortieRepository->findArchivees();
 
+        // paginator va nous permettre de choisir
+        // le nombre de sorties affichées par page (ici 6)
         $sorties=$paginator->paginate(
             $data,
             $request->query->getInt('page', 1),
@@ -132,7 +134,8 @@ class SortiesController extends AbstractController
     {
        $sortie = $sortieRepository->find($id);
 
-        /** @var User $user *///pour que le user soit bien un objet App/Entity/User et pas un UserInterface
+        /** @var User $user */
+        //pour que le user soit bien un objet App/Entity/User et pas un UserInterface
         $user = $this->getUser();
 
         $inscriptionSortieForm = $this->createForm(InscriptionSortieFormType::class, $sortie);
@@ -142,7 +145,7 @@ class SortiesController extends AbstractController
         $desinscriptionSortieForm->handleRequest($request);
 
         if ($inscriptionSortieForm->isSubmitted() && $inscriptionSortieForm->isValid()){
-
+//            $sortie->addParticipant($user); je crois que removeSortiesParticipee le fait, ivo
             $user->addSortiesParticipee($sortie);
             $entityManager->persist($user);
             $entityManager->persist($sortie);
@@ -163,6 +166,9 @@ class SortiesController extends AbstractController
             return $this->redirectToRoute('sorties_detail',['id' => $id]);
         }
 
+        //TODO: enlever l'utilisateur qui a un compte désactivé
+
+
         return $this->render('sorties/detail.html.twig', [
             "sortie"=>$sortie,
             'inscriptionSortieForm'=>$inscriptionSortieForm->createView(),
@@ -176,7 +182,8 @@ class SortiesController extends AbstractController
 
     public function create(Request $request, EntityManagerInterface $entityManager): Response
     {
-        /** @var User $user *///pour que le user soit bien un objet App/Entity/User et pas un UserInterface
+        /** @var User $user */
+        //pour que le user soit bien un objet App/Entity/User et pas un UserInterface
         $user = $this->getUser();
 
         $sortie = new Sortie();
@@ -233,6 +240,8 @@ class SortiesController extends AbstractController
         }
 
 
+
+
         if($this->getUser()->getId() != $sortie->getOrganisateur()->getId()) {
             throw $this->createAccessDeniedException('Non autorisé');
         }
@@ -260,6 +269,7 @@ class SortiesController extends AbstractController
                 ['id'=>$sortie->getId()],
                 Response::HTTP_SEE_OTHER
             );
+
         }
 
         fail:
@@ -267,8 +277,8 @@ class SortiesController extends AbstractController
             'sortie' => $sortie,
             'form' => $form,
         ]);
-    }
 
+    }
     /**
      * @Route("/annuler/{id}", name="annuler")
      */
