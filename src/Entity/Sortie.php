@@ -6,6 +6,7 @@ use App\Repository\SortieRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=SortieRepository::class)
@@ -20,6 +21,8 @@ class Sortie
     private $id;
 
     /**
+     * @Assert\NotBlank(message="Veuillez choisir un nom valide!")
+     * @Assert\Length(min=2, max=255)
      * @ORM\Column(type="string", length=255)
      */
     private ?string $nom;
@@ -70,6 +73,7 @@ class Sortie
     private ?string $raison_annulation;
 
     /**
+     * @Assert\Range(min="2", max="20", notInRangeMessage="Nombre de participants doit être entre 2 et 20!")
      * @ORM\Column(type="integer", nullable=true)
      */
     private ?int $limite_participants;
