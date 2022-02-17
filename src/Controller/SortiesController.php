@@ -299,7 +299,7 @@ class SortiesController extends AbstractController
     public function annuler( int $id, Request $request, EntityManagerInterface $entityManager, SortieRepository $sortieRepository):Response
     {
         $sortie = $sortieRepository->find($id);
-        if($this->getUser()->getId() != $sortie->getOrganisateur()->getId()) {
+        if($this->getUser()->getId() != $sortie->getOrganisateur()->getId() && !$this->getUser()->getIsAdmin()) {
             throw $this->createAccessDeniedException('Non autorisé');
         }
 
@@ -308,7 +308,6 @@ class SortiesController extends AbstractController
 
         if ($annulationSortieForm->isSubmitted() && $annulationSortieForm->isValid() && $sortie->getDateDebut() > new DateTime('now'))
         {
-            $sortie->setIsCancelled(true);
             $entityManager->persist($sortie);
             $entityManager->flush();
 
