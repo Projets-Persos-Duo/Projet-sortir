@@ -12,7 +12,7 @@
 
             {% include('inc/inscriptionSortie.html.twig') %}
 
-            {% if sortie.organisateur == app.user %}
+            {% if sortie.organisateur == app.user or 'ROLE_ADMIN' in app.user.roles %}
                 <a href="{{ path('sorties_edit', {'id': sortie.id}) }}" class="btn btn-secondary">
                     Modifier la sortie
                 </a>
