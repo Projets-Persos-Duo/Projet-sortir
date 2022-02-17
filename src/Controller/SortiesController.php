@@ -70,13 +70,10 @@ class SortiesController extends AbstractController
         //TODO / FINIR CETTE FONCTION QUI LISTE LES SORTIES SELON LEUR SELECTION
         // plus necessaire vu que MainController s'en occupe?
         $sorties=new Sortie();
-//        dump($sorties);
 
         return $this->render('sorties/listSelect.html.twig', [
             'sorties' => $sorties,
         ]);
-
-
     }
 
 
@@ -91,7 +88,7 @@ class SortiesController extends AbstractController
     {
 
             $data=$sortieRepository->findAll();
-//paginator va nous permettre de choisir le nombre de sorties affichées par page (ici 6)
+
             $sorties = $paginator->paginate(
                 $data,
                 $request->query->getInt('page', 1),
@@ -112,7 +109,6 @@ class SortiesController extends AbstractController
     {
         $data=$sortieRepository->findArchivees();
 
-//paginator va nous permettre de choisir le nombre de sorties affichées par page (ici 6)
         $sorties=$paginator->paginate(
             $data,
             $request->query->getInt('page', 1),
@@ -138,7 +134,6 @@ class SortiesController extends AbstractController
 
         /** @var User $user *///pour que le user soit bien un objet App/Entity/User et pas un UserInterface
         $user = $this->getUser();
-  //      $user->getIsActive();
 
         $inscriptionSortieForm = $this->createForm(InscriptionSortieFormType::class, $sortie);
         $inscriptionSortieForm->handleRequest($request);
@@ -147,7 +142,7 @@ class SortiesController extends AbstractController
         $desinscriptionSortieForm->handleRequest($request);
 
         if ($inscriptionSortieForm->isSubmitted() && $inscriptionSortieForm->isValid()){
-//            $sortie->addParticipant($user); je crois que removeSortiesParticipee le fait, ivo
+
             $user->addSortiesParticipee($sortie);
             $entityManager->persist($user);
             $entityManager->persist($sortie);
@@ -167,19 +162,6 @@ class SortiesController extends AbstractController
             $this->addFlash('success', "Désincription enregistrée");
             return $this->redirectToRoute('sorties_detail',['id' => $id]);
         }
-
-//TODO: enlever l'utilisateur qui a un compte désactivé
-
-//        if (empty($user->getIsActive())){
-//            $user->removeSortiesParticipee($sortie);
-//            $entityManager->persist($user);
-//            $entityManager->persist($sortie);
-//            $entityManager->flush();
-
-//            $this->addFlash('success', "Cet utilisateur a été désinscrit de ses sorties");
-//            return $this->redirectToRoute('crud_user_index',[]);
-//        }
-
 
         return $this->render('sorties/detail.html.twig', [
             "sortie"=>$sortie,
@@ -248,13 +230,7 @@ class SortiesController extends AbstractController
             $photo->setIsProfilePicture(false);
             $photo->setUser($this->getUser());
             $entityManager->persist($photo);
-//            $entityManager->persist($sortie);
-//            $entityManager->flush();
-//            $request->request->set('photos', null);
-//            dd($photo, $sortie, $form);
         }
-
-
 
 
         if($this->getUser()->getId() != $sortie->getOrganisateur()->getId()) {
@@ -284,7 +260,6 @@ class SortiesController extends AbstractController
                 ['id'=>$sortie->getId()],
                 Response::HTTP_SEE_OTHER
             );
-
         }
 
         fail:
@@ -292,8 +267,8 @@ class SortiesController extends AbstractController
             'sortie' => $sortie,
             'form' => $form,
         ]);
-
     }
+
     /**
      * @Route("/annuler/{id}", name="annuler")
      */
