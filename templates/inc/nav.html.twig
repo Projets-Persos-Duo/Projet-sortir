@@ -36,11 +36,11 @@
                         {% endif %}
                     </li>
                     <li class="nav-item"><a href="{{ path('app_logout') }}" title="Se déconnecter">Se déconnecter</a> </li>
-                    <li class="nav-item"><a href="{{ path('sorties_create') }}" title="Proposer une sortie">Ajout sortie</a></li>
-                    <li class="nav-item"><a href="{{ path('lieu_index') }}">Gerer lieux</a></li>
+                    <li class="nav-item"><a href="{{ path('sorties_create') }}" title="Proposer une sortie">Créer une sortie</a></li>
+                    <li class="nav-item"><a href="{{ path('lieu_index') }}">Liste des lieux</a></li>
 
                     {% if is_granted("ROLE_ADMIN") %}
-                        <li class="nav-item"><a href="{{ path('admin_dashboard') }}" title="Admin Dashboard">Admin</a> </li>
+                        <li class="nav-item"><a href="{{ path('admin_dashboard') }}" title="Admin Dashboard">Administrateur</a> </li>
                     {% endif %}
 
                 {% else %}
