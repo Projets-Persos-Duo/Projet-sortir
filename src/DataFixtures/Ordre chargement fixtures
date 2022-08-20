@@ -1,0 +1,29 @@
+Ce dossier contient les fixtures.
+Il existe deux groupes de fixtures : "init" qui concerne toutes les données qui sont nécessaires à l'initialisation de l'application
+et "data" qui concerne les données qui sont ajoutées pour avoir un jeu de données de tests.
+
+Chaque fixtures doit implémenter OrderedFixtureInterface et FixtureGroupInterface
+FixtureGroupInterface : permet d'indiquer le groupe de fixtures (init ou data)
+OrderedFixtureInterface : permet d'indiquer dans quel ordre les fixtures doivent être éxécutées
+
+Les fixtures sont exécutées en fonction de leur ordre, indépendamment du groupe auquel elles appartiennent.
+Si deux Fixtures ont le même ordre, elles sont jouées par ordre alphabétique.
+
+L'ordre est important surtout quand une fixtures fait appel aux données générées par une autre fixtures.
+Par exemple, ici, Sortie doit impérativement être exécutée après Campus.
+
+
+Récapitulatif de l'ordre des fixtures [à tenir à jour] :
+
+    10  CampusFixtures (init) / VilleFixtures (init) / ThematiqueFixtures (init)
+    20  LieuFixtures
+    30  AppFixtures
+    40
+    50
+    60
+
+    Reste à faire:
+    GroupeFixtures
+    PhotoFixtures
+    SortieFixtures
+    UserFixtures
