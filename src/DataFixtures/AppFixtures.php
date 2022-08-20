@@ -2,14 +2,10 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Campus;
 use App\Entity\Groupe;
-use App\Entity\Lieu;
 use App\Entity\Photo;
 use App\Entity\Sortie;
-use App\Entity\Thematiques;
 use App\Entity\User;
-use App\Entity\Ville;
 use DateTime;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;

@@ -2,22 +2,13 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Campus;
-use App\Entity\Groupe;
 use App\Entity\Lieu;
-use App\Entity\Photo;
-use App\Entity\Sortie;
-use App\Entity\Thematiques;
-use App\Entity\User;
 use App\Entity\Ville;
-use App\Repository\VilleRepository;
-use DateTime;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ObjectManager;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class LieuFixtures extends Fixture implements OrderedFixtureInterface, FixtureGroupInterface
 {
