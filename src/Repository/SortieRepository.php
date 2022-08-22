@@ -126,9 +126,7 @@ class SortieRepository extends ServiceEntityRepository
         $query=$queryBuilder->getQuery();
         dump($data, $query, $queryBuilder);
         dump( date('d-m-y'));
-
         return  $query->getResult();
-
     }
 
     private function exclureSortiesExpirees(QueryBuilder $queryBuilder): QueryBuilder
@@ -159,6 +157,5 @@ class SortieRepository extends ServiceEntityRepository
 
         return $sorties->getResult();
     }
-
 
 }
