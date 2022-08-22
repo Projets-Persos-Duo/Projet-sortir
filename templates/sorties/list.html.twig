@@ -4,12 +4,30 @@
 
 {% block body %}
 
-
-
-
     <h1>{{ entete|default('Toutes les sorties proposées sont ici !') }}</h1>
-
+    <div class="col-md-3">
+        <div class="sortie-filtre">
+{#            {{ form_start(sortieChoixForm) }}#}
+{#            {% if 'photos' in sortieChoixForm %}#}
+{#                {{ form_row(sortieChoixForm.photos) }}#}
+{#            {% endif %}#}
+{#            {{form_row(sortieChoixForm.campus)}}#}
+{#            {{form_row(sortieChoixForm.contient)}}#}
+{#            {{form_row(sortieChoixForm.themes)}}#}
+{#            {{form_row(sortieChoixForm.entreDebut)}}#}
+{#            {{form_row(sortieChoixForm.entreFin)}}#}
+{#            {{form_row(sortieChoixForm.queJOrganise)}}#}
+{#            {{form_row(sortieChoixForm.ouJeSuisInscrit)}}#}
+{#            {{form_row(sortieChoixForm.ouJeSuisPasInscrit)}}#}
+{#            {{form_row(sortieChoixForm.sortiesPassees)}}#}
+{#            <button type="submit" class="btn btn-lg btn-warning">Filtrer</button>#}
+{#            {{ form_rest(sortieChoixForm) }}#}
+{#            {{ form_end(sortieChoixForm) }}#}
+        </div>
+  </div>
+     <div class="col-md-9">
     {% include 'sorties/_liste_sorties.html.twig' %}
+     </div>
 
 
 {% endblock %}
