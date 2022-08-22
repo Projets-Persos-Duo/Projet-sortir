@@ -1,5 +1,4 @@
 <section class="container">
-
     <section class="grid">
           {% for sortie  in sorties %}
               {% if app.request.attributes.get('_route') != 'sorties_liste_archivees' %}
@@ -13,6 +12,7 @@
           {% endfor %}
     </section>
 </section>
+
            <div class="pagination">
                {{ knp_pagination_render(sorties, '/pagination.html.twig') }}
            </div>

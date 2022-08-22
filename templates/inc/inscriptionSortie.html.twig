@@ -1,23 +1,20 @@
 {% if app.user %}
-
+    {% dump app.user.id %}
     {% if app.user.sortiesParticipees.contains(sortie) %}
         <h3>Vous êtes inscrit à cette sortie</h3>
+        {# Si on est inscrit à la sortie alors on peut cliquer sur le bouton pour se désinscrire #}
         {{ form(desinscriptionSortieForm) }}
-
     {% else %}
-        {% if sortie.dateCloture|date('d - m -Y') >= 'now'|date('d - m -Y') %}
+        {% if sortie.dateCloture|date('Y-m-d') >= date("now")|date('Y-m-d') %}
             {% if sortie.participants|length < sortie.limiteParticipants %}
-
+        {# Si on n'est pas inscrit à la sortie alors on peut cliquer sur le bouton pour s'inscrire #}
                 {{ form(inscriptionSortieForm) }}
-
             {% else %}
                 <h3>Il n'y plus de places disponibles</h3>
             {% endif %}
-
         {% else %}
             <h3>La date limite d'inscription est dépassée</h3>
         {% endif %}
-
     {% endif %}
 
 {% else %}

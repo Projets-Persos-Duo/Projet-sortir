@@ -2,13 +2,11 @@
 <h2 class="libelle-sortie">{{ sortie.nom }}</h2>
 
 <div class="row">
-
     <div class="col-md-3">
         {% for photo in sortie.photos %}
-        <img class="image-sorties" src="{{ asset(photos_path ~ photo.chemindd) }}" alt="photo de la sprtie"/>
+        <img class="image-sorties" src="{{ asset(photos_path ~ photo.chemindd) }}" alt="photo de la sortie"/>
         {% endfor %}
     </div>
-
     <div class="col-md-9">
         <div>Date : le {{ sortie.dateDebut|date("d/m/Y")}}, de {{ sortie.heureDebut|date('H:i') }} à {{ sortie.heureFin|date('H:i') }}</div>
         <div>Campus : {{ sortie.campus.nom }}</div>
@@ -20,13 +18,11 @@
                 {{ sortie.organisateur.friendlyName }}
             </a>
         </div>
-
         <div>Nombre maximal de participants : {{ sortie.limiteParticipants }}</div>
         <div>Nombre d'inscrits : {{ sortie.participants|length }}
-
             {{ macros.liste_utilisateurs(sortie.participants) }}
-
         </div>
         <div>Nombre de places restantes : {{ sortie.limiteParticipants-sortie.participants|length }} / {{ sortie.limiteParticipants }}</div>
         <div>Date limite d'inscription : {{ sortie.dateCloture|date("d/m/Y") }}</div>
     </div>
+</div>

@@ -15,21 +15,22 @@ class MainController extends AbstractController
 {
 
     /**
+     *Affichage principal de la page d'accueil des sorties
      * @Route("/", name="main_home")
      */
-
     public function home(Request $request,
                          SortieRepository $sortieRepository,
                          EntityManagerInterface $entityManager,
                          PaginatorInterface $paginator)
     {
+        /* Formulaire de recherche d'une sortie */
         $data= new SearchSortiesData();
         $sortieChoixForm = $this->createForm(SortieSearchType::class, $data);
         $sortieChoixForm->handleRequest($request);
-
+        /* Fonction de recherche d'une sortie */
         $sorties = $sortieRepository->findSearch($data, $this->getUser());
 
-        /* on traite la demande de rejoindre depuis la liste */
+        /* on traite la demande de s'inscrire depuis la liste des sorties */
         if (!empty($sortie = $sortieRepository->find((int)$request->get('rejoindre')))
             && $this->getUser()) {
             $this->getUser()->addSortiesParticipee($sortie);
@@ -38,7 +39,7 @@ class MainController extends AbstractController
             $entityManager->flush();
         }
 
-        /* on traite la demande de quitter depuis la liste */
+        /* on traite la demande de se désinscrire depuis la liste des sorties */
         if (!empty($sortie = $sortieRepository->find((int)$request->get('quitter')))
             && $this->getUser()) {
             $this->getUser()->removeSortiesParticipee($sortie);
@@ -65,16 +66,12 @@ class MainController extends AbstractController
             $request->query->getInt('page', 1), //numéro page en cours - 1 par défault
             6 //nombre d'éléments par page
         );
-
              return $this->render (
             '/main/home.html.twig', [
                 'sorties' => $sortiePaginator,
                 'sortieChoixForm' => $sortieChoixForm->createView(),
-
             ]
         );
-
     }
-
 
 }

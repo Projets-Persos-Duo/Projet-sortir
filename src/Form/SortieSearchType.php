@@ -32,13 +32,6 @@ class SortieSearchType extends AbstractType
                ],
 
            ])
-//           ->add('photos', FileType::class, [
-//                   'label'=>'Photos de la sortie :',
-//                   'multiple' => false,
-//                   'required' => false,
-//                   'mapped' => false,
-//               ]
-//           )
            ->add('contient', SearchType::class, [
                'label' => false,
                'required' => false,
@@ -70,8 +63,7 @@ class SortieSearchType extends AbstractType
                'label_attr' => [
                    'class' => 'checkbox-switch',
                    ],
-               ]
-           )
+           ])
            ->add(
                'ouJeSuisInscrit',
                CheckboxType::class, [
@@ -79,8 +71,7 @@ class SortieSearchType extends AbstractType
                    'label_attr' => [
                        'class' => 'checkbox-switch',
                    ],
-               ]
-           )
+           ])
            ->add('ouJeSuisPasInscrit', CheckboxType::class, [
                'required'=>false,
                'label_attr' => [
@@ -89,11 +80,9 @@ class SortieSearchType extends AbstractType
            ])
            ->add('sortiesPassees', CheckboxType::class, [
                'required'=>false,
-               'label_attr' => ['class' => 'checkbox-switch',],
-               ]
-           )
-
-
+               'label_attr' => ['class' => 'checkbox-switch',
+                   ],
+           ])
        ;
     }
 

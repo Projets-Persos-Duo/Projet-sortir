@@ -3,6 +3,7 @@
     <div class="col-md-3">
         <div class="sortie-filtre">
             {{ form_start(sortieChoixForm) }}
+{#            Utilité de "photos" dans la partie recherche ?? #}
             {% if 'photos' in sortieChoixForm %}
             {{ form_row(sortieChoixForm.photos) }}
             {% endif %}

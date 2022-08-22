@@ -7,22 +7,21 @@
     {% include('inc/detailsSortie.html.twig') %}
 
     {% if sortie.raisonAnnulation is defined and sortie.raisonAnnulation is null %}
-
-        {% if sortie.dateDebut|date('d - m -Y') > 'now'|date('d - m -Y') %}
-
+        {% dump sortie.dateDebut|date('Y-m-d') %}
+        {% dump date("now")|date('Y-m-d') %}
+        {% if sortie.dateDebut|date('Y-m-d') > date("now")|date('Y-m-d') %}
+            {% dump sortie.dateDebut|date('Y-m-d') %}
             {% include('inc/inscriptionSortie.html.twig') %}
-
+{# Si l'organisateur de la sortie ouvre le détail de la sortie on a les boutons "modifier et annuler" qui apparaissent #}
             {% if sortie.organisateur == app.user or app.user and 'ROLE_ADMIN' in app.user.roles %}
-                <a href="{{ path('sorties_edit', {'id': sortie.id}) }}" class="btn btn-secondary">
-                    Modifier la sortie
-                </a>
-                <a href="{{ path('sorties_annuler', {'id': sortie.id}) }}" class="btn btn-danger">
-                    Annuler la sortie
-                </a>
+                {% dump app.user.id %}
+                {% dump sortie.organisateur %}
+                <a href="{{ path('sorties_edit', {'id': sortie.id}) }}" class="btn btn-secondary">Modifier la sortie</a>
+                <a href="{{ path('sorties_annuler', {'id': sortie.id}) }}" class="btn btn-danger">Annuler la sortie</a>
             {% endif %}
 
         {% else %}
-            <h3>La date de cette sortie est dépassée, elle a eu lieu le {{ sortie.dateDebut|date('d - m -Y') }}</h3>
+            <h3>La date de cette sortie est dépassée, elle a eu lieu le {{ sortie.dateDebut|date('d-m-Y') }}</h3>
         {% endif %}
 
     {% elseif sortie.raisonAnnulation is defined and sortie.raisonAnnulation is not null %}

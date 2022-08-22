@@ -3,13 +3,12 @@
 namespace App\Repository;
 
 use App\Data\SearchSortiesData;
-use App\Entity\Campus;
 use App\Entity\Sortie;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\DBAL\Types\DateTimeType;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints\Date;
 
 /**
  * @method Sortie|null find($id, $lockMode = null, $lockVersion = null)
@@ -52,7 +51,7 @@ class SortieRepository extends ServiceEntityRepository
     }
 
     /**
-     * Lister les sorties en fonction du campus choisi via nouvelle methode
+     * Lister les sorties en fonction de la selection de l'utilisateur
      * On ajoute aussi ici que le type de retour est un tableau de "sortie" (lié à entité sortie)
      * @return Sortie []
      */
@@ -60,8 +59,8 @@ class SortieRepository extends ServiceEntityRepository
     {
         $queryBuilder = $this
             ->createQueryBuilder('sortie')
-        ->leftJoin('sortie.theme', 'theme')
-        ->select('sortie');
+            ->leftJoin('sortie.theme', 'theme')
+            ->select('sortie');
 
         if(!empty($data->campus)) {
             $queryBuilder
@@ -117,7 +116,7 @@ class SortieRepository extends ServiceEntityRepository
         if(!empty($data->sortiesPassees)) {
             $queryBuilder
                 ->andWhere('sortie.date_fin < :ajd')
-                ->setParameter('ajd', new \DateTime("now"));
+                ->setParameter('ajd', date('d-m-y'));
         }
 
         $queryBuilder = $this->exclureSortiesAnnulees($queryBuilder);
@@ -126,6 +125,7 @@ class SortieRepository extends ServiceEntityRepository
 //        $queryBuilder->setMaxResults(10);
         $query=$queryBuilder->getQuery();
         dump($data, $query, $queryBuilder);
+        dump( date('d-m-y'));
 
         return  $query->getResult();
 

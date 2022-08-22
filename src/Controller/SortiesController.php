@@ -30,51 +30,44 @@ use Symfony\Component\Routing\Annotation\Route;
 class SortiesController extends AbstractController
 {
 
+//    /**
+//     * @Route("/findSelect", name="findSelect")
+//     */
+//    public function FindSortieBySelection(Request $request, SortieRepository $sortieRepository): Response
+//    {
+//        $data= new SearchSortiesData();
+//        $sortieChoixForm = $this->createForm(SortieSearchType::class, $data);
+//        $sortieChoixForm->handleRequest($request);
+//        $sorties = $sortieRepository->findAll();
+//
+//        if ($sortieChoixForm->isSubmitted() &&  $sortieChoixForm->isValid()) {
+//            $sorties = $sortieRepository->findSearchCampus($data);
+//            return $this->redirectToRoute('sorties_select', ['sorties'=>$sorties]);
+//        }
+//
+//        return $this->renderForm('sorties/accueil.html.twig', [
+//            'sorties' => $sorties,
+//            'sortieChoixForm' => $sortieChoixForm,
+//        ]);
+//    }
+//
+//    /**
+//     * @Route("/select", name="select")
+//     */
+//    public function listeSelectSorties(SortieRepository $sortieRepository, Request $request): Response
+//    {
+//        //TODO / FINIR CETTE FONCTION QUI LISTE LES SORTIES SELON LEUR SELECTION
+//        // plus necessaire vu que MainController s'en occupe?
+//        $sorties=new Sortie();
+//
+//        return $this->render('sorties/listSelect.html.twig', [
+//            'sorties' => $sorties,
+//        ]);
+//    }
+
 
     /**
-     * @Route("/findSelect", name="findSelect")
-     */
-    public function FindSortieBySelection(Request $request, SortieRepository $sortieRepository): Response
-
-    {
-
-        $data= new SearchSortiesData();
-        $sortieChoixForm = $this->createForm(SortieSearchType::class, $data);
-        $sortieChoixForm->handleRequest($request);
-        $sorties = $sortieRepository->findAll();
-
-
-        if ($sortieChoixForm->isSubmitted() &&  $sortieChoixForm->isValid()) {
-            $sorties = $sortieRepository->findSearchCampus($data);
-
-            return $this->redirectToRoute('sorties_select', ['sorties'=>$sorties]);
-
-        }
-
-
-        return $this->renderForm('sorties/accueil.html.twig', [
-            'sorties' => $sorties,
-            'sortieChoixForm' => $sortieChoixForm,
-        ]);
-
-    }
-
-    /**
-     * @Route("/select", name="select")
-     */
-
-    public function listeSelectSorties(SortieRepository $sortieRepository, Request $request): Response
-    {
-        //TODO / FINIR CETTE FONCTION QUI LISTE LES SORTIES SELON LEUR SELECTION
-        // plus necessaire vu que MainController s'en occupe?
-        $sorties=new Sortie();
-
-        return $this->render('sorties/listSelect.html.twig', [
-            'sorties' => $sorties,
-        ]);
-    }
-
-    /**
+     *  Lié à _interface.html.twig
      * @Route("/list", name="list")
      */
     public function listeAllSorties(SortieRepository $sortieRepository,
@@ -97,7 +90,9 @@ class SortiesController extends AbstractController
         ]);
     }
 
+
     /**
+     * Lié à _interface.html.twig
      * @Route("/liste-archivees", name="list_archivees")
      */
     public function listeSortiesArchivees(SortieRepository $sortieRepository,
@@ -120,9 +115,8 @@ class SortiesController extends AbstractController
         ]);
     }
 
-
-
     /**
+     * Lié à liste_sorties_miniatures.html.twig
      * @Route("/details/{id}", name="detail")
      */
     public function detailSortie(
@@ -159,7 +153,7 @@ class SortiesController extends AbstractController
             $entityManager->persist($sortie);
             $entityManager->flush();
 
-            $this->addFlash('success', "Désincription enregistrée");
+            $this->addFlash('success', "Désinscription enregistrée");
             return $this->redirectToRoute('sorties_detail',['id' => $id]);
         }
 
@@ -173,10 +167,11 @@ class SortiesController extends AbstractController
         ]);
     }
 
+    /* L'organisateur clique sur le bouton "créer une sortie"
+        Lié à nav.html.twig */
     /**
      * @Route("/create", name="create")
      */
-
     public function create(Request $request, EntityManagerInterface $entityManager): Response
     {
         /** @var User $user */
@@ -189,17 +184,13 @@ class SortiesController extends AbstractController
             $sortieForm->handleRequest($request);
 
             if ($sortieForm->isSubmitted() && $sortieForm->isValid()){
-
                 $sortie->setOrganisateur($user);
                 $sortie->setHeureCloture(new DateTime('23:59:59'));
                 $sortie->setDateAnnonce(new DateTime());
                 $sortie->setHeureAnnonce(new DateTime());
-
                 $entityManager->persist($sortie);
                 $entityManager->flush();
-
             $this->addFlash('success', 'Sortie ajoutée avec succès');
-
             return $this->redirectToRoute('sorties_list');
         }
 
@@ -207,6 +198,8 @@ class SortiesController extends AbstractController
             'sortieForm'=>$sortieForm->createView()]);
     }
 
+    /* L'organisateur clique sur le bouton "modifier la sortie"
+    lié à detail.html.twig */
     /**
      * @Route("/edit/{id}", name="edit")
      */
@@ -235,14 +228,9 @@ class SortiesController extends AbstractController
             $photo->setUser($this->getUser());
             $entityManager->persist($photo);
         }
-
-
-
-
         if($this->getUser()->getId() != $sortie->getOrganisateur()->getId()) {
             throw $this->createAccessDeniedException('Non autorisé');
         }
-
         if($sortie->getDateCloture() < new DateTime('now')) {
             $this->addFlash(
                 'danger',
@@ -255,7 +243,6 @@ class SortiesController extends AbstractController
             );
 
         }
-
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($sortie);
             $entityManager->flush();
@@ -266,16 +253,16 @@ class SortiesController extends AbstractController
                 ['id'=>$sortie->getId()],
                 Response::HTTP_SEE_OTHER
             );
-
         }
-
         fail:
         return $this->renderForm('sorties/edit.html.twig', [
             'sortie' => $sortie,
             'form' => $form,
         ]);
-
     }
+
+    /* L'organisateur clique sur le bouton "annuler la sortie"
+     lié à detail.html.twig */
     /**
      * @Route("/annuler/{id}", name="annuler")
      */
