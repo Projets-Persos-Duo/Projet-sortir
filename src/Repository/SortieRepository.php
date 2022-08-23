@@ -23,11 +23,21 @@ class SortieRepository extends ServiceEntityRepository
     }
 
     /**
+     * On affiche toutes les sorties et on organise par date
+     * @return Sortie[]
+     */
+    public function findAllTrie()
+    {
+        return $this->findBy(array(), array('date_debut'=>'ASC'));
+    }
+
+
+    /**
      * @return Sortie[]
      */
     public function findNonArchivees(): array
     {
-        $sorties = parent::findAll();
+        $sorties = $this->findAllTrie();
         $sorties = array_filter($sorties, function (Sortie $sortie) {
             return $sortie->getDateFin() > new \DateTime('-1 month') && empty($sortie->getRaisonAnnulation());
         });
@@ -36,22 +46,23 @@ class SortieRepository extends ServiceEntityRepository
     }
 
     /**
-     * Ne retourne que les sorties archivées (peut être utile)
+     * Ne retourne que les sorties archivées (lié à SortieController et interface.html.twig)
+     * Elles sont classées par ordre chronologique
      * @return Sortie[]
      */
     public function findArchivees(): array
     {
-        $sorties = parent::findAll();
-        $sorties = array_filter($sorties, function (Sortie $sortie) {
-            return $sortie->getDateFin() <= new \DateTime('-1 month');
+        $sorties = $this->findAllTrie();
+        $sorties = array_filter($sorties, function (Sortie $sortie)
+        {
+            return $sortie->getDateFin() <= new \DateTime('-1 day');
         });
 
         return $sorties;
-
     }
 
     /**
-     * Lister les sorties en fonction de la selection de l'utilisateur
+     * Lister les sorties en fonction de la selection de l'utilisateur (issu de mainController)
      * On ajoute aussi ici que le type de retour est un tableau de "sortie" (lié à entité sortie)
      * @return Sortie []
      */
@@ -122,6 +133,7 @@ class SortieRepository extends ServiceEntityRepository
         $queryBuilder = $this->exclureSortiesAnnulees($queryBuilder);
         $queryBuilder = $this->exclureSortiesExpirees($queryBuilder);
 
+
 //        $queryBuilder->setMaxResults(10);
         $query=$queryBuilder->getQuery();
         dump($data, $query, $queryBuilder);
@@ -129,10 +141,11 @@ class SortieRepository extends ServiceEntityRepository
         return  $query->getResult();
     }
 
+    //A l'ouverture de la page d'accueil permet d'exclure automatiquement les sorties passées
     private function exclureSortiesExpirees(QueryBuilder $queryBuilder): QueryBuilder
     {
         $queryBuilder->andWhere('sortie.date_fin > :date_expire')->setParameter(
-            'date_expire', new \DateTime('-1 month')
+            'date_expire', new \DateTime('-1 day')
         );
 
         return $queryBuilder;
@@ -140,22 +153,24 @@ class SortieRepository extends ServiceEntityRepository
 
     private function exclureSortiesAnnulees(QueryBuilder $queryBuilder): QueryBuilder
     {
-
         return $queryBuilder->andWhere('sortie.raison_annulation IS NULL');
     }
 
     //Pour trier les sorties par dates asc, pour afficher d'abord les plus proches
+    //Fonction qui ne semble pas fonctionner... et qui n'est pas utilisée !! TODO
     /**
      * @return Sortie[]
      */
     public function trierSortiesParDatesPlusProches(): array
     {
-        $queryBuilder= $this->createQueryBuilder('s');$queryBuilder
-        ->orderBy('s.date_debut', 'ASC');
+        $queryBuilder= $this->createQueryBuilder('s');
+        $queryBuilder->orderBy('s.date_debut', 'ASC');
 
         $sorties = $queryBuilder->getQuery();
 
         return $sorties->getResult();
     }
+
+
 
 }

@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Data\SearchSortiesData;
+use App\Entity\Sortie;
 use App\Form\SortieSearchType;
 use App\Repository\SortieRepository;
+use DateTimeInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,6 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class MainController extends AbstractController
 {
 
+
     /**
      *Affichage principal de la page d'accueil des sorties
      * @Route("/", name="main_home")
@@ -21,23 +24,26 @@ class MainController extends AbstractController
     public function home(Request $request,
                          SortieRepository $sortieRepository,
                          EntityManagerInterface $entityManager,
-                         PaginatorInterface $paginator)
+                         PaginatorInterface $paginator
+                       )
     {
         /* Formulaire de recherche d'une sortie */
         $data= new SearchSortiesData();
+//        $dateCloture = new Sortie();
         $sortieChoixForm = $this->createForm(SortieSearchType::class, $data);
         $sortieChoixForm->handleRequest($request);
-        /* Fonction de recherche d'une sortie */
-        $sorties = $sortieRepository->findSearch($data, $this->getUser());
+        /* Fonction de recherche d'une sortie - se lance automatiquement à l'ouverture de la page */
+//        $sorties = $sortieRepository->findSearch($data, $this->getUser());
+        $sorties=$sortieRepository->findAllTrie();
 
         /* on traite la demande de s'inscrire depuis la liste des sorties */
-        if (!empty($sortie = $sortieRepository->find((int)$request->get('rejoindre')))
-            && $this->getUser()) {
-            $this->getUser()->addSortiesParticipee($sortie);
-            $entityManager->persist($sortie);
-            $entityManager->persist($this->getUser());
-            $entityManager->flush();
-        }
+            if (!empty($sortie = $sortieRepository->find((int)$request->get('rejoindre')))
+                && $this->getUser()) {
+                $this->getUser()->addSortiesParticipee($sortie);
+                $entityManager->persist($sortie);
+                $entityManager->persist($this->getUser());
+                $entityManager->flush();
+            }
 
         /* on traite la demande de se désinscrire depuis la liste des sorties */
         if (!empty($sortie = $sortieRepository->find((int)$request->get('quitter')))
@@ -63,7 +69,7 @@ class MainController extends AbstractController
 
         $sortiePaginator=$paginator->paginate(
             $sorties, //on passe les données
-            $request->query->getInt('page', 1), //numéro page en cours - 1 par défault
+            $request->query->getInt('page', 1), //numéro page en cours - 1 par défaut
             6 //nombre d'éléments par page
         );
              return $this->render (

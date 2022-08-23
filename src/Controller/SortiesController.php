@@ -76,7 +76,7 @@ class SortiesController extends AbstractController
                                 ): Response
     {
 
-            $data=$sortieRepository->findAll();
+            $data=$sortieRepository->findAllTrie();
             //paginator va nous permettre de choisir le nombre
             // de sorties affichées par page (ici 6)
             $sorties = $paginator->paginate(
@@ -92,7 +92,7 @@ class SortiesController extends AbstractController
 
 
     /**
-     * Lié à _interface.html.twig
+     * Lié à _interface.html.twig et à liste_sorties.html.twig
      * @Route("/liste-archivees", name="list_archivees")
      */
     public function listeSortiesArchivees(SortieRepository $sortieRepository,
@@ -234,7 +234,7 @@ class SortiesController extends AbstractController
         if($sortie->getDateCloture() < new DateTime('now')) {
             $this->addFlash(
                 'danger',
-                'La sortie ne peut plus etre modifiée après la date de cloture !'
+                'La sortie ne peut plus être modifiée après la date de cloture !'
             );
             return $this->redirectToRoute(
                 'sorties_detail',

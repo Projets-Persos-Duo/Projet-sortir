@@ -133,17 +133,19 @@ h1 {
 
 }
 
+/*INUTILE DE CUSTOMIZER LE MESSAGE D'ALERTE CAR C'EST BOOTSTRAP QUI GERE*/
 
+/*#alert-- {*/
+/*    padding: 20px;*/
+/*    font-weight: bold;*/
+/*    font-size: 1.4rem;*/
+/*    margin: 1rem 0;*/
+/*    border-radius: 5px;*/
+/*    animation-duration: 5s;*/
+/*    animation-name: disparition;*/
+/*}*/
 
-.flash {
-    padding: 20px;
-    font-weight: bold;
-    font-size: 1.4rem;
-    margin: 1rem 0;
-    border-radius: 5px;
-}
-
-.flash-success {background-color: lawngreen}
+/*#alert--success {background-color: red}*/
 
 label, legend {
     color: var(--bs-light);
