@@ -129,6 +129,7 @@ class SortiesController extends AbstractController
         //pour que le user soit bien un objet App/Entity/User et pas un UserInterface
         $user = $this->getUser();
 
+        //Boutons pour s'inscrire ou se désinscrire (modifier ou annuler : sont directement sur le twig)
         $inscriptionSortieForm = $this->createForm(InscriptionSortieFormType::class, $sortie);
         $inscriptionSortieForm->handleRequest($request);
 
@@ -191,7 +192,7 @@ class SortiesController extends AbstractController
                 $entityManager->persist($sortie);
                 $entityManager->flush();
             $this->addFlash('success', 'Sortie ajoutée avec succès');
-            return $this->redirectToRoute('sorties_list');
+            return $this->redirectToRoute('main_home');
         }
 
         return  $this -> render ('sorties/create.html.twig', [

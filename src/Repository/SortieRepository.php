@@ -31,15 +31,17 @@ class SortieRepository extends ServiceEntityRepository
         return $this->findBy(array(), array('date_debut'=>'ASC'));
     }
 
-
     /**
+     * On affiche toutes les sorties en cours et organisées par date
+     * Fonction utilisée dans la page d'accueil (MainController)
      * @return Sortie[]
      */
     public function findNonArchivees(): array
     {
         $sorties = $this->findAllTrie();
-        $sorties = array_filter($sorties, function (Sortie $sortie) {
-            return $sortie->getDateFin() > new \DateTime('-1 month') && empty($sortie->getRaisonAnnulation());
+        $sorties = array_filter($sorties, function (Sortie $sortie)
+        {
+            return $sortie->getDateFin() > new \DateTime('-1 day') && empty($sortie->getRaisonAnnulation());
         });
 
         return $sorties;

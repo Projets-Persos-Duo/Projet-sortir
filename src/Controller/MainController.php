@@ -32,9 +32,10 @@ class MainController extends AbstractController
 //        $dateCloture = new Sortie();
         $sortieChoixForm = $this->createForm(SortieSearchType::class, $data);
         $sortieChoixForm->handleRequest($request);
-        /* Fonction de recherche d'une sortie - se lance automatiquement à l'ouverture de la page */
+        /* Affichage de toutes les sorties en cours -  se lance automatiquement à l'ouverture de la page */
 //        $sorties = $sortieRepository->findSearch($data, $this->getUser());
-        $sorties=$sortieRepository->findAllTrie();
+        $sorties=$sortieRepository->findNonArchivees();
+
 
         /* on traite la demande de s'inscrire depuis la liste des sorties */
             if (!empty($sortie = $sortieRepository->find((int)$request->get('rejoindre')))
@@ -66,7 +67,7 @@ class MainController extends AbstractController
             $this->addFlash('success', 'La sortie a bien été annulée');
             $sorties = $sortieRepository->findSearch($data, $this->getUser());
         }
-
+        //Ajout de la pagination
         $sortiePaginator=$paginator->paginate(
             $sorties, //on passe les données
             $request->query->getInt('page', 1), //numéro page en cours - 1 par défaut
